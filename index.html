@@ -3,289 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小說名稱 - 科技修真傳</title>
+    <title>科技修真傳</title>
     
-    <!-- Google Fonts - 優雅的思源宋體與現代感的 Lato 字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons - 用於圖示 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        /* --- CSS 樣式 --- */
-
-        /* :root 定義了整個網站的顏色變數，方便切換日夜間模式 */
         :root {
-            --light-bg: #f8f9fa;
-            --light-text: #212529;
-            --light-card-bg: #ffffff;
-            --light-border: #dee2e6;
-            --light-primary: #007bff;
-            --light-primary-hover: #0056b3;
-            --light-header-bg: rgba(255, 255, 255, 0.85);
-
-            --dark-bg: #1a1a1a;
-            --dark-text: #e9ecef;
-            --dark-card-bg: #2c2c2c;
-            --dark-border: #495057;
-            --dark-primary: #58a6ff;
-            --dark-primary-hover: #2f81f7;
-            --dark-header-bg: rgba(26, 26, 26, 0.85);
-
-            --font-serif: 'Noto Serif TC', serif; /* 內文宋體 */
-            --font-sans: 'Lato', sans-serif; /* 標題與UI字體 */
-            
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            --dark-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --light-bg: #f8f9fa; --light-text: #212529; --light-card-bg: #ffffff; --light-border: #dee2e6; --light-primary: #007bff; --light-primary-hover: #0056b3; --light-header-bg: rgba(255, 255, 255, 0.85);
+            --dark-bg: #1a1a1a; --dark-text: #e9ecef; --dark-card-bg: #2c2c2c; --dark-border: #495057; --dark-primary: #58a6ff; --dark-primary-hover: #2f81f7; --dark-header-bg: rgba(26, 26, 26, 0.85);
+            --font-serif: 'Noto Serif TC', serif; --font-sans: 'Lato', sans-serif;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08); --dark-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-
-        /* 根據 body 的 class 來切換顏色主題 */
-        body {
-            margin: 0;
-            transition: background-color 0.4s ease, color 0.4s ease;
-            font-family: var(--font-sans);
-        }
-
-        body.light-mode {
-            background-color: var(--light-bg);
-            color: var(--light-text);
-        }
-
-        body.dark-mode {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-        }
-
-        /* --- 頂部導航列 --- */
-        .main-header {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid;
-            box-sizing: border-box;
-        }
-
-        .light-mode .main-header {
-            background-color: var(--light-header-bg);
-            border-color: var(--light-border);
-        }
-        .dark-mode .main-header {
-            background-color: var(--dark-header-bg);
-            border-color: var(--dark-border);
-        }
-
-        .novel-title {
-            font-family: var(--font-serif);
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        #theme-toggle-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            padding: 5px;
-            color: inherit;
-        }
-
-        /* --- 主視覺區 (Hero Section) --- */
-        .hero-section {
-            text-align: center;
-            padding: 6rem 2rem;
-            background-size: cover;
-            background-position: center;
-            color: white;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 50vh;
-            /* *** 背景圖連結已更新為一個保證有效的連結 *** */
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1502657877623-f66bf489d236?q=80&w=2069&auto=format&fit=crop');
-        }
-
-        .hero-title {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin: 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-        }
-
-        .hero-tagline {
-            font-size: 1.25rem;
-            margin-top: 1rem;
-            max-width: 600px;
-            font-weight: 300;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-        }
-
-        /* --- 主內容區 --- */
-        .main-content {
-            max-width: 1100px;
-            margin: -80px auto 0 auto; /* 向上位移，與 Hero Section 產生層疊感 */
-            padding: 2rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .content-card {
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            transition: background-color 0.4s ease, box-shadow 0.3s ease;
-        }
-        
-        .light-mode .content-card {
-            background-color: var(--light-card-bg);
-            box-shadow: var(--shadow);
-        }
-        .dark-mode .content-card {
-            background-color: var(--dark-card-bg);
-            box-shadow: var(--dark-shadow);
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid;
-            padding-bottom: 0.5rem;
-        }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; transition: background-color 0.4s ease, color 0.4s ease; font-family: var(--font-sans); }
+        body.light-mode { background-color: var(--light-bg); color: var(--light-text); }
+        body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text); }
+        .main-header { position: sticky; top: 0; width: 100%; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid; box-sizing: border-box; }
+        .light-mode .main-header { background-color: var(--light-header-bg); border-color: var(--light-border); }
+        .dark-mode .main-header { background-color: var(--dark-header-bg); border-color: var(--dark-border); }
+        .novel-title { font-family: var(--font-serif); font-weight: 700; font-size: 1.5rem; }
+        #theme-toggle-btn { background: none; border: none; cursor: pointer; font-size: 1.5rem; padding: 5px; color: inherit; }
+        .hero-section { text-align: center; padding: 6rem 2rem; background-size: cover; background-position: center; color: white; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 50vh; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1502657877623-f66bf489d236?q=80&w=2069&auto=format&fit=crop'); }
+        .hero-title { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 700; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); }
+        .hero-tagline { font-size: 1.25rem; margin-top: 1rem; max-width: 600px; font-weight: 300; text-shadow: 1px 1px 5px rgba(0,0,0,0.7); }
+        .main-content { max-width: 1100px; margin: -80px auto 0 auto; padding: 2rem; position: relative; z-index: 10; }
+        .content-card { padding: 2.5rem; border-radius: 12px; margin-bottom: 2rem; transition: background-color 0.4s ease, box-shadow 0.3s ease; }
+        .light-mode .content-card { background-color: var(--light-card-bg); box-shadow: var(--shadow); }
+        .dark-mode .content-card { background-color: var(--dark-card-bg); box-shadow: var(--dark-shadow); }
+        .section-title { font-family: var(--font-serif); font-size: 2rem; margin-top: 0; margin-bottom: 1.5rem; border-bottom: 2px solid; padding-bottom: 0.5rem; }
         .light-mode .section-title { border-color: var(--light-primary); }
         .dark-mode .section-title { border-color: var(--dark-primary); }
-
-        /* --- 故事簡介 --- */
-        .synopsis p {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* --- 行動號召按鈕 --- */
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            text-decoration: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            color: white;
-        }
+        .synopsis p { font-family: var(--font-serif); font-size: 1.1rem; line-height: 1.8; }
+        .cta-buttons { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+        .btn { text-decoration: none; padding: 0.8rem 1.8rem; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid transparent; }
+        .btn-primary { color: white; }
         .light-mode .btn-primary { background-color: var(--light-primary); }
         .dark-mode .btn-primary { background-color: var(--dark-primary); color: var(--dark-bg); }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
-        }
-        .dark-mode .btn-primary:hover {
-            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.3);
-        }
-
-        /* --- 章節列表 --- */
-        .chapter-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .chapter-item {
-            border-radius: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .light-mode .chapter-item {
-            border: 1px solid var(--light-border);
-        }
-        .dark-mode .chapter-item {
-            border: 1px solid var(--dark-border);
-        }
-
-        .chapter-item:hover {
-            transform: translateY(-5px);
-        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3); }
+        .dark-mode .btn-primary:hover { box-shadow: 0 6px 20px rgba(88, 166, 255, 0.3); }
+        .btn-secondary { color: inherit; }
+        .light-mode .btn-secondary { border-color: var(--light-primary); color: var(--light-primary); }
+        .dark-mode .btn-secondary { border-color: var(--dark-primary); color: var(--dark-primary); }
+        .light-mode .btn-secondary:hover { background-color: var(--light-primary); color: white; }
+        .dark-mode .btn-secondary:hover { background-color: var(--dark-primary); color: var(--dark-bg); }
+        #continue-reading-btn { display: none; }
+        .chapter-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .chapter-item { border-radius: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s; }
+        .light-mode .chapter-item { border: 1px solid var(--light-border); }
+        .dark-mode .chapter-item { border: 1px solid var(--dark-border); }
+        .chapter-item:hover { transform: translateY(-5px); }
         .light-mode .chapter-item:hover { box-shadow: var(--shadow); }
         .dark-mode .chapter-item:hover { box-shadow: var(--dark-shadow); }
-
-        .chapter-link {
-            display: block;
-            padding: 1.2rem 1.5rem;
-            text-decoration: none;
-            color: inherit;
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .chapter-title {
-            flex-grow: 1;
-        }
-
-        .chapter-date {
-            font-size: 0.85rem;
-            font-family: var(--font-sans);
-            opacity: 0.7;
-            margin-left: 1rem;
-            flex-shrink: 0;
-        }
-        
-        /* --- 頁尾 --- */
-        .main-footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-        
-        /* --- 響應式設計 --- */
-        @media (max-width: 768px) {
-            .main-header { padding: 0.8rem 1rem; }
-            .novel-title { font-size: 1.2rem; }
-            .hero-title { font-size: 2.5rem; }
-            .hero-tagline { font-size: 1rem; }
-            .main-content { padding: 1rem; margin-top: -60px; }
-            .content-card { padding: 1.5rem; }
-            .section-title { font-size: 1.5rem; }
-            .cta-buttons { flex-direction: column; }
-            .btn { width: 100%; text-align: center; justify-content: center;}
-            .chapter-list { grid-template-columns: 1fr; }
-        }
-
+        .chapter-item.is-last-read { border-width: 2px; }
+        .light-mode .chapter-item.is-last-read { border-color: var(--light-primary); }
+        .dark-mode .chapter-item.is-last-read { border-color: var(--dark-primary); }
+        .chapter-link { display: block; padding: 1.2rem 1.5rem; text-decoration: none; color: inherit; font-family: var(--font-serif); font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; }
+        .chapter-title { flex-grow: 1; }
+        .chapter-date { font-size: 0.85rem; font-family: var(--font-sans); opacity: 0.7; margin-left: 1rem; flex-shrink: 0; }
+        .main-footer { text-align: center; padding: 2rem; margin-top: 2rem; font-size: 0.9rem; opacity: 0.7; }
+        #back-to-top-btn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; z-index: 100; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+        #back-to-top-btn.show { opacity: 1; visibility: visible; }
+        .light-mode #back-to-top-btn { background-color: var(--light-text); color: var(--light-bg); }
+        .dark-mode #back-to-top-btn { background-color: var(--dark-text); color: var(--dark-bg); }
+        @media (max-width: 768px) { .main-header { padding: 0.8rem 1rem; } .novel-title { font-size: 1.2rem; } .hero-title { font-size: 2.5rem; } .hero-tagline { font-size: 1rem; } .main-content { padding: 1rem; margin-top: -60px; } .content-card { padding: 1.5rem; } .section-title { font-size: 1.5rem; } .cta-buttons { flex-direction: column; } .btn { width: 100%; text-align: center; justify-content: center;} .chapter-list { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body class="light-mode">
 
-    <!-- 頂部導航列 -->
     <header class="main-header">
         <div class="novel-title">科技修真傳</div>
         <button id="theme-toggle-btn" aria-label="切換日夜間模式">
@@ -293,51 +80,41 @@
         </button>
     </header>
 
-    <!-- 主視覺區 -->
     <section class="hero-section">
         <h1 class="hero-title">科技修真傳</h1>
         <p class="hero-tagline">當晶片取代了金丹，當程式碼成為了咒語，飛升之路，是另一場維度的躍遷。</p>
     </section>
 
-    <!-- 主要內容區 -->
     <main class="main-content">
-
-        <!-- 故事簡介卡片 -->
         <section class="content-card synopsis">
             <h2 class="section-title">故事簡介</h2>
             <p>科技末世中的靈芯重啟，一個孤兒少年踏上“數據修仙”之路。</p>
-            
             <div class="cta-buttons">
-                <!-- 
-                    *** 這裡已經修正 ***
-                    移除了 href 開頭的 '#'，讓它可以正確跳轉到檔案。
-                -->
                 <a href="chapter-1.html" class="btn btn-primary">
                     <i class="fas fa-book-open"></i> 從第一章開始
+                </a>
+                <a href="#" id="continue-reading-btn" class="btn btn-secondary">
+                    <i class="fas fa-play"></i> 繼續閱讀
                 </a>
             </div>
         </section>
 
-        <!-- 章節列表卡片 -->
         <section id="chapters" class="content-card">
             <h2 class="section-title">章節列表</h2>
-            
             <ul class="chapter-list">
-                <!-- 新章節請貼在此處 -->
-                
-                <li>
+                <li class="chapter-item">
                     <a href="chapter-3.html" class="chapter-link">
                         <span class="chapter-title">第三章：模擬修煉器</span>
                         <span class="chapter-date">2025-07-07</span>
                     </a>
                 </li>
-                <li>
+                <li class="chapter-item">
                     <a href="chapter-2.html" class="chapter-link">
                         <span class="chapter-title">第二章：末法餘燼</span>
                         <span class="chapter-date">2025-07-06</span>
                     </a>
                 </li>
-                <li>
+                <li class="chapter-item">
                     <a href="chapter-1.html" class="chapter-link">
                         <span class="chapter-title">第一章：靈芯覺醒</span>
                         <span class="chapter-date">2025-07-05</span>
@@ -345,49 +122,64 @@
                 </li>
             </ul>
         </section>
-
     </main>
 
-    <!-- 頁尾 -->
     <footer class="main-footer">
         <p>&copy; 2025 大肥瞄. All Rights Reserved.</p>
     </footer>
+    
+    <button id="back-to-top-btn" aria-label="回到頂部"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        // --- JavaScript 互動功能 ---
-
         document.addEventListener('DOMContentLoaded', () => {
+            // --- 日夜模式切換 ---
             const themeToggleButton = document.getElementById('theme-toggle-btn');
             const themeIcon = themeToggleButton.querySelector('i');
-
-            // 獲取使用者上次選擇的主題
-            const savedTheme = localStorage.getItem('theme') || 'light-mode';
-            
-            // 應用主題
+            const savedTheme = localStorage.getItem('novel-theme') || 'light-mode';
             document.body.className = savedTheme;
             updateIcon(savedTheme);
 
-            // 更新圖示函式
             function updateIcon(theme) {
-                if (theme === 'dark-mode') {
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                } else {
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
-                }
+                themeIcon.className = theme === 'dark-mode' ? 'fas fa-sun' : 'fas fa-moon';
             }
 
-            // 點擊按鈕切換主題
             themeToggleButton.addEventListener('click', () => {
-                let currentTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-                let newTheme = currentTheme === 'light-mode' ? 'dark-mode' : 'light-mode';
-                
+                let newTheme = document.body.classList.contains('light-mode') ? 'dark-mode' : 'light-mode';
                 document.body.className = newTheme;
-                localStorage.setItem('theme', newTheme);
+                localStorage.setItem('novel-theme', newTheme);
                 updateIcon(newTheme);
             });
+
+            // --- 閱讀進度追蹤 ---
+            const continueReadingBtn = document.getElementById('continue-reading-btn');
+            const lastReadChapter = localStorage.getItem('novel-last-read');
+
+            if (lastReadChapter) {
+                continueReadingBtn.style.display = 'inline-flex';
+                continueReadingBtn.href = lastReadChapter;
+                
+                const chapterLinks = document.querySelectorAll('.chapter-link');
+                chapterLinks.forEach(link => {
+                    if (link.href === lastReadChapter) {
+                        link.parentElement.classList.add('is-last-read');
+                    }
+                });
+            }
+
+            // --- 回到頂部按鈕 ---
+            const backToTopBtn = document.getElementById('back-to-top-btn');
             
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 
