@@ -148,3 +148,77 @@ body.sepia-mode { background-color: var(--sepia-bg); color: var(--sepia-text); }
     .font-size-medium { font-size: 1.1rem; } 
     .font-size-large { font-size: 1.2rem; } 
 }
+
+/* --- 作者頁面 (author.html) 專屬樣式 --- */
+.author-page-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 4rem 2rem;
+}
+.author-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    padding: 3rem;
+    border-radius: 16px;
+}
+.light-mode .author-card {
+    background-color: var(--light-card-bg);
+    box-shadow: var(--shadow);
+}
+.dark-mode .author-card {
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+}
+.author-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 5px solid;
+}
+.light-mode .author-avatar { border-color: var(--light-primary); }
+.dark-mode .author-avatar { border-color: var(--dark-primary); }
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.author-name {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+}
+.author-bio {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+.author-social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+.author-social-links a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s;
+}
+.light-mode .author-social-links a { color: #555; }
+.dark-mode .author-social-links a { color: #ccc; }
+.author-social-links a:hover {
+    transform: scale(1.2);
+}
+.light-mode .author-social-links a:hover { color: var(--light-primary); }
+.dark-mode .author-social-links a:hover { color: var(--dark-primary); }
+
+@media (max-width: 768px) {
+    .author-page-content { padding: 2rem 1rem; }
+    .author-card { padding: 2rem; }
+    .author-name { font-size: 2rem; }
+}
