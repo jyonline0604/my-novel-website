@@ -111,11 +111,8 @@
             justify-content: center;
             align-items: center;
             min-height: 50vh;
-            /* 提示：你可以更換成自己的小說封面圖！
-              建議到 Unsplash, Pexels 等免費圖庫網站尋找合適的圖片。
-              例如：https://images.unsplash.com/photo-1534294646_...
-            */
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1504711331084-a744405d3b13?q=80&w=2070&auto=format&fit=crop');
+            /* *** 背景圖連結已更新 *** */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1619462134225-827588274599?q=80&w=2070&auto=format&fit=crop');
         }
 
         .hero-title {
@@ -312,10 +309,10 @@
             
             <div class="cta-buttons">
                 <!-- 
-                    提示：
-                    請將 `href` 中的 `chapter-1.html` 連結到你的第一章檔案。
+                    *** 這裡已經修正 ***
+                    移除了 href 開頭的 '#'，讓它可以正確跳轉到檔案。
                 -->
-                <a href="#chapter-1.html" class="btn btn-primary">
+                <a href="chapter-1.html" class="btn btn-primary">
                     <i class="fas fa-book-open"></i> 從第一章開始
                 </a>
             </div>
@@ -325,21 +322,6 @@
         <section id="chapters" class="content-card">
             <h2 class="section-title">章節列表</h2>
             
-            <!-- 
-                ************************************************************
-                * *
-                * == 如何每日更新小說 ==                     *
-                * *
-                * 1. 複製下方 `<li>` 到 `</li>` 的整段程式碼。               *
-                * 2. 貼到列表的最上方。                                      *
-                * 3. 修改 `href` 的連結，例如新的第四章就寫 `chapter-4.html`。*
-                * 4. 修改章節標題，例如「第四章：風起雲湧」。                *
-                * 5. 修改 `<span class="chapter-date">` 裡的更新日期。      *
-                * 6. 建立一個新的 HTML 檔案 (例如 chapter-4.html)，         *
-                * 並將小說內容放進去。                                    *
-                * *
-                ************************************************************
-            -->
             <ul class="chapter-list">
                 <!-- 新章節請貼在此處 -->
                 
