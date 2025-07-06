@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ****************************************************** -->
     <!-- 記得修改這裡的標題 -->
     <title>第二章：末法餘燼 - 科技修真傳</title>
-    <!-- ****************************************************** -->
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,59 +51,30 @@
         .light-mode .setting-options button.active { background-color: var(--light-primary); border-color: var(--light-primary); }
         .dark-mode .setting-options button.active { background-color: var(--dark-primary); border-color: var(--dark-primary); color: var(--dark-bg); }
         .sepia-mode .setting-options button.active { background-color: var(--sepia-primary); border-color: var(--sepia-primary); }
-        .reader-content-area { padding: 2rem 1rem 4rem 1rem; }
+        .reader-content-area { padding: 2rem 1rem 1rem 1rem; }
         .reader-article { max-width: 42rem; margin: 0 auto; font-family: var(--font-serif); line-height: 1.9; transition: font-size 0.3s; }
         .font-size-small { font-size: 1.0rem; }
         .font-size-medium { font-size: 1.2rem; }
         .font-size-large { font-size: 1.4rem; }
         .reader-article h1 { font-size: 2.5em; text-align: center; margin-bottom: 2.5rem; }
         .reader-article p { margin-bottom: 1.6rem; text-indent: 2em; }
-        
-        /* --- 新增：分享按鈕樣式 --- */
-        .share-section {
-            max-width: 42rem;
-            margin: 3rem auto 1rem auto;
-            text-align: center;
-            padding: 1rem;
-        }
-        .share-title {
-            font-size: 0.9rem;
-            font-weight: bold;
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-        .share-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        .share-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-            transition: transform 0.2s ease;
-        }
-        .share-btn:hover {
-            transform: scale(1.1);
-        }
+        .share-section { max-width: 42rem; margin: 3rem auto 1rem auto; text-align: center; padding: 1rem; }
+        .share-title { font-size: 0.9rem; font-weight: bold; opacity: 0.7; margin-bottom: 1rem; }
+        .share-buttons { display: flex; justify-content: center; gap: 1rem; }
+        .share-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; text-decoration: none; color: white; font-size: 1.2rem; transition: transform 0.2s ease; }
+        .share-btn:hover { transform: scale(1.1); }
         .share-btn.facebook { background-color: #1877F2; }
         .share-btn.twitter { background-color: #1DA1F2; }
         .share-btn.line { background-color: #00B900; }
         .share-btn.copy-link { background-color: #7f8c8d; }
-
         .reader-footer-nav { display: flex; justify-content: space-between; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; }
         .nav-button { text-decoration: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700; transition: all 0.3s ease; border: 1px solid; }
         .light-mode .nav-button { background-color: var(--light-primary); color: white; border-color: var(--light-primary); }
         .dark-mode .nav-button { background-color: var(--dark-primary); color: var(--dark-bg); border-color: var(--dark-primary); }
         .sepia-mode .nav-button { background-color: var(--sepia-primary); color: white; border-color: var(--sepia-primary); }
         .nav-button.disabled { pointer-events: none; opacity: 0.5; }
-        
+        .comment-section { max-width: 42rem; margin: 4rem auto; padding: 0 1rem; }
+        .comment-section-title { text-align: center; font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 2rem; opacity: 0.9; }
         @media (max-width: 768px) { .reader-header { padding: 0.8rem 1rem; } .reader-chapter-title { font-size: 0.9rem; } .reader-article { font-size: 1.1rem; } .reader-article h1 { font-size: 2rem; } .font-size-small { font-size: 1rem; } .font-size-medium { font-size: 1.1rem; } .font-size-large { font-size: 1.2rem; } }
     </style>
 </head>
@@ -113,10 +82,7 @@
 
     <header class="reader-header">
         <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
-        <!-- ****************************************************** -->
-        <!-- 記得修改這裡的標題 -->
         <h2 class="reader-chapter-title">第二章：末法餘燼</h2>
-        <!-- ****************************************************** -->
         <div class="header-controls">
             <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
         </div>
@@ -143,8 +109,6 @@
 
     <main class="reader-content-area">
         <article id="reader-article" class="reader-article font-size-medium">
-            <!-- ****************************************************** -->
-            <!-- 在這裡貼上你的小說內文 -->
             <h1>第二章：末法餘燼</h1>
             <p>晨霧如鉛，冷冽而濃稠，覆蓋整座舊都廢墟。
 
@@ -258,12 +222,9 @@
 靈芯發出微弱的光。
 
 新的道，在數據的深處，正在重啟。</p>
-            <!-- ****************************************************** -->
         </article>
     </main>
 
-    <!-- ****************************************************** -->
-    <!-- 新增的分享區塊 -->
     <section class="share-section">
         <h4 class="share-title">分享這個章節</h4>
         <div class="share-buttons">
@@ -273,18 +234,19 @@
             <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
         </div>
     </section>
-    <!-- ****************************************************** -->
 
     <footer class="reader-footer-nav">
-        <!-- ****************************************************** -->
-        <!-- 記得修改翻頁連結 -->
         <a href="#" id="prev-chapter-btn" class="nav-button disabled">« 上一章</a>
         <a href="chapter-3.html" id="next-chapter-btn" class="nav-button">下一章 »</a>
-        <!-- ****************************************************** -->
     </footer>
+
+    <section class="comment-section">
+        <h3 class="comment-section-title">讀者留言</h3>
+    </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- 原有的設定、分享等 JavaScript 程式碼 ---
             const settingsBtn = document.getElementById('settings-btn');
             const settingsPanel = document.getElementById('settings-panel');
             const article = document.getElementById('reader-article');
@@ -294,8 +256,14 @@
             localStorage.setItem('novel-last-read', window.location.href);
 
             const savedSettings = JSON.parse(localStorage.getItem('novel-settings')) || {};
-            const currentTheme = savedSettings.theme || 'light-mode';
+            let currentTheme = savedSettings.theme || 'light-mode';
             const currentFontSize = savedSettings.fontSize || 'medium';
+
+            function getGiscusTheme(theme) {
+                if (theme === 'dark-mode') return 'dark';
+                if (theme === 'sepia-mode') return 'light_tritanopia'; // 使用一個接近米黃色的主題
+                return 'light';
+            }
 
             function applySettings(theme, size) {
                 document.body.className = theme;
@@ -304,81 +272,54 @@
                 document.querySelector('#font-size-options .active')?.classList.remove('active');
                 document.querySelector(`#theme-options button[data-theme="${theme}"]`).classList.add('active');
                 document.querySelector(`#font-size-options button[data-size="${size}"]`).classList.add('active');
+                
+                const giscusFrame = document.querySelector('iframe.giscus-frame');
+                if (giscusFrame) {
+                    giscusFrame.contentWindow.postMessage({ giscus: { setConfig: { theme: getGiscusTheme(theme) } } }, 'https://giscus.app');
+                }
             }
             applySettings(currentTheme, currentFontSize);
 
-            settingsBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                settingsPanel.classList.toggle('show');
-            });
-            document.addEventListener('click', (e) => {
-                if (!settingsPanel.contains(e.target) && !settingsBtn.contains(e.target)) {
-                    settingsPanel.classList.remove('show');
-                }
-            });
-
-            fontSizeOptions.addEventListener('click', (e) => {
-                if (e.target.tagName === 'BUTTON') {
-                    const newSize = e.target.dataset.size;
-                    savedSettings.fontSize = newSize;
-                    localStorage.setItem('novel-settings', JSON.stringify(savedSettings));
-                    applySettings(savedSettings.theme || 'light-mode', newSize);
-                }
-            });
-
-            themeOptions.addEventListener('click', (e) => {
-                if (e.target.tagName === 'BUTTON') {
-                    const newTheme = e.target.dataset.theme;
-                    savedSettings.theme = newTheme;
-                    localStorage.setItem('novel-settings', JSON.stringify(savedSettings));
-                    applySettings(newTheme, savedSettings.fontSize || 'medium');
-                }
-            });
-
+            settingsBtn.addEventListener('click', (e) => { e.stopPropagation(); settingsPanel.classList.toggle('show'); });
+            document.addEventListener('click', (e) => { if (!settingsPanel.contains(e.target) && !settingsBtn.contains(e.target)) { settingsPanel.classList.remove('show'); } });
+            fontSizeOptions.addEventListener('click', (e) => { if (e.target.tagName === 'BUTTON') { const newSize = e.target.dataset.size; savedSettings.fontSize = newSize; localStorage.setItem('novel-settings', JSON.stringify(savedSettings)); applySettings(savedSettings.theme || 'light-mode', newSize); } });
+            themeOptions.addEventListener('click', (e) => { if (e.target.tagName === 'BUTTON') { const newTheme = e.target.dataset.theme; currentTheme = newTheme; savedSettings.theme = newTheme; localStorage.setItem('novel-settings', JSON.stringify(savedSettings)); applySettings(newTheme, savedSettings.fontSize || 'medium'); } });
             const prevBtn = document.getElementById('prev-chapter-btn');
             const nextBtn = document.getElementById('next-chapter-btn');
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft' && !prevBtn.classList.contains('disabled')) window.location.href = prevBtn.href;
-                if (e.key === 'ArrowRight' && !nextBtn.classList.contains('disabled')) window.location.href = nextBtn.href;
-            });
-
-            // --- 分享功能邏輯 ---
+            document.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft' && !prevBtn.classList.contains('disabled')) window.location.href = prevBtn.href; if (e.key === 'ArrowRight' && !nextBtn.classList.contains('disabled')) window.location.href = nextBtn.href; });
             const pageUrl = window.location.href;
             const pageTitle = document.title;
-
-            document.getElementById('share-facebook').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`, 'facebook-share', 'width=580,height=296');
-            });
-            
-            document.getElementById('share-twitter').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`, 'twitter-share', 'width=550,height=420');
-            });
-
-            document.getElementById('share-line').addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`, 'line-share', 'width=500,height=500');
-            });
-
+            document.getElementById('share-facebook').addEventListener('click', (e) => { e.preventDefault(); window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`, 'facebook-share', 'width=580,height=296'); });
+            document.getElementById('share-twitter').addEventListener('click', (e) => { e.preventDefault(); window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`, 'twitter-share', 'width=550,height=420'); });
+            document.getElementById('share-line').addEventListener('click', (e) => { e.preventDefault(); window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`, 'line-share', 'width=500,height=500'); });
             document.getElementById('copy-link-btn').addEventListener('click', (e) => {
-                const btn = e.currentTarget;
-                const icon = btn.querySelector('i');
-                const originalIconClass = icon.className;
-
-                navigator.clipboard.writeText(pageUrl).then(() => {
-                    icon.className = 'fas fa-check';
-                    btn.style.backgroundColor = '#2ecc71';
-                    setTimeout(() => {
-                        icon.className = originalIconClass;
-                        btn.style.backgroundColor = '';
-                    }, 2000);
-                }).catch(err => {
-                    console.error('無法複製連結: ', err);
-                });
+                const btn = e.currentTarget; const icon = btn.querySelector('i'); const originalIconClass = icon.className;
+                navigator.clipboard.writeText(pageUrl).then(() => { icon.className = 'fas fa-check'; btn.style.backgroundColor = '#2ecc71'; setTimeout(() => { icon.className = originalIconClass; btn.style.backgroundColor = ''; }, 2000); }).catch(err => { console.error('無法複製連結: ', err); });
             });
+
+            // --- Giscus 載入邏輯 (已整合您的專屬設定) ---
+            const giscusScript = document.createElement('script');
+            const giscusAttributes = {
+                "src": "https://giscus.app/client.js",
+                "data-repo": "jyonline0604/my-novel-website",
+                "data-repo-id": "R_kgDOPHnJng",
+                "data-category": "Announcements",
+                "data-category-id": "DIC_kwDOPHnJns4Csik6",
+                "data-mapping": "pathname",
+                "data-strict": "0",
+                "data-reactions-enabled": "1",
+                "data-emit-metadata": "0",
+                "data-input-position": "bottom",
+                "data-theme": getGiscusTheme(currentTheme),
+                "data-lang": "zh-TW",
+                "crossorigin": "anonymous",
+                "async": ""
+            };
+            Object.entries(giscusAttributes).forEach(([key, value]) => {
+                giscusScript.setAttribute(key, value);
+            });
+            document.querySelector('.comment-section').appendChild(giscusScript);
         });
     </script>
-
 </body>
 </html>
