@@ -4,183 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 這裡的標題要改成對應的章節 -->
+    <!-- ****************************************************** -->
+    <!-- 記得修改這裡的標題 -->
     <title>第三章：模擬修煉器 - 科技修真傳</title>
+    <!-- ****************************************************** -->
     
-    <!-- 引用和主頁相同的字體與圖示 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        /* --- 閱讀頁面的專屬樣式 --- */
         :root {
-            --light-bg: #f8f9fa;
-            --light-text: #212529;
-            --light-border: #dee2e6;
-            --light-primary: #007bff;
-            --light-header-bg: rgba(248, 249, 250, 0.9);
-
-            --dark-bg: #1a1a1a;
-            --dark-text: #e9ecef;
-            --dark-border: #495057;
-            --dark-primary: #58a6ff;
-            --dark-header-bg: rgba(26, 26, 26, 0.9);
-
-            --font-serif: 'Noto Serif TC', serif;
-            --font-sans: 'Lato', sans-serif;
+            --light-bg: #f8f9fa; --light-text: #212529; --light-border: #dee2e6; --light-primary: #007bff; --light-header-bg: rgba(248, 249, 250, 0.9);
+            --dark-bg: #1a1a1a; --dark-text: #e9ecef; --dark-border: #495057; --dark-primary: #58a6ff; --dark-header-bg: rgba(26, 26, 26, 0.9);
+            --sepia-bg: #f4e8d5; --sepia-text: #5b4636; --sepia-border: #d3c5a9; --sepia-primary: #a0522d; --sepia-header-bg: rgba(244, 232, 213, 0.9);
+            --font-serif: 'Noto Serif TC', serif; --font-sans: 'Lato', sans-serif;
         }
-
-        body {
-            margin: 0;
-            transition: background-color 0.4s ease, color 0.4s ease;
-            font-family: var(--font-sans);
-        }
-
-        body.light-mode {
-            background-color: var(--light-bg);
-            color: var(--light-text);
-        }
-
-        body.dark-mode {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-        }
-
-        /* --- 閱讀頁頂部導航 --- */
-        .reader-header {
-            position: sticky;
-            top: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid;
-            backdrop-filter: blur(10px);
-            z-index: 100;
-        }
-        .light-mode .reader-header {
-            background-color: var(--light-header-bg);
-            border-color: var(--light-border);
-        }
-        .dark-mode .reader-header {
-            background-color: var(--dark-header-bg);
-            border-color: var(--dark-border);
-        }
-
-        .header-nav-link {
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: background-color 0.2s;
-        }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; transition: background-color 0.4s ease, color 0.4s ease; font-family: var(--font-sans); }
+        body.light-mode { background-color: var(--light-bg); color: var(--light-text); }
+        body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text); }
+        body.sepia-mode { background-color: var(--sepia-bg); color: var(--sepia-text); }
+        .reader-header { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid; backdrop-filter: blur(10px); z-index: 100; }
+        .light-mode .reader-header { background-color: var(--light-header-bg); border-color: var(--light-border); }
+        .dark-mode .reader-header { background-color: var(--dark-header-bg); border-color: var(--dark-border); }
+        .sepia-mode .reader-header { background-color: var(--sepia-header-bg); border-color: var(--sepia-border); }
+        .header-nav-link { text-decoration: none; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 20px; transition: background-color 0.2s; }
         .light-mode .header-nav-link { color: var(--light-primary); }
         .dark-mode .header-nav-link { color: var(--dark-primary); }
+        .sepia-mode .header-nav-link { color: var(--sepia-primary); }
         .header-nav-link:hover { background-color: rgba(0,0,0,0.05); }
-        .dark-mode .header-nav-link:hover { background-color: rgba(255,255,255,0.1); }
-
-        .reader-chapter-title {
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: center;
-            margin: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        #theme-toggle-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 5px;
-            color: inherit;
-        }
-
-        /* --- 內文區域 --- */
-        .reader-content-area {
-            padding: 2rem 1rem 4rem 1rem;
-        }
-
-        .reader-article {
-            max-width: 42rem; /* 最佳閱讀寬度 */
-            margin: 0 auto;
-            font-family: var(--font-serif);
-            font-size: 1.2rem; /* 舒適的字體大小 */
-            line-height: 1.9;  /* 舒適的行高 */
-        }
-
-        .reader-article h1 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .reader-article p {
-            margin-bottom: 1.6rem;
-            text-indent: 2em; /* 每段開頭縮排兩個字 */
-        }
-
-        /* --- 底部翻頁導航 --- */
-        .reader-footer-nav {
-            display: flex;
-            justify-content: space-between;
-            max-width: 42rem;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .nav-button {
-            text-decoration: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            border: 1px solid;
-        }
-        .light-mode .nav-button {
-            background-color: var(--light-primary);
-            color: white;
-            border-color: var(--light-primary);
-        }
-        .dark-mode .nav-button {
-            background-color: var(--dark-primary);
-            color: var(--dark-bg);
-            border-color: var(--dark-primary);
-        }
-        .nav-button.disabled {
-            pointer-events: none;
-            background-color: #ccc;
-            border-color: #ccc;
-            color: #666;
-        }
-        .light-mode .nav-button.disabled { background-color: #e9ecef; border-color: #e9ecef; color: #6c757d; }
-        .dark-mode .nav-button.disabled { background-color: #343a40; border-color: #343a40; color: #adb5bd; }
-
-        @media (max-width: 768px) {
-            .reader-header { padding: 0.8rem 1rem; }
-            .reader-chapter-title { font-size: 0.9rem; }
-            .reader-article { font-size: 1.1rem; line-height: 1.8; }
-            .reader-article h1 { font-size: 2rem; }
-        }
+        .dark-mode .header-nav-link:hover, .sepia-mode .header-nav-link:hover { background-color: rgba(0,0,0,0.1); }
+        .reader-chapter-title { font-size: 1rem; font-weight: 600; text-align: center; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .header-controls { display: flex; align-items: center; gap: 1rem; }
+        .control-btn { background: none; border: none; cursor: pointer; font-size: 1.2rem; padding: 5px; color: inherit; }
+        .settings-panel { position: fixed; top: 70px; right: 20px; padding: 1.5rem; border-radius: 8px; z-index: 101; transition: opacity 0.3s, transform 0.3s; transform: translateY(-10px); opacity: 0; visibility: hidden; }
+        .settings-panel.show { transform: translateY(0); opacity: 1; visibility: visible; }
+        .light-mode .settings-panel { background-color: var(--light-card-bg); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .dark-mode .settings-panel { background-color: var(--dark-card-bg); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .sepia-mode .settings-panel { background-color: #fff9f0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .setting-group { margin-bottom: 1rem; }
+        .setting-group:last-child { margin-bottom: 0; }
+        .setting-group h4 { margin: 0 0 0.8rem 0; font-size: 0.9rem; opacity: 0.8; }
+        .setting-options { display: flex; gap: 0.5rem; }
+        .setting-options button { padding: 0.5rem 1rem; border: 1px solid; border-radius: 20px; cursor: pointer; background-color: transparent; color: inherit; }
+        .setting-options button.active { color: white; }
+        .light-mode .setting-options button.active { background-color: var(--light-primary); border-color: var(--light-primary); }
+        .dark-mode .setting-options button.active { background-color: var(--dark-primary); border-color: var(--dark-primary); color: var(--dark-bg); }
+        .sepia-mode .setting-options button.active { background-color: var(--sepia-primary); border-color: var(--sepia-primary); }
+        .reader-content-area { padding: 2rem 1rem 4rem 1rem; }
+        .reader-article { max-width: 42rem; margin: 0 auto; font-family: var(--font-serif); line-height: 1.9; transition: font-size 0.3s; }
+        .font-size-small { font-size: 1.0rem; }
+        .font-size-medium { font-size: 1.2rem; }
+        .font-size-large { font-size: 1.4rem; }
+        .reader-article h1 { font-size: 2.5em; text-align: center; margin-bottom: 2.5rem; }
+        .reader-article p { margin-bottom: 1.6rem; text-indent: 2em; }
+        .reader-footer-nav { display: flex; justify-content: space-between; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; }
+        .nav-button { text-decoration: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700; transition: all 0.3s ease; border: 1px solid; }
+        .light-mode .nav-button { background-color: var(--light-primary); color: white; border-color: var(--light-primary); }
+        .dark-mode .nav-button { background-color: var(--dark-primary); color: var(--dark-bg); border-color: var(--dark-primary); }
+        .sepia-mode .nav-button { background-color: var(--sepia-primary); color: white; border-color: var(--sepia-primary); }
+        .nav-button.disabled { pointer-events: none; opacity: 0.5; }
+        @media (max-width: 768px) { .reader-header { padding: 0.8rem 1rem; } .reader-chapter-title { font-size: 0.9rem; } .reader-article { font-size: 1.1rem; } .reader-article h1 { font-size: 2rem; } .font-size-small { font-size: 1rem; } .font-size-medium { font-size: 1.1rem; } .font-size-large { font-size: 1.2rem; } }
     </style>
 </head>
 <body class="light-mode">
 
     <header class="reader-header">
-        <!-- 連結回主頁(目錄) -->
         <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
+        <!-- ****************************************************** -->
+        <!-- 記得修改這裡的標題 -->
         <h2 class="reader-chapter-title">第三章：模擬修煉器</h2>
-        <button id="theme-toggle-btn" aria-label="切換日夜間模式">
-            <i class="fas fa-moon"></i>
-        </button>
+        <!-- ****************************************************** -->
+        <div class="header-controls">
+            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
+        </div>
     </header>
 
+    <div id="settings-panel" class="settings-panel">
+        <div class="setting-group">
+            <h4>字體大小</h4>
+            <div id="font-size-options" class="setting-options">
+                <button data-size="small">小</button>
+                <button data-size="medium">中</button>
+                <button data-size="large">大</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <h4>背景主題</h4>
+            <div id="theme-options" class="setting-options">
+                <button data-theme="light-mode">明亮</button>
+                <button data-theme="sepia-mode">米黃</button>
+                <button data-theme="dark-mode">夜間</button>
+            </div>
+        </div>
+    </div>
+
     <main class="reader-content-area">
-        <article class="reader-article">
+        <article id="reader-article" class="reader-article font-size-medium">
+            <!-- ****************************************************** -->
+            <!-- 在這裡貼上你的小說內文 -->
             <h1>第三章：模擬修煉器</h1>
             <p>寒風從破舊的光纖塔骨架縫隙中穿過，帶起一陣陣如獸鳴般的風聲。林塵站在塔頂，低頭看向腳下密密麻麻的廢舊機箱與裂縫中蠕動的雜草。他的手中握著一塊巴掌大小的透明晶體板，表面浮動著數字光紋，中央赫然顯示：
 
@@ -296,45 +220,94 @@
 他，是持靈芯，掌模擬之道的第一人。
 
 而這，才剛剛開始。</p>
-            
+            <!-- ****************************************************** -->
         </article>
     </main>
 
     <footer class="reader-footer-nav">
-        <!-- 
-            提示：
-            上一章連結到 chapter-2.html。
-            下一章連結到 chapter-4.html (或暫時禁用)。
-        -->
-        <a href="chapter-2.html" class="nav-button">« 上一章</a>
-        <a href="#" class="nav-button disabled">下一章 »</a>
+        <!-- ****************************************************** -->
+        <!-- 記得修改翻頁連結 -->
+        <a href="#" id="prev-chapter-btn" class="nav-button disabled">« 上一章</a>
+        <a href="chapter-2.html" id="next-chapter-btn" class="nav-button">下一章 »</a>
+        <!-- ****************************************************** -->
     </footer>
 
     <script>
-        // 這段 JavaScript 和主頁的功能完全一樣，用來切換日夜間模式
         document.addEventListener('DOMContentLoaded', () => {
-            const themeToggleButton = document.getElementById('theme-toggle-btn');
-            const themeIcon = themeToggleButton.querySelector('i');
-            const savedTheme = localStorage.getItem('theme') || 'light-mode';
-            
-            document.body.className = savedTheme;
-            updateIcon(savedTheme);
+            const settingsBtn = document.getElementById('settings-btn');
+            const settingsPanel = document.getElementById('settings-panel');
+            const article = document.getElementById('reader-article');
+            const fontSizeOptions = document.getElementById('font-size-options');
+            const themeOptions = document.getElementById('theme-options');
 
-            function updateIcon(theme) {
-                if (theme === 'dark-mode') {
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                } else {
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
-                }
+            // --- 儲存閱讀進度 ---
+            localStorage.setItem('novel-last-read', window.location.href);
+
+            // --- 載入使用者設定 ---
+            const savedSettings = JSON.parse(localStorage.getItem('novel-settings')) || {};
+            const currentTheme = savedSettings.theme || 'light-mode';
+            const currentFontSize = savedSettings.fontSize || 'medium';
+
+            function applySettings(theme, size) {
+                document.body.className = theme;
+                article.className = `reader-article font-size-${size}`;
+                
+                // 更新設定面板按鈕狀態
+                document.querySelector(`#theme-options button[data-theme="${theme}"]`).classList.add('active');
+                document.querySelector(`#font-size-options button[data-size="${size}"]`).classList.add('active');
             }
+            
+            applySettings(currentTheme, currentFontSize);
 
-            themeToggleButton.addEventListener('click', () => {
-                let newTheme = document.body.classList.contains('light-mode') ? 'dark-mode' : 'light-mode';
-                document.body.className = newTheme;
-                localStorage.setItem('theme', newTheme);
-                updateIcon(newTheme);
+            // --- 設定面板開關 ---
+            settingsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                settingsPanel.classList.toggle('show');
+            });
+            document.addEventListener('click', (e) => {
+                if (!settingsPanel.contains(e.target) && !settingsBtn.contains(e.target)) {
+                    settingsPanel.classList.remove('show');
+                }
+            });
+
+            // --- 字體大小設定 ---
+            fontSizeOptions.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const newSize = e.target.dataset.size;
+                    savedSettings.fontSize = newSize;
+                    localStorage.setItem('novel-settings', JSON.stringify(savedSettings));
+                    
+                    document.querySelector('#font-size-options .active')?.classList.remove('active');
+                    applySettings(savedSettings.theme || 'light-mode', newSize);
+                }
+            });
+
+            // --- 主題設定 ---
+            themeOptions.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const newTheme = e.target.dataset.theme;
+                    savedSettings.theme = newTheme;
+                    localStorage.setItem('novel-settings', JSON.stringify(savedSettings));
+
+                    document.querySelector('#theme-options .active')?.classList.remove('active');
+                    applySettings(newTheme, savedSettings.fontSize || 'medium');
+                }
+            });
+
+            // --- 鍵盤導航 ---
+            const prevBtn = document.getElementById('prev-chapter-btn');
+            const nextBtn = document.getElementById('next-chapter-btn');
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    if (!prevBtn.classList.contains('disabled')) {
+                        window.location.href = prevBtn.href;
+                    }
+                } else if (e.key === 'ArrowRight') {
+                    if (!nextBtn.classList.contains('disabled')) {
+                        window.location.href = nextBtn.href;
+                    }
+                }
             });
         });
     </script>
