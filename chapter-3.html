@@ -60,12 +60,52 @@
         .font-size-large { font-size: 1.4rem; }
         .reader-article h1 { font-size: 2.5em; text-align: center; margin-bottom: 2.5rem; }
         .reader-article p { margin-bottom: 1.6rem; text-indent: 2em; }
+        
+        /* --- 新增：分享按鈕樣式 --- */
+        .share-section {
+            max-width: 42rem;
+            margin: 3rem auto 1rem auto;
+            text-align: center;
+            padding: 1rem;
+        }
+        .share-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+        .share-btn:hover {
+            transform: scale(1.1);
+        }
+        .share-btn.facebook { background-color: #1877F2; }
+        .share-btn.twitter { background-color: #1DA1F2; }
+        .share-btn.line { background-color: #00B900; }
+        .share-btn.copy-link { background-color: #7f8c8d; }
+
         .reader-footer-nav { display: flex; justify-content: space-between; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; }
         .nav-button { text-decoration: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700; transition: all 0.3s ease; border: 1px solid; }
         .light-mode .nav-button { background-color: var(--light-primary); color: white; border-color: var(--light-primary); }
         .dark-mode .nav-button { background-color: var(--dark-primary); color: var(--dark-bg); border-color: var(--dark-primary); }
         .sepia-mode .nav-button { background-color: var(--sepia-primary); color: white; border-color: var(--sepia-primary); }
         .nav-button.disabled { pointer-events: none; opacity: 0.5; }
+        
         @media (max-width: 768px) { .reader-header { padding: 0.8rem 1rem; } .reader-chapter-title { font-size: 0.9rem; } .reader-article { font-size: 1.1rem; } .reader-article h1 { font-size: 2rem; } .font-size-small { font-size: 1rem; } .font-size-medium { font-size: 1.1rem; } .font-size-large { font-size: 1.2rem; } }
     </style>
 </head>
@@ -224,6 +264,19 @@
         </article>
     </main>
 
+    <!-- ****************************************************** -->
+    <!-- 新增的分享區塊 -->
+    <section class="share-section">
+        <h4 class="share-title">分享這個章節</h4>
+        <div class="share-buttons">
+            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
+            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
+        </div>
+    </section>
+    <!-- ****************************************************** -->
+
     <footer class="reader-footer-nav">
         <!-- ****************************************************** -->
         <!-- 記得修改翻頁連結 -->
@@ -240,10 +293,8 @@
             const fontSizeOptions = document.getElementById('font-size-options');
             const themeOptions = document.getElementById('theme-options');
 
-            // --- 儲存閱讀進度 ---
             localStorage.setItem('novel-last-read', window.location.href);
 
-            // --- 載入使用者設定 ---
             const savedSettings = JSON.parse(localStorage.getItem('novel-settings')) || {};
             const currentTheme = savedSettings.theme || 'light-mode';
             const currentFontSize = savedSettings.fontSize || 'medium';
@@ -251,15 +302,13 @@
             function applySettings(theme, size) {
                 document.body.className = theme;
                 article.className = `reader-article font-size-${size}`;
-                
-                // 更新設定面板按鈕狀態
+                document.querySelector('#theme-options .active')?.classList.remove('active');
+                document.querySelector('#font-size-options .active')?.classList.remove('active');
                 document.querySelector(`#theme-options button[data-theme="${theme}"]`).classList.add('active');
                 document.querySelector(`#font-size-options button[data-size="${size}"]`).classList.add('active');
             }
-            
             applySettings(currentTheme, currentFontSize);
 
-            // --- 設定面板開關 ---
             settingsBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 settingsPanel.classList.toggle('show');
@@ -270,44 +319,65 @@
                 }
             });
 
-            // --- 字體大小設定 ---
             fontSizeOptions.addEventListener('click', (e) => {
                 if (e.target.tagName === 'BUTTON') {
                     const newSize = e.target.dataset.size;
                     savedSettings.fontSize = newSize;
                     localStorage.setItem('novel-settings', JSON.stringify(savedSettings));
-                    
-                    document.querySelector('#font-size-options .active')?.classList.remove('active');
                     applySettings(savedSettings.theme || 'light-mode', newSize);
                 }
             });
 
-            // --- 主題設定 ---
             themeOptions.addEventListener('click', (e) => {
                 if (e.target.tagName === 'BUTTON') {
                     const newTheme = e.target.dataset.theme;
                     savedSettings.theme = newTheme;
                     localStorage.setItem('novel-settings', JSON.stringify(savedSettings));
-
-                    document.querySelector('#theme-options .active')?.classList.remove('active');
                     applySettings(newTheme, savedSettings.fontSize || 'medium');
                 }
             });
 
-            // --- 鍵盤導航 ---
             const prevBtn = document.getElementById('prev-chapter-btn');
             const nextBtn = document.getElementById('next-chapter-btn');
-
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    if (!prevBtn.classList.contains('disabled')) {
-                        window.location.href = prevBtn.href;
-                    }
-                } else if (e.key === 'ArrowRight') {
-                    if (!nextBtn.classList.contains('disabled')) {
-                        window.location.href = nextBtn.href;
-                    }
-                }
+                if (e.key === 'ArrowLeft' && !prevBtn.classList.contains('disabled')) window.location.href = prevBtn.href;
+                if (e.key === 'ArrowRight' && !nextBtn.classList.contains('disabled')) window.location.href = nextBtn.href;
+            });
+
+            // --- 分享功能邏輯 ---
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+
+            document.getElementById('share-facebook').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`, 'facebook-share', 'width=580,height=296');
+            });
+            
+            document.getElementById('share-twitter').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`, 'twitter-share', 'width=550,height=420');
+            });
+
+            document.getElementById('share-line').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}`, 'line-share', 'width=500,height=500');
+            });
+
+            document.getElementById('copy-link-btn').addEventListener('click', (e) => {
+                const btn = e.currentTarget;
+                const icon = btn.querySelector('i');
+                const originalIconClass = icon.className;
+
+                navigator.clipboard.writeText(pageUrl).then(() => {
+                    icon.className = 'fas fa-check';
+                    btn.style.backgroundColor = '#2ecc71';
+                    setTimeout(() => {
+                        icon.className = originalIconClass;
+                        btn.style.backgroundColor = '';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('無法複製連結: ', err);
+                });
             });
         });
     </script>
