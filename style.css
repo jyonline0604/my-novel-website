@@ -175,8 +175,8 @@ body.sepia-mode { background-color: var(--sepia-bg); color: var(--sepia-text); }
     box-shadow: var(--dark-shadow);
 }
 .author-avatar {
-    width: 1024px;
-    height: 1024px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 2rem;
