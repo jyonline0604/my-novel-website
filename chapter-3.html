@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 這裡的標題要改成對應的章節 -->
+    <title>第三章：模擬修煉器 - 科技修真傳</title>
+    
+    <!-- 引用和主頁相同的字體與圖示 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- 閱讀頁面的專屬樣式 --- */
+        :root {
+            --light-bg: #f8f9fa;
+            --light-text: #212529;
+            --light-border: #dee2e6;
+            --light-primary: #007bff;
+            --light-header-bg: rgba(248, 249, 250, 0.9);
+
+            --dark-bg: #1a1a1a;
+            --dark-text: #e9ecef;
+            --dark-border: #495057;
+            --dark-primary: #58a6ff;
+            --dark-header-bg: rgba(26, 26, 26, 0.9);
+
+            --font-serif: 'Noto Serif TC', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            font-family: var(--font-sans);
+        }
+
+        body.light-mode {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* --- 閱讀頁頂部導航 --- */
+        .reader-header {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        .light-mode .reader-header {
+            background-color: var(--light-header-bg);
+            border-color: var(--light-border);
+        }
+        .dark-mode .reader-header {
+            background-color: var(--dark-header-bg);
+            border-color: var(--dark-border);
+        }
+
+        .header-nav-link {
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: background-color 0.2s;
+        }
+        .light-mode .header-nav-link { color: var(--light-primary); }
+        .dark-mode .header-nav-link { color: var(--dark-primary); }
+        .header-nav-link:hover { background-color: rgba(0,0,0,0.05); }
+        .dark-mode .header-nav-link:hover { background-color: rgba(255,255,255,0.1); }
+
+        .reader-chapter-title {
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        #theme-toggle-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 5px;
+            color: inherit;
+        }
+
+        /* --- 內文區域 --- */
+        .reader-content-area {
+            padding: 2rem 1rem 4rem 1rem;
+        }
+
+        .reader-article {
+            max-width: 42rem; /* 最佳閱讀寬度 */
+            margin: 0 auto;
+            font-family: var(--font-serif);
+            font-size: 1.2rem; /* 舒適的字體大小 */
+            line-height: 1.9;  /* 舒適的行高 */
+        }
+
+        .reader-article h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .reader-article p {
+            margin-bottom: 1.6rem;
+            text-indent: 2em; /* 每段開頭縮排兩個字 */
+        }
+
+        /* --- 底部翻頁導航 --- */
+        .reader-footer-nav {
+            display: flex;
+            justify-content: space-between;
+            max-width: 42rem;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 1px solid;
+        }
+        .light-mode .nav-button {
+            background-color: var(--light-primary);
+            color: white;
+            border-color: var(--light-primary);
+        }
+        .dark-mode .nav-button {
+            background-color: var(--dark-primary);
+            color: var(--dark-bg);
+            border-color: var(--dark-primary);
+        }
+        .nav-button.disabled {
+            pointer-events: none;
+            background-color: #ccc;
+            border-color: #ccc;
+            color: #666;
+        }
+        .light-mode .nav-button.disabled { background-color: #e9ecef; border-color: #e9ecef; color: #6c757d; }
+        .dark-mode .nav-button.disabled { background-color: #343a40; border-color: #343a40; color: #adb5bd; }
+
+        @media (max-width: 768px) {
+            .reader-header { padding: 0.8rem 1rem; }
+            .reader-chapter-title { font-size: 0.9rem; }
+            .reader-article { font-size: 1.1rem; line-height: 1.8; }
+            .reader-article h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body class="light-mode">
+
+    <header class="reader-header">
+        <!-- 連結回主頁(目錄) -->
+        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
+        <h2 class="reader-chapter-title">第三章：模擬修煉器</h2>
+        <button id="theme-toggle-btn" aria-label="切換日夜間模式">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <main class="reader-content-area">
+        <article class="reader-article">
+            <h1>第三章：模擬修煉器</h1>
+            <p>寒風從破舊的光纖塔骨架縫隙中穿過，帶起一陣陣如獸鳴般的風聲。林塵站在塔頂，低頭看向腳下密密麻麻的廢舊機箱與裂縫中蠕動的雜草。他的手中握著一塊巴掌大小的透明晶體板，表面浮動著數字光紋，中央赫然顯示：
+
+【座標校準完成】
+【靈芯信標定位】：確定
+【模擬修煉器：初始化中……】
+
+這，是他從前日那群破序者身上繳獲的古遺裝備之一。原本他以為只是普通能量輔助模塊，沒想到接入靈芯系統後，竟激活了一段久違的啟動程式。
+
+靈芯界面上同步浮現一則提示：
+
+【高等模擬修煉模組啟用需消耗：精神能量 47%、系統記憶體 60%、殘存靈氣 0.012%】
+【風險等級】：中等
+【是否進入“模擬修煉器”試煉空間？】
+
+林塵目光凝重。他知道這意味著什麼——模擬修煉器，是上個時代“靈數聯盟”為培養人工修士所創造的虛擬空間模塊。傳說中，有人曾在其中模擬出整整一百年閉關修煉的時空錯覺。
+
+「進入。」
+
+話音落下的瞬間，世界一變。
+
+四周的廢墟景象如破碎畫布般飛散，取而代之的是一片幽藍色的虛擬天地。萬里無雲，四方如鏡，無重力的空間中漂浮著無數由靈氣編碼構成的符文、數據河流、半透明法陣，以及閃爍著古文字的光鏈。
+
+【模擬修煉器空間成功加載】
+【當前靈氣密度：模擬值 11.23%（相當於靈氣復甦初期）】
+【時間流速比：10:1】
+【功法選擇可啟用：引靈序（基礎）/ 磁場導靈/ 體內靈脈重構（模擬）】
+
+林塵震撼不已。
+
+這裡，是他從未想像過的世界。一個可以“在末法時代，模擬靈氣世界”的空間！
+
+他迅速選擇【磁場導靈】，這是靈芯根據他體質推演出的次階功法，模仿地磁與天象運行，以強化靈氣導入效率。
+
+全息圖浮現。
+
+一幅由天磁構成的六方圖像盤旋在他身周，根據時間節律與體內靈氣節點波動，自動調整吸收角度與頻率。
+
+林塵開始運轉心法，體內那微薄的靈氣粒子，在虛擬環境中被迅速激活，引導速度以遠超現實十倍的速度運轉。
+
+【修煉進度加速中……】
+【感知強度 +8.2%】
+【精神耐受 +11.5%】
+【第一條虛擬靈脈激活完成（右臂少陽）】
+
+時間，在模擬世界中流逝如風。
+
+他全神貫注，冥想、引氣、導循……直到全身十七個小節點被虛擬靈氣填充，一股從未有過的通透感遍佈四肢百骸。
+
+這一刻，林塵體會到了什麼是**“真正的氣感”**。
+
+而就在此時，模擬修煉器突然震動了一下。
+
+【警告：偵測到外部靈壓衝擊！】
+【有實體靈脈干擾模擬結構！】
+
+林塵眼前景象扭曲，一道殘影從虛空中浮現。那是一名虛擬人影，黑袍、白面，身背古劍，其身上籠罩著無數靈氣公式與破碎的法陣鏈。
+
+「靈芯……竟在這世代重啟……」
+
+那人影低聲說道，聲音仿佛從萬年前的深海傳來。
+
+「少年，既有機緣入此地，便接我一式‘演道初式’。接得住，你將獲得模擬器真正主權。」
+
+林塵瞳孔驟縮。
+
+他知道，這不是簡單的模擬人物，而可能是……某位古代修士意志的殘留！
+
+那劍，已出鞘。
+
+如星河倒轉，數據之劍斬落！
+
+林塵毫不猶豫，啟用靈芯戰鬥模擬功能，將剛才導引的靈氣凝聚於右臂——這是唯一激活的靈脈。
+
+劍氣落下，他揮拳迎擊。
+
+轟！
+
+整個虛擬修煉空間劇烈震盪，地面碎裂，數據亂流狂湧而出，天地一片模糊。
+
+當林塵再次睜開眼時，他仍站在原處，黑袍人影卻不知何時消失了。
+
+【試煉通過】
+【獲得模擬修煉器部分管理權限】
+【已解鎖新功能：功法導入 · 自主模擬推演】
+
+林塵大口喘息。
+
+這一場，幾乎榨乾他所有精神與靈氣。但他知道，自己得到了無可比擬的寶藏。
+
+他輕聲自語：
+
+「這模擬修煉器……就是我在這末法時代的洞天福地。」
+「靈氣枯竭又如何？我自創天象，在虛空中證道！」
+
+—
+
+模擬修煉器界面重新展開。
+
+【下一步修煉建議】：
+
+儲備靈氣物資
+
+尋找靈脈干擾源
+
+嘗試構建第一個“數據式功法模塊”
+
+林塵點頭。
+
+這世界不會給他喘息的機會，但他知道：
+
+他已不再是那個縮在廢墟裡的逃亡者。
+他，是持靈芯，掌模擬之道的第一人。
+
+而這，才剛剛開始。</p>
+            
+        </article>
+    </main>
+
+    <footer class="reader-footer-nav">
+        <!-- 
+            提示：
+            上一章連結到 chapter-2.html。
+            下一章連結到 chapter-4.html (或暫時禁用)。
+        -->
+        <a href="chapter-2.html" class="nav-button">« 上一章</a>
+        <a href="#" class="nav-button disabled">下一章 »</a>
+    </footer>
+
+    <script>
+        // 這段 JavaScript 和主頁的功能完全一樣，用來切換日夜間模式
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleButton = document.getElementById('theme-toggle-btn');
+            const themeIcon = themeToggleButton.querySelector('i');
+            const savedTheme = localStorage.getItem('theme') || 'light-mode';
+            
+            document.body.className = savedTheme;
+            updateIcon(savedTheme);
+
+            function updateIcon(theme) {
+                if (theme === 'dark-mode') {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+
+            themeToggleButton.addEventListener('click', () => {
+                let newTheme = document.body.classList.contains('light-mode') ? 'dark-mode' : 'light-mode';
+                document.body.className = newTheme;
+                localStorage.setItem('theme', newTheme);
+                updateIcon(newTheme);
+            });
+        });
+    </script>
+
+</body>
+</html>
