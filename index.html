@@ -406,16 +406,6 @@
                 updateIcon(newTheme);
             });
             
-            // 平滑滾動到章節列表
-            const startReadingButton = document.querySelector('a[href="#chapters"]');
-            if(startReadingButton) {
-                startReadingButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector('#chapters').scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            }
         });
     </script>
 
