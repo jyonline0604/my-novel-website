@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.className = theme;
         const giscusFrame = document.querySelector('iframe.giscus-frame');
         if (giscusFrame) {
-            const giscusThemeMap = { 'light-mode': 'light', 'dark-mode': 'dark', 'sepia-mode': 'light_tritanopia' };
+            const giscusThemeMap = { 'light-mode': 'light', 'dark-mode': 'dark', 'sepia-mode': 'light_tritanopia', 'sky-blue-mode': 'light', 'light-green-mode': 'light' };
             giscusFrame.contentWindow.postMessage({ giscus: { setConfig: { theme: giscusThemeMap[theme] || 'light' } } }, 'https://giscus.app');
         }
     }
