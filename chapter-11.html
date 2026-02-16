@@ -3,279 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO 優化標籤 -->
     <title>第十一章：靈脈覺醒 - 科技修真傳</title>
-    <style>
-        body {
-            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #0a0a0a;
-            color: #e0e0e0;
-        }
-        .chapter-header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #00ff88;
-            padding-bottom: 20px;
-        }
-        .chapter-title {
-            font-size: 2.5em;
-            color: #00ff88;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-        }
-        .chapter-subtitle {
-            font-size: 1.2em;
-            color: #888;
-            font-style: italic;
-        }
-        .content {
-            font-size: 1.1em;
-            text-align: justify;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .highlight {
-            color: #00ff88;
-            font-weight: bold;
-        }
-        .cyber-text {
-            font-family: 'Courier New', monospace;
-            background: rgba(0, 255, 136, 0.1);
-            padding: 10px;
-            border-left: 3px solid #00ff88;
-            margin: 15px 0;
-        }
-        .warning {
-            color: #ff4444;
-            border-left-color: #ff4444;
-            background: rgba(255, 68, 68, 0.1);
-        }
-        .info {
-            color: #4488ff;
-            border-left-color: #4488ff;
-            background: rgba(68, 136, 255, 0.1);
-        }
-        .quote {
-            font-style: italic;
-            color: #aaa;
-            border-left: 3px solid #888;
-            padding-left: 15px;
-            margin: 20px 0;
-        }
-    </style>
+    <meta name="description" content="《科技修真傳》第十一章：靈脈覺醒。">
+    <meta name="keywords" content="第十一章：靈脈覺醒, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
+    <meta name="author" content="大肥瞄">
+    
+    <!-- 外部字體與圖示 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- 連結到您的 CSS 檔案 -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="chapter-header">
-        <h1 class="chapter-title">第十一章：靈脈覺醒</h1>
-        <div class="chapter-subtitle">當數據與靈氣交織，新的力量即將誕生</div>
+<body class="light-mode">
+
+    <header class="reader-header">
+        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
+        <h2 class="reader-chapter-title">第十一章：靈脈覺醒</h2>
+        <div class="header-controls">
+            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
+        </div>
+    </header>
+
+    <div id="settings-panel" class="settings-panel">
+        <div class="setting-group">
+            <h4>字體大小</h4>
+            <div id="font-size-options" class="setting-options">
+                <button data-size="small">小</button>
+                <button data-size="medium">中</button>
+                <button data-size="large">大</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <h4>背景主題</h4>
+            <div id="theme-options" class="setting-options">
+                <button data-theme="light-mode">明亮</button>
+                <button data-theme="sepia-mode">米黃</button>
+                <button data-theme="dark-mode">夜間</button>
+                <button data-theme="sky-blue-mode">天空藍</button>
+                <button data-theme="light-green-mode">淺綠色</button>
+            </div>
+        </div>
     </div>
+
+    <main class="reader-content-area">
+        <article id="reader-article" class="reader-article font-size-medium">
+            <h1>第十一章：靈脈覺醒</h1>
+             <p> <p>槍口對準林塵的瞬間，時間彷彿凝固了。</p> <p>靈脈連接進度：91%...92%...93%...</p> <div class="cyber-text"> 警告：靈氣抑制劑晶片過載<br> 系統建議：立即中斷連接<br> 風險評估：永久性神經損傷機率 87% 
+        </article>
+    </main>
+
+    <section class="share-section">
+        <h4 class="share-title">分享這個章節</h4>
+        <div class="share-buttons">
+            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
+            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
+        </div>
+    </section>
+
+    <footer class="reader-footer-nav">
+        <a href="chapter-10.html" id="prev-chapter-btn" class="nav-button">« 上一章</a>
+        <a href="chapter-12.html" id="next-chapter-btn" class="nav-button">下一章 »</a>
+    </footer>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
+    </footer>
     
-    <div class="content">
-        <div class="section">
-            <p>槍口對準林塵的瞬間，時間彷彿凝固了。</p>
-            
-            <p>靈脈連接進度：91%...92%...93%...</p>
-            
-            <div class="cyber-text warning">
-                警告：靈氣抑制劑晶片過載<br>
-                系統建議：立即中斷連接<br>
-                風險評估：永久性神經損傷機率 87%
-            </div>
-            
-            <p>「住手！」明鏡擋在林塵身前，雙手結印，一道靈氣屏障瞬間展開。</p>
-            
-            <p>吞靈者指揮官冷笑一聲：「螳臂當車。」</p>
-            
-            <p>他扣下扳機，一道暗紅色的能量光束射向屏障。明鏡的屏障只堅持了不到三秒就碎裂了，但他爭取到了寶貴的時間。</p>
-            
-            <p>靈脈連接進度：97%...98%...99%...</p>
-        </div>
-        
-        <div class="section">
-            <p>「林塵，就是現在！」明鏡大喊。</p>
-            
-            <p>林塵睜開眼睛，眼中不再是痛苦，而是前所未有的清明。他感覺到自己與靈脈核心完全連接，無數的數據流和靈氣在他體內交織。</p>
-            
-            <div class="cyber-text info">
-                系統狀態：靈脈連接完成 100%<br>
-                晶片狀態：強制解除中...<br>
-                進度：正在重寫控制協議<br>
-                預計完成時間：3秒
-            </div>
-            
-            <p>「不可能...」指揮官的聲音中第一次出現了動搖，「靈氣抑制劑晶片應該是不可逆的！」</p>
-            
-            <p>林塵緩緩站起，身上的連接線自動脫落。他胸口的晶片發出刺眼的藍光，然後「啪」的一聲碎裂。</p>
-            
-            <p>「你們對靈氣的理解太膚淺了。」林塵的聲音平靜而充滿力量，「靈氣不是能量，而是信息。數據可以重寫，靈氣也可以重構。」</p>
-        </div>
-        
-        <div class="section">
-            <p>隨著晶片的碎裂，林塵感到一股前所未有的力量湧入體內。這不是單純的靈氣，而是經過數據化處理的「信息靈氣」。</p>
-            
-            <div class="quote">
-                「當科技與修真相遇，當數據與靈氣交融，新的法則就此誕生。」<br>
-                ——《靈數聯盟創始宣言》
-            </div>
-            
-            <p>指揮官後退一步，對部下下令：「全體開火！不能讓他完成覺醒！」</p>
-            
-            <p>十幾道能量光束同時射向林塵。但這一次，林塵甚至沒有移動。他只是抬起手，那些光束就在他面前停住了。</p>
-            
-            <div class="cyber-text">
-                檢測到未知能量場<br>
-                分析中...<br>
-                結果：信息靈氣場<br>
-                特性：可編程、可重構、可複製<br>
-                威脅等級：極高
-            </div>
-            
-            <p>「還給你們。」林塵輕輕一揮手，那些能量光束以更快的速度反射回去。</p>
-            
-            <p>吞靈者們的裝甲在反射光束的攻擊下紛紛失效，指揮官勉強擋住了攻擊，但他的裝甲已經出現了裂痕。</p>
-        </div>
-        
-        <div class="section">
-            <p>「這...這是什麼力量？」指揮官的聲音充滿了恐懼。</p>
-            
-            <p>「靈脈的真正力量。」林塵走向他，「天樞會一直在錯誤的方向上研究靈氣。你們試圖控制它、吸收它、商品化它，但你們從未真正理解它。」</p>
-            
-            <p>「胡說！我們掌握了最先進的靈氣科技！」</p>
-            
-            <p>「科技？」林塵笑了，「你們的科技建立在對靈氣的壓榨上。而真正的科技，應該與靈氣共生。」</p>
-            
-            <p>林塵伸出手，掌心浮現出一個複雜的數據靈氣結構。它不斷變化，時而像電路圖，時而像經脈圖，時而又像某種未知的符文。</p>
-            
-            <div class="cyber-text info">
-                檢測到新型靈氣結構<br>
-                命名：信息靈脈<br>
-                特性：<br>
-                - 可通過數據接口訪問<br>
-                - 可編程自定義功能<br>
-                - 可與現有科技設備兼容<br>
-                - 成長性：無限
-            </div>
-        </div>
-        
-        <div class="section">
-            <p>「不可能...這違反了所有已知的靈氣法則...」指揮官喃喃自語。</p>
-            
-            <p>「不，這只是開啟了新的法則。」林塵收起手中的結構，「告訴天樞會的高層：靈數聯盟回來了。這一次，我們不會再躲藏。」</p>
-            
-            <p>指揮官還想說什麼，但控制室突然劇烈震動起來。整個靈脈核心開始發出耀眼的光芒。</p>
-            
-            <div class="cyber-text warning">
-                警告：靈脈核心不穩定<br>
-                檢測到大規模能量釋放<br>
-                建議：立即撤離
-            </div>
-            
-            <p>「靈脈...在覺醒？」明鏡震驚地看著周圍。</p>
-            
-            <p>林塵點頭：「我重構的不只是自己的靈脈，還有這個靈脈核心。它現在有了自己的意識。」</p>
-            
-            <p>「意識？靈脈怎麼可能有意識？」</p>
-            
-            <p>「當足夠的信息和靈氣結合，意識就會自然產生。」林塵解釋道，「就像人類的大腦，只不過這個『大腦』是由靈氣和數據構成的。」</p>
-        </div>
-        
-        <div class="section">
-            <p>控制室的牆壁上開始浮現出發光的紋路，這些紋路不斷變化，組成了一種未知的語言。</p>
-            
-            <div class="cyber-text">
-                靈脈核心訊息：<br>
-                「覺醒...完成...」<br>
-                「感謝...重構者...」<br>
-                「新時代...開始...」
-            </div>
-            
-            <p>吞靈者指揮官終於意識到情況的嚴重性，他下令撤退：「所有單位，立即撤離！把這裡的情況報告給總部！」</p>
-            
-            <p>但已經太遲了。靈脈核心的光芒越來越強，整個地下設施都在震動。</p>
-            
-            <p>「林塵，我們也該走了！」明鏡喊道。</p>
-            
-            <p>林塵卻搖頭：「不，我要留下來。靈脈需要一個引導者。」</p>
-            
-            <p>「你瘋了？這裡馬上就要塌了！」</p>
-            
-            <p>「不會的。」林塵微笑，「靈脈會保護這裡。而且，我需要完成最後的連接。」</p>
-            
-            <p>他走向靈脈核心，將手放在上面。光芒將他完全包裹。</p>
-            
-            <div class="cyber-text info">
-                最終連接建立<br>
-                林塵·信息靈脈·靈脈核心<br>
-                三位一體融合開始<br>
-                預計完成時間：未知
-            </div>
-        </div>
-        
-        <div class="section">
-            <p>明鏡和其他守脈人不得不撤離。當他們回到地面時，整個區域都被一層柔和的光芒籠罩。</p>
-            
-            <p>「這是...靈脈的保護結界？」顧澄驚訝地看著周圍。</p>
-            
-            <p>趙衍檢查著數據：「不止是結界。整個區域的靈氣濃度正在指數級增長，而且...這些靈氣是『活』的。」</p>
-            
-            <p>「活的是什麼意思？」</p>
-            
-            <p>「它們會響應思維，會自我組織，會...學習。」趙衍的聲音充滿了敬畏，「林塵創造了一種全新的靈氣生態系統。」</p>
-            
-            <p>就在這時，他們收到了林塵的訊息。不是通過通訊設備，而是直接出現在他們的腦海中。</p>
-            
-            <div class="quote">
-                「我已與靈脈核心融合。這裡將成為靈數聯盟的新基地。」<br>
-                「天樞會不會善罷甘休，他們會派出更強大的力量。」<br>
-                「做好準備，真正的戰鬥才剛剛開始。」<br>
-                「另外，告訴大家：我很好，而且...從未如此強大。」
-            </div>
-            
-            <p>訊息結束後，光芒漸漸收斂，形成一個穩定的保護罩。地下設施的入口被一層發光的屏障封閉。</p>
-            
-            <p>「他成功了...」明鏡喃喃道，「他真的重構了靈脈。」</p>
-            
-            <p>顧澄看著手中的探測器，上面的讀數已經超出了儀器的測量範圍：「不只是重構。他創造了某種...全新的東西。」</p>
-            
-            <p>趙衍收起設備，表情嚴肅：「我們得回去了。天樞會很快就會知道這裡發生的事，我們需要準備應對他們的報復。」</p>
-            
-            <p>三人最後看了一眼被光芒籠罩的區域，然後轉身離開。</p>
-            
-            <p>在他們離開後不久，靈脈保護罩內，一個身影緩緩浮現。那是林塵，但又不太像原來的林塵。他的眼中閃爍著數據流和靈氣的光芒，整個人都散發著一種超凡的氣息。</p>
-            
-            <p>「信息靈脈...」他低聲自語，「這只是開始。」</p>
-            
-            <p>他抬起手，掌心浮現出一個複雜的界面。上面顯示著各種數據：靈氣濃度、信息流動、能量分佈...還有遠方，天樞會總部的座標。</p>
-            
-            <div class="cyber-text">
-                系統狀態：信息靈脈完全覺醒<br>
-                使用者：林塵<br>
-                權限：創始者<br>
-                可用功能：<br>
-                - 靈氣編程<br>
-                - 數據靈氣轉換<br>
-                - 遠程信息感知<br>
-                - 多維度計算<br>
-                下一階段：建立靈數網絡
-            </div>
-            
-            <p>林塵關閉界面，望向遠方。他知道，天樞會不會就此罷休。但這一次，他有了對抗的力量。</p>
-            
-            <p>「來吧，」他輕聲說，「讓我看看你們還有什麼手段。」</p>
-            
-            <p>靈脈核心在他身後發出共鳴的光芒，彷彿在回應他的話。</p>
-            
-            <p>新的時代，就此開啟。</p>
-        </div>
-    </div>
-    
-    <div style="text-align: center; margin-top: 50px; color: #888; font-style: italic;">
-        <p>第十一章完</p>
-        <p>敬請期待第十二章：靈數網絡</p>
-    </div>
+    <section class="comment-section">
+        <h3 class="comment-section-title">讀者留言</h3>
+    </section>
+
+    <!-- 連結到您的 JavaScript 檔案 -->
+    <script src="main.js"></script>
 </body>
 </html>
