@@ -356,3 +356,186 @@ body.light-green-mode {
     .chapter-list { grid-template-columns: 1fr; }
     .hero-section { min-height: 50vh; padding: 5rem 1rem; }
 }
+
+/* ===== 章節分享與導航 ===== */
+.share-section {
+    max-width: 42rem;
+    margin: 3rem auto 1rem auto;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(248,249,250,0.6));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.dark-mode .share-section {
+    background: linear-gradient(135deg, rgba(30,30,46,0.8), rgba(22,22,29,0.6));
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.share-title {
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.share-title::before {
+    content: '•';
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.share-btn:hover {
+    transform: scale(1.1);
+}
+
+.share-btn.facebook { background-color: #1877F2; }
+.share-btn.twitter { background-color: #1DA1F2; }
+.share-btn.line { background-color: #00B900; }
+.share-btn.copy-link { background-color: #6c757d; }
+
+.reader-footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 42rem;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.nav-button {
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    background: transparent;
+}
+
+.light-mode .nav-button {
+    border-color: var(--light-primary);
+    color: var(--light-primary);
+}
+
+.dark-mode .nav-button {
+    border-color: var(--dark-primary);
+    color: var(--dark-primary);
+}
+
+.light-mode .nav-button:hover {
+    background: var(--light-primary);
+    color: white;
+}
+
+.dark-mode .nav-button:hover {
+    background: linear-gradient(135deg, #00d4ff, #7c3aed);
+    color: white;
+}
+
+.nav-button.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.comment-section {
+    max-width: 42rem;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.comment-section-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* 章節內容區域優化 */
+.reader-content-area {
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.reader-article {
+    max-width: 42rem;
+    margin: 0 auto;
+    font-family: var(--font-serif);
+    line-height: 2;
+}
+
+.reader-article p {
+    margin-bottom: 1.8rem;
+    text-indent: 2em;
+}
+
+.reader-article h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.reader-article h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--light-primary), transparent);
+}
+
+.dark-mode .reader-article h1::after {
+    background: linear-gradient(90deg, transparent, var(--dark-primary), transparent);
+}
+
+/* 章節內的區塊样式 */
+.reader-article .section {
+    margin-bottom: 3rem;
+}
+
+.reader-article .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.reader-article .cyber-text {
+    background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(168,85,247,0.1));
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    border-left: 3px solid var(--dark-primary);
+}
+
+.dark-mode .reader-article .cyber-text {
+    background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.15));
+}
