@@ -733,3 +733,23 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
         justify-content: center;
     }
 }
+
+/* ===== 章節分享區域置中 ===== */
+.share-section {
+    max-width: 42rem;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.reader-footer-nav {
+    max-width: 42rem;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.comment-section {
+    max-width: 42rem;
+    margin: 4rem auto;
+}
