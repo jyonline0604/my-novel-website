@@ -296,6 +296,10 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
     margin: 0 auto;
 }
 
+.guide-page-content.font-size-small { font-size: 1.0rem; }
+.guide-page-content.font-size-medium { font-size: 1.2rem; }
+.guide-page-content.font-size-large { font-size: 1.4rem; }
+
 .guide-intro {
     font-size: 1.1rem;
     line-height: 1.6;
