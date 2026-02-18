@@ -287,58 +287,5 @@
     <!-- 連結到您的 JavaScript 檔案 -->
     <script src="main.js"></script>
 
-    <script>
-        // 閱讀設定功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const settingsBtn = document.getElementById('settings-btn');
-            const settingsPanel = document.getElementById('settings-panel');
-            const fontSizeOptions = document.getElementById('font-size-options');
-            const themeOptions = document.getElementById('theme-options');
-            const readerArticle = document.getElementById('reader-article');
-            
-            // 切換設定面板
-            settingsBtn.addEventListener('click', function() {
-                settingsPanel.classList.toggle('hidden');
-            });
-            
-            // 點擊其他地方關閉面板
-            document.addEventListener('click', function(e) {
-                if (!settingsPanel.contains(e.target) && e.target !== settingsBtn) {
-                    settingsPanel.classList.add('hidden');
-                }
-            });
-            
-            // 字體大小
-            fontSizeOptions.querySelectorAll('button').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const size = this.dataset.size;
-                    readerArticle.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
-                    readerArticle.classList.add('font-size-' + size);
-                    localStorage.setItem('fontSize', size);
-                });
-            });
-            
-            // 主題
-            themeOptions.querySelectorAll('button').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const theme = this.dataset.theme;
-                    document.body.className = theme;
-                    localStorage.setItem('theme', theme);
-                });
-            });
-            
-            // 載入保存的設定
-            const savedFontSize = localStorage.getItem('fontSize');
-            if (savedFontSize) {
-                readerArticle.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
-                readerArticle.classList.add('font-size-' + savedFontSize);
-            }
-            
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.body.className = savedTheme;
-            }
-        });
-    </script>
 </body>
 </html>
