@@ -3,446 +3,571 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>問劍長生 攻略資料庫 - 科技修真傳網站</title>
-    <meta name="description" content="《問劍長生》手遊攻略資料庫，包含角色介紹、系統解析、新手攻略、進階技巧等完整遊戲資訊。">
-    <meta name="keywords" content="問劍長生, 手遊攻略, 角色扮演, 修仙手遊, 遊戲攻略, 資料庫">
-    <meta name="author" content="大肥瞄">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>問劍長生遊戲攻略 - 大肥瞄</title>
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+        }
+        h1 {
+            color: #f39c12;
+            text-align: center;
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 15px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #3498db;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+            font-size: 1.6em;
+        }
+        h3 {
+            color: #2ecc71;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        .update-time {
+            text-align: center;
+            color: #95a5a6;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .author {
+            text-align: center;
+            color: #f39c12;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.05);
+        }
+        th, td {
+            border: 1px solid #34495e;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: rgba(52, 152, 219, 0.3);
+            color: #3498db;
+        }
+        tr:nth-child(even) {
+            background: rgba(255,255,255,0.03);
+        }
+        .highlight {
+            background: rgba(243, 156, 18, 0.2);
+            padding: 15px;
+            border-left: 4px solid #f39c12;
+            margin: 15px 0;
+        }
+        .warning {
+            background: rgba(231, 76, 60, 0.2);
+            padding: 15px;
+            border-left: 4px solid #e74c3c;
+            margin: 15px 0;
+        }
+        .tip {
+            background: rgba(46, 204, 113, 0.2);
+            padding: 15px;
+            border-left: 4px solid #2ecc71;
+            margin: 15px 0;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .element-fire { color: #e74c3c; }
+        .element-sword { color: #3498db; }
+        .element-thunder { color: #9b59b6; }
+    </style>
 </head>
-<body class="light-mode">
+<body>
+    <h1>⚔️ 問劍長生 全方位攻略指南</h1>
+    <div class="author">作者：大肥瞄</div>
+    <div class="update-time">最後更新：2026 年 2 月 17 日</div>
 
-    <header class="main-header">
-        <a href="index.html" class="novel-title" style="text-decoration: none; color: inherit;">科技修真傳</a>
-        <div class="header-subtitle">｜問劍長生攻略</div>
-    </header>
+    <div class="highlight">
+        <strong>📌 攻略重點：</strong> 本作流派並非創角後固定，可透過搭配劍系、火系、雷系神通來轉換流派。新手建議優先火修或劍修，雷修適合中後期高氪玩家。
+    </div>
 
-    <main class="guide-page-content">
-        <div class="content-card">
-            <h1 class="section-title">問劍長生 攻略資料庫</h1>
-            <p class="guide-intro">
-                《問劍長生》是一款結合修仙題材與角色扮演的手機遊戲。本頁面收集遊戲相關攻略、角色介紹、系統解析等資料，幫助玩家更快上手。
-            </p>
-            <div class="guide-note">
-                <i class="fas fa-info-circle"></i>
-                <span>本頁面持續更新中，歡迎提供更多遊戲資訊。</span>
-                <div class="update-time" style="margin-top: 10px; font-size: 0.9em; color: #666;">
-                    <i class="fas fa-sync-alt"></i> 最後更新: 2026年02月16日 21:00
-                </div>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-gamepad"></i> 遊戲簡介</h2>
-            <div class="content-card">
-                <p><strong>《問劍長生》是一款由 LTGAMES GLOBAL 發行的 3D 御劍空戰 MMO 修仙手遊</strong>，玩家將扮演一名修仙者，從凡人開始修煉，逐步突破境界，最終達到長生不老的至高境界。遊戲結合了傳統修仙文化與現代 3D 空戰玩法，提供豐富的修煉系統、多樣化的職業選擇和刺激的御劍戰鬥體驗。</p>
-                <ul class="guide-list">
-                    <li>遊戲類型：3D 御劍空戰 MMO 修仙手遊</li>
-                    <li>開發商/發行商：LTGAMES GLOBAL（與《一念逍遙》同廠商），代理：河流遊戲</li>
-                    <li>發行日期：2025年11月27日（台、港、澳、新、馬、韓地區）</li>
-                    <li>平台：iOS / Android</li>
-                    <li>官方分發平台：<a href="https://www.taptap.cn/app/713640" class="guide-link" target="_blank">TapTap 遊戲頁面</a></li>
-                    <li>遊戲特色：劍修、法修等多職業選擇，從靈界到合體的完整修煉體系，獨特的 3D 御劍空戰系統</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-users"></i> 角色圖鑑</h2>
-            <div class="content-card">
-                <p>遊戲提供多種職業選擇，每種職業有不同的養成方向和技能特點。</p>
-                <div class="character-grid">
-                    <div class="character-card">
-                        <div class="character-avatar">⚡</div>
-                        <h3>雷劍修士</h3>
-                        <p>職業：劍修 (雷系)</p>
-                        <p>特色：以雷電之力強化劍法，攻擊速度快，帶有麻痹效果，適合快速打擊敵人。</p>
-                    </div>
-                    <div class="character-card">
-                        <div class="character-avatar">🔥</div>
-                        <h3>火劍修士</h3>
-                        <p>職業：劍修 (火系)</p>
-                        <p>特色：運用火焰之力，攻擊範圍廣，傷害持續，適合群體戰鬥和持續輸出。</p>
-                    </div>
-                    <div class="character-card">
-                        <div class="character-avatar">✨</div>
-                        <h3>六耀劍修</h3>
-                        <p>職業：劍修 (六耀系)</p>
-                        <p>特色：結合六耀星辰之力，攻防一體，擁有獨特的陣法技能，適合策略性戰鬥。</p>
-                    </div>
-                </div>
-                <p class="guide-note-small">遊戲主要職業為劍修、火修、雷修三系，火修擅長範圍法術傷害，雷修專精爆發法術輸出。另有守護星（坦克）、劍星（近戰輸出）等進階職業。<strong>三系克制關係：火克劍、劍克雷、雷克火，剋制時傷害增加20%。</strong></p>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-cogs"></i> 系統解析</h2>
-            <div class="content-card">
-                <div class="system-list">
-                    <div class="system-item">
-                        <h3><i class="fas fa-fire"></i> 修煉系統</h3>
-                        <p>遊戲擁有完整的修仙境界體系，從<strong>靈界</strong>開始修煉，逐步突破至<strong>合體</strong>等更高境界。玩家需要通過修煉功法、收集靈氣、突破瓶頸來提升實力。不同職業有各自的修煉路線，如劍修、法修等。</p>
-                    </div>
-                    <div class="system-item">
-                        <h3><i class="fas fa-shield-alt"></i> 裝備系統</h3>
-                        <p>遊戲採用「養格子」機制，裝備強化等級會自動繼承，更換時無需擔心浪費材料。裝備分為四個部位：<strong>頭盔、衣服、鞋子、項鍊</strong>。法寶系統則有六個格子：<strong>3個攻擊法寶 + 3個防禦法寶</strong>。不同部位提供不同屬性，頭盔和衣服主要提供生命防禦等生存屬性，鞋子和項鍊主要提供其他屬性。</p>
-                    </div>
-                    <div class="system-item">
-                        <h3><i class="fas fa-dungeon"></i> 副本系統</h3>
-                        <p>遊戲核心副本為「秘境」系統，這是自動戰鬥與物資掉落的主要來源。玩家可以挑戰不同階級的秘境，獲得裝備、材料、修為丹等豐富獎勵。若能挑戰更高階秘境，需立即升級以獲取更好資源。此外還有世界BOSS、組隊副本等多人挑戰內容。</p>
-                    </div>
-                    <div class="system-item">
-                        <h3><i class="fas fa-users"></i> 社交系統</h3>
-                        <p>遊戲提供完整的社交體驗，包括：<strong>宗門系統</strong>（加入宗門參與活動獲取資源）、<strong>好友系統</strong>（贈送物品互動）、<strong>組隊功能</strong>（多人挑戰副本與世界BOSS）、<strong>交易行系統</strong>（自由交易裝備換取仙玉）、<strong>道友系統</strong>（與NPC建立關係獲得獎勵）。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> 新手攻略</h2>
-            <div class="content-card">
-                <ol class="guide-steps">
-                    <li><strong>第一步：創建角色</strong> - 選擇劍修、法修等職業開始遊戲。劍修適合喜歡近戰攻擊的玩家，有雷劍、火劍、六耀劍三種發展方向。</li>
-                    <li><strong>第二步：初期任務</strong> - 完成新手引導任務，了解基本操作和戰鬥系統，獲得初期裝備和修煉資源。</li>
-                    <li><strong>第三步：資源收集</strong> - 通過日常任務、副本挑戰收集靈石、功法書等修煉資源，為境界突破做準備。</li>
-                    <li><strong>第四步：角色培養</strong> - 專注提升主修功法和裝備，劍修需優先掌握「掠影+摧巒」基礎劍法組合。</li>
-                    <li><strong>第五步：加入宗門</strong> - 達到一定等級後加入宗門，參與宗門活動獲取額外資源和功法。</li>
-                </ol>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-chart-line"></i> 進階技巧</h2>
-            <div class="content-card">
-                <div class="tip-grid">
-                    <div class="tip-card">
-                        <h3><i class="fas fa-sword"></i> 劍修養成</h3>
-                        <p>劍修有三種主要養成方向：<strong>雷劍</strong>、<strong>火劍</strong>、<strong>六耀劍</strong>。掠影+摧巒是劍修的最低門檻，玩家需根據自身資源選擇適合的方向進行深度培養。</p>
-                        <p style="margin-top:10px"><strong>神通搭配建議：</strong></p>
-                        <ul>
-                            <li>劍修：4重光 + 2伏龍</li>
-                            <li>火修：4離火 + 2天爐</li>
-                            <li>雷修：4五雷 + 2神霄（或4神霄 + 2五雷）</li>
-                        </ul>
-                    </div>
-                    <div class="tip-card">
-                        <h3><i class="fas fa-dragon"></i> 靈獸系統</h3>
-                        <p>目前共有四種靈獸，各有特色：</p>
-                        <ul>
-                            <li><strong>青木鸞鳥</strong>：讓敵方攻擊無法命中（雷修推薦）</li>
-                            <li><strong>土靈駒</strong>：提高控制能力</li>
-                            <li><strong>玄水鯨</strong>：提高傷害（火修、劍修推薦）</li>
-                            <li><strong>烈雲犬</strong>：提升暴擊</li>
-                        </ul>
-                    </div>
-                    <div class="tip-card">
-                        <h3><i class="fas fa-chart-line"></i> 境界突破</h3>
-                        <p>從<strong>靈界無損過度到合體期</strong>是關鍵階段。需平衡修為累積與資源分配，確保在靈界強度的同時，為合體期做好充分準備。</p>
-                    </div>
-                    <div class="tip-card">
-                        <h3><i class="fas fa-tasks"></i> 日常任務</h3>
-                        <p>每日閉關建議使用<strong>聚靈石配合凝神露</strong>，單獨閉關浪費大量收益，建議每日閉關到12顆就停，等隔天重置。優先完成宗門任務獲取底蘊獎勵，及時分解低於當前境界的裝備材料。仙坊內場每日需消費1500仙玉達門檻，丹藥優先使用高品質丹藥，注意丹毒管理（每顆+4丹毒，每18分鐘消除1點）。</p>
-                    </div>
-                    <div class="tip-card">
-                        <h3><i class="fas fa-gem"></i> 仙玉使用建議</h3>
-                        <p><strong>絕對不要用仙玉抽卡！</strong></p>
-                        <p>每日仙玉主要用途：</p>
-                        <ul>
-                            <li>宗門貢獻（每日3次）</li>
-                            <li>仙坊刷新（建議每日最多2次）</li>
-                            <li>購買：聚靈石、上品凝神露、妖丹、法寶靈粹、靈泉果等</li>
-                        </ul>
-                    </div>
-                    <div class="tip-card">
-                        <h3><i class="fas fa-book"></i> 心法系統</h3>
-                        <p><strong>每週可免費重置3次</strong>，不用怕點錯！</p>
-                        <p>心法培養順序：</p>
-                        <ol>
-                            <li>先升低階金色心法（成本低、成效高）</li>
-                            <li>再升普通金色</li>
-                            <li>最後補紫色心法</li>
-                        </ol>
-                        <p>主屬性依職業選擇：雷修堆暴擊（融靈）、火修/劍修選神威→長生</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-newspaper"></i> 最新消息</h2>
-            <div class="content-card">
-                <div class="news-list">
-                    <div class="news-item">
-                        <h3><i class="fas fa-book"></i> 【攻略】劍修靈界如何平滑過度合體</h3>
-                        <p class="news-date">2025年7月18日</p>
-                        <p>詳細講解劍修從靈界無損過度到合體期的完整攻略，包含雷劍、火劍、六耀劍三種不同養成方向的選擇與資源分配策略。</p>
-                    </div>
-                    <div class="news-item">
-                        <h3><i class="fas fa-calendar-alt"></i> 【活動】周五三期輪換活動</h3>
-                        <p class="news-date">2026年2月（每週五更新）</p>
-                        <p>遊戲每週五更新三期輪換活動，包含「祥瑞降世」、「天星照世」、「寶樹現世」等主題活動，提供豐富獎勵與限定道具。建議玩家把握每週活動時間，優先參與獲取稀有資源。</p>
-                    </div>
-                    <div class="news-item">
-                        <h3><i class="fas fa-gift"></i> 【禮包碼】2026年2月最新兌換碼</h3>
-                        <p class="news-date">2026年2月</p>
-                        <p>最新可用禮包碼：和文老爹新服打金、仙城現世、微笑入駐官方直播、王林入駐問劍、HPJANWEEKEND、HAPPYWEEKEND01、飛升之時已到、上仙入魔吧、問劍新年快樂、ASCEND88、HAPPYNEWYEAR、HAPPYXMAS、FLYINGDEC</p>
-                        <p>長期有效禮包碼：sword777、sword888、immortal99、SWORDLAUNCH1127、FLYINGSWORD88、SWORDFLIGHT、HAPPYWINTER</p>
-                    </div>
-                </div>
-                <div class="external-links">
-                    <h3><i class="fas fa-external-link-alt"></i> 外部資源連結</h3>
-                    <ul>
-                        <li><a href="https://www.taptap.cn/app/713640" class="guide-link" target="_blank">TapTap 遊戲主頁</a></li>
-                        <li><a href="https://www.taptap.cn/app/713640/strategy?os=pc" class="guide-link" target="_blank">TapTap 攻略專區</a></li>
-                        <li><a href="https://game.ltgamesglobal.com/wjcsasia/?lang=zh-tw" class="guide-link" target="_blank">官方網站 (繁體中文)</a></li>
-                        <li><a href="https://forum.gamer.com.tw/B.php?bsn=83086" class="guide-link" target="_blank">巴哈姆特哈啦區</a></li>
-                        <li><a href="https://discord.gg/wen-jian-chang-sheng-1376386475670638603" class="guide-link" target="_blank">官方 Discord 伺服器</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> 活動情報</h2>
-            <div class="content-card">
-                <h3 class="subsection-title">當前活動</h3>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="activity-header">
-                            <span class="activity-name">週五三期輪換活動</span>
-                            <span class="activity-status">🟢 進行中</span>
-                        </div>
-                        <p class="activity-desc">每週五更新，包含限時副本、雙倍經驗、特殊獎勵等活動。</p>
-                        <div class="activity-footer">
-                            <span class="activity-end">結束時間: 每週日 23:59</span>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-header">
-                            <span class="activity-name">新手七日登入獎勵</span>
-                            <span class="activity-status">🟢 進行中</span>
-                        </div>
-                        <p class="activity-desc">新玩家連續登入7天可獲得稀有裝備、靈石和修煉資源。</p>
-                        <div class="activity-footer">
-                            <span class="activity-end">結束時間: 常駐活動</span>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-header">
-                            <span class="activity-name">節日限定活動</span>
-                            <span class="activity-status">🟢 進行中</span>
-                        </div>
-                        <p class="activity-desc">根據現實節日（春節、中秋等）推出的限時活動，獎勵豐厚。</p>
-                        <div class="activity-footer">
-                            <span class="activity-end">結束時間: 依節日而定</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-note">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>活動資訊每日更新，請以遊戲內實際公告為準。</span>
-                </div>
-            </div>
-        </div>
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-tasks"></i> 日常任務優化</h2>
-            <div class="content-card">
-                <h3 class="subsection-title">高效日常流程</h3>
-                <p>以下為推薦的日常任務執行順序，最大化資源獲取效率：</p>
-                <ol class="guide-list">
-                    <li><strong>閉關修煉</strong>（優先完成）
-                        <ul>
-                            <li>建議在靈氣充沛時段（遊戲內時間）進行</li>
-                            <li>使用雙倍經驗丹提升效率</li>
-                            <li>注意丹毒累積，適時休息</li>
-                        </ul>
-                    </li>
-                    <li><strong>秘境探索</strong>
-                        <ul>
-                            <li>組隊挑戰可獲得額外獎勵</li>
-                            <li>根據自身實力選擇難度</li>
-                            <li>優先完成限時秘境</li>
-                        </ul>
-                    </li>
-                    <li><strong>宗門任務</strong>
-                        <ul>
-                            <li>貢獻度可兌換稀有資源</li>
-                            <li>參與宗門活動獲得額外獎勵</li>
-                            <li>與宗門成員組隊有加成</li>
-                        </ul>
-                    </li>
-                    <li><strong>PVP競技</strong>
-                        <ul>
-                            <li>競技場每日有次數限制</li>
-                            <li>根據對手戰力選擇挑戰</li>
-                            <li>排名獎勵每日結算</li>
-                        </ul>
-                    </li>
-                </ol>
-                <div class="guide-tip">
-                    <i class="fas fa-star"></i>
-                    <span>每日任務全部完成約需1-2小時，可根據時間安排調整順序。</span>
-                </div>
-            </div>
-        </div>
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-users"></i> 副本與社交系統</h2>
-            <div class="content-card">
-                <h3 class="subsection-title">秘境系統</h3>
-                <p>秘境是遊戲核心PVE玩法，分為以下類型：</p>
-                <ul class="guide-list">
-                    <li><strong>普通秘境</strong>: 每日可挑戰，掉落基礎資源</li>
-                    <li><strong>精英秘境</strong>: 每週挑戰次數限制，掉落稀有裝備</li>
-                    <li><strong>團隊秘境</strong>: 需要3-5人組隊，掉落套裝裝備</li>
-                    <li><strong>世界BOSS</strong>: 全服共同挑戰，根據傷害排名獲得獎勵</li>
-                </ul>
-                
-                <h3 class="subsection-title">社交功能</h3>
-                <p>遊戲提供豐富的社交系統，增強玩家互動：</p>
-                <ul class="guide-list">
-                    <li><strong>宗門系統</strong>: 加入宗門參與宗門戰、宗門任務</li>
-                    <li><strong>好友系統</strong>: 添加好友可互送體力、組隊挑戰</li>
-                    <li><strong>師徒系統</strong>: 新手可拜師獲得指導，師徒共同成長</li>
-                    <li><strong>道侶系統</strong>: 與其他玩家結為道侶，獲得特殊加成</li>
-                </ul>
-                
-                <div class="guide-tip">
-                    <i class="fas fa-handshake"></i>
-                    <span>建議加入活躍宗門，參與社交活動可大幅提升遊戲體驗。</span>
-                </div>
-            </div>
-        </div>
-<h2 class="section-title"><i class="fas fa-video"></i> 影片攻略</h2>
-            <div class="content-card">
-                <div class="video-guide-container">
-                    <p>以下 YouTube 播放清單收集了《問劍長生》的各種攻略影片，包含職業介紹、戰鬥技巧、裝備選擇等實用內容：</p>
-                    
-                    <div class="video-embed-wrapper">
-                        <iframe 
-                            src="https://www.youtube.com/embed/videoseries?list=PLLaxbe9w8OXyNI9Ok3sp3dj5Q85YeLw-K&rel=0&modestbranding=1" 
-                            title="問劍長生攻略影片播放清單"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    
-                    <div class="video-description">
-                        <h4><i class="fas fa-info-circle"></i> 播放清單內容簡介</h4>
-                        <p>此播放清單包含多位玩家製作的《問劍長生》攻略影片，涵蓋以下主題：</p>
-                        <ul class="guide-list">
-                            <li>職業選擇與技能介紹（劍修、法修等）</li>
-                            <li>修煉系統與境界突破技巧</li>
-                            <li>裝備強化與資源獲取方法</li>
-                            <li>副本挑戰與世界BOSS攻略</li>
-                            <li>PVP對戰技巧與陣容搭配</li>
-                        </ul>
-                        <p>建議新手玩家從基礎教學影片開始觀看，逐步掌握遊戲核心玩法。</p>
-                    </div>
-                    
-                    <div class="video-links">
-                        <a href="https://www.youtube.com/playlist?list=PLLaxbe9w8OXyNI9Ok3sp3dj5Q85YeLw-K" 
-                           class="video-link-btn btn btn-primary" target="_blank">
-                            <i class="fab fa-youtube"></i> 在 YouTube 上觀看完整清單
-                        </a>
-                        <a href="https://m.youtube.com/playlist?list=PLLaxbe9w8OXyNI9Ok3sp3dj5Q85YeLw-K" 
-                           class="video-link-btn btn btn-primary" target="_blank">
-                            <i class="fas fa-mobile-alt"></i> 手機版連結
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-comment-dots"></i> 玩家交流</h2>
-            <div class="content-card">
-                <p>歡迎玩家提供更多遊戲資訊、攻略心得，或修正本頁面內容。也歡迎加入官方 Discord 伺服器與其他玩家即時交流！</p>
-                <div class="contribute-box">
-                    <h3><i class="fas fa-edit"></i> 如何貢獻內容</h3>
-                    <ol>
-                        <li>將遊戲資訊或攻略文字傳送給管理員</li>
-                        <li>提供官方連結或資料來源</li>
-                        <li>分享你的遊戲心得與技巧</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-hat-wizard"></i> 修煉系統詳解</h2>
-            <div class="content-card">
-                <h3 class="subsection-title">境界突破</h3>
-                <p>《問劍長生》的修煉體系分為多個境界，每個境界都有不同的要求與加成：</p>
-                <ul class="guide-list">
-                    <li><strong>練氣期</strong>：修煉的起點，專注於凝聚靈氣</li>
-                    <li><strong>築基期</strong>：奠定修煉根基，可開始修煉法術</li>
-                    <li><strong>金丹期</strong>：凝結金丹，實力大幅提升</li>
-                    <li><strong>元嬰期</strong>：修煉出元嬰，可進行遠程靈識交流</li>
-                    <li><strong>化神期</strong>：元嬰化神，邁入頂尖強者行列</li>
-                    <li><strong>煉虛期</strong>：虛空煉體，領悟空間法則</li>
-                    <li><strong>合体期</strong>：與天地合道，修煉體系大成</li>
-                </ul>
-                <div class="guide-tip">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>小提示：境界突破時建議備足靈石與丹藥，失敗會損失大量修為！</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-gem"></i> 資源獲取攻略</h2>
-            <div class="content-card">
-                <h3 class="subsection-title">每日必做任務</h3>
-                <ul class="guide-list">
-                    <li><strong>靈氣修煉</strong>：每日上線必做，獲得基礎靈氣</li>
-                    <li><strong>宗門任務</strong>：完成宗門委託，獲得貢獻點數</li>
-                    <li><strong>靈石礦洞</strong>：挑戰礦洞獲得靈石</li>
-                    <li><strong>鎮魔塔</strong>：層數越高，獎勵越豐厚</li>
-                    <li><strong>仙緣商店</strong>：每日刷新，購買稀有道具</li>
-                </ul>
-                <h3 class="subsection-title">快速升級技巧</h3>
-                <ul class="guide-list">
-                    <li>完成主線任務可獲得大量經驗</li>
-                    <li>組隊刷副本效率更高</li>
-                    <li>使用經驗丹藥可加速升級</li>
-                    <li>修煉時選擇靈氣濃度高的區域</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2 class="section-title"><i class="fas fa-dragon"></i> 副本攻略</h2>
-            <div class="content-card">
-                <h3 class="subsection-title">高級副本推薦</h3>
-                <ul class="guide-list">
-                    <li><strong>須彌幻境</strong>：產出高品質法寶材料</li>
-                    <li><strong>虛空裂縫</strong>：挑戰深淵惡魔，獲得稀有裝備</li>
-                    <li><strong>仙魔戰場</strong>：PVP大型戰場，聲望來源</li>
-                    <li><strong>靈獸山脈</strong>：捕捉野生靈獸的最佳地點</li>
-                </ul>
-                <div class="guide-tip">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <span>警告：高級副本難度較高，建議組隊前往並備好足夠的恢復道具！</span>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="main-footer">
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | 
-            <a href="index.html" style="color: inherit;">返回首頁</a> | 
-            <a href="game-guide.html#top" style="color: inherit;">回到頂部</a>
-        </p>
-    </footer>
+    <h2>🔥 一、職業屬性與流派克制關係</h2>
     
-    <script src="main.js"></script>
+    <h3>五行克制機制</h3>
+    <table>
+        <tr>
+            <th>克制關係</th>
+            <th>傷害加成</th>
+            <th>說明</th>
+        </tr>
+        <tr>
+            <td class="element-fire">火克劍</td>
+            <td>+20% 傷害</td>
+            <td>火修對劍修有克制優勢</td>
+        </tr>
+        <tr>
+            <td class="element-sword">劍克雷</td>
+            <td>+20% 傷害</td>
+            <td>劍修對雷修有克制優勢</td>
+        </tr>
+        <tr>
+            <td class="element-thunder">雷克火</td>
+            <td>+20% 傷害</td>
+            <td>雷修對火修有克制優勢</td>
+        </tr>
+    </table>
+
+    <h3>三大流派詳細分析</h3>
+    
+    <h4 class="element-fire">🔥 火修流派（平民強烈推薦）</h4>
+    <ul>
+        <li><strong>核心機制：</strong> 灼燒持續傷害 + 引爆傷害</li>
+        <li><strong>輔助效果：</strong> 具備不錯的減防能力</li>
+        <li><strong>優點：</strong> 輸出穩定、容錯率高，適合推圖與日常戰鬥</li>
+        <li><strong>缺點：</strong> 爆發相對劍修略低，但整體泛用度最高</li>
+        <li><strong>推薦族群：</strong> 無課、微氪玩家首選</li>
+    </ul>
+
+    <h4 class="element-sword">⚔️ 劍修流派（平民推薦）</h4>
+    <ul>
+        <li><strong>核心機制：</strong> 無視護盾傷害 + 殘血斬殺加成</li>
+        <li><strong>輔助效果：</strong> 具備減防能力，壓殘血後收頭非常舒爽</li>
+        <li><strong>優點：</strong> 團戰、多人鬥法時爽感極高，收割效率優秀</li>
+        <li><strong>缺點：</strong> 打滿血目標時傷害節奏較平緩，需要時間壓血線</li>
+        <li><strong>推薦族群：</strong> 喜歡「斬殺感」與團戰爆發的玩家</li>
+    </ul>
+
+    <h4 class="element-thunder">⚡ 雷修流派（氪金向）</h4>
+    <ul>
+        <li><strong>核心機制：</strong> 會心爆發（類似暴擊）、瞬間高額傷害</li>
+        <li><strong>判定機制：</strong> 會心率取決於自身「會心」與對方「會心抗性」的差值</li>
+        <li><strong>優點：</strong> 資源堆高後爆發極強，爆擊流派體驗感爆棚</li>
+        <li><strong>缺點：</strong> 對數值要求高，不適合資源有限的新手平民</li>
+        <li><strong>推薦族群：</strong> 中氪以上、願意投入大量資源的玩家</li>
+    </ul>
+
+    <div class="tip">
+        <strong>💡 新手建議：</strong> 優先考慮火修或劍修，雷修作為中後期「氪佬專用流派」。
+    </div>
+
+    <h2>🎯 二、神通系統與流派技能配置</h2>
+    
+    <p>神通 = 主動技能，可以在介面中調整神通與法寶的釋放順序，影響實戰輸出節奏。</p>
+
+    <h3>前期原則</h3>
+    <ul>
+        <li>能上的神通就先上，優先同一流派 + 高品質</li>
+        <li>先確保主流派技能品質與數量，再談細調順序</li>
+        <li>神通順序無強制規則，可依手感調整</li>
+    </ul>
+
+    <h3>推薦神通組合</h3>
+    <table>
+        <tr>
+            <th>流派</th>
+            <th>推薦配置</th>
+            <th>特點說明</th>
+        </tr>
+        <tr>
+            <td class="element-fire">🔥 火修</td>
+            <td>4 離火 + 2 天爐</td>
+            <td>以灼燒疊層與引爆效果為主，適合穩定推圖與長線輸出</td>
+        </tr>
+        <tr>
+            <td class="element-sword">⚔️ 劍修</td>
+            <td>4 重光 + 2 伏龍</td>
+            <td>強調破盾、殘血收割與減防配合，適合喜歡爆發與收頭的玩家</td>
+        </tr>
+        <tr>
+            <td class="element-thunder">⚡ 雷修</td>
+            <td>4 五雷 + 2 神霄<br>或 4 神霄 + 2 五雷</td>
+            <td>可依實戰數值與技能手感自行微調，重點在疊高會心與爆發窗口</td>
+        </tr>
+    </table>
+
+    <h2>📖 三、心法系統與培養優先順序</h2>
+    
+    <p>心法相關資源包含：心法感悟、心法精義、心法真意</p>
+
+    <div class="tip">
+        <strong>💡 重要提示：</strong> 每週有 3 次心法重置機會，可以重洗配置與資源分配，不用怕點錯！
+    </div>
+
+    <h3>心法培養推薦順序</h3>
+    <ol>
+        <li><strong>優先提升與「修煉資源」有關的心法：</strong>
+            <ul>
+                <li>靈氣獲取提升</li>
+                <li>丹材產出或獲取提升</li>
+                <li>其他能增加修為、資源效率的心法</li>
+            </ul>
+        </li>
+        <li><strong>再看心法主屬性，依流派分配：</strong></li>
+    </ol>
+
+    <table>
+        <tr>
+            <th>流派</th>
+            <th>主優先屬性</th>
+            <th>次優先屬性</th>
+            <th>備註</th>
+        </tr>
+        <tr>
+            <td class="element-fire">火修 / 劍修</td>
+            <td>神威</td>
+            <td>長生</td>
+            <td>追求輸出與生存平衡</td>
+        </tr>
+        <tr>
+            <td class="element-thunder">雷修</td>
+            <td>神威</td>
+            <td>融靈</td>
+            <td>雷修吃會心，融靈重要性僅次於神威</td>
+        </tr>
+        <tr>
+            <td>通用</td>
+            <td colspan="3">不建議主堆金甲 — 遊戲中減防手段很多，金甲收益相對偏低</td>
+        </tr>
+    </table>
+
+    <h3>心法品質培養順序</h3>
+    <ol>
+        <li>✔ 先升低階金色心法（成本低、成效高）</li>
+        <li>✔ 再升普通金色</li>
+        <li>✔ 最後補紫色心法</li>
+    </ol>
+
+    <h2>💎 四、仙玉分配策略（平民與微氪重點）</h2>
+
+    <div class="warning">
+        <strong>⚠️ 絕對不要用仙玉抽卡！</strong> 觀星崖抽卡性價比偏低，不建議平民把仙玉砸在這裡。
+    </div>
+
+    <h3>建議的仙玉用途</h3>
+    
+    <h4>1. 紫薇寶庫禮包</h4>
+    <ul>
+        <li><strong>每日仙玉禮包：</strong> 必買</li>
+        <li><strong>每週仙玉禮包：</strong> 建議必買</li>
+    </ul>
+
+    <h4>2. 仙坊與內場（每天 1500 仙玉）</h4>
+    <p>仙坊內場每天需要消耗 1500 仙玉，必須先在仙坊中消費滿額才算入門檻，隔天重置。</p>
+    <p><strong>平民與微氪建議：</strong> 每天優先把仙玉用在仙坊，湊滿 1500 仙玉進內場，性價比非常高。</p>
+
+    <h4>仙坊外場購買優先度</h4>
+    <ul>
+        <li><strong>必優先：</strong> 聚靈石、上品凝神露</li>
+        <li><strong>可考慮：</strong> 靈泉果、開悟果</li>
+        <li><strong>補充用：</strong> 打折妖丹（當藥品不足時，買少量備用）</li>
+    </ul>
+
+    <h4>仙坊刷新建議</h4>
+    <ul>
+        <li>每天刷新前 3 次即可（0、50、100）</li>
+        <li>刷出需要的物品後就可以停手</li>
+    </ul>
+
+    <h4>仙坊內場購買優先度</h4>
+    <ul>
+        <li><strong>1 折必買：</strong> 聚靈石、道液神韻、凝神露</li>
+        <li><strong>可選：</strong> 開悟果、有折扣的觀星圖</li>
+    </ul>
+
+    <div class="tip">
+        <strong>💡 進階提示：</strong> 化神之前，心法帶來的戰力占比最高，靈泉果與開悟果的價值極高；化神後開啟血脈系統，血脈相關材料的優先度會明顯提高。
+    </div>
+
+    <h2>🛡️ 五、法寶系統與裝備養成策略</h2>
+
+    <h3>法寶系統</h3>
+    <ul>
+        <li><strong>可裝備：</strong> 3 個攻擊法寶 + 3 個防禦法寶</li>
+        <li><strong>養成邏輯：</strong> 法寶是「養格子」，更換法寶時會直接繼承原格子的培養等級，無需重新練</li>
+    </ul>
+
+    <h3>法寶培養建議</h3>
+    <ul>
+        <li>優先讓全部法寶格子平均升級，以滿足「共鳴條件」，開啟額外加成</li>
+        <li>在共鳴達成的前提下，攻擊法寶格子優先於防禦格子</li>
+        <li><strong>取得方式：</strong> 器鼎煉制法寶、宗門寶庫兌換法寶圖紙</li>
+    </ul>
+
+    <div class="warning">
+        <strong>⚠️ 精煉提醒：</strong> 千萬不要在低階法寶上浪費精煉材料，仙品以上才值得精煉（屬性翻倍）。
+    </div>
+
+    <h3>裝備系統</h3>
+    <ul>
+        <li><strong>四個部位：</strong> 頭盔、衣服、鞋子、項鍊</li>
+        <li><strong>養成邏輯：</strong> 與法寶類似，也是「養格子」。更換裝備時，培養等級會自動繼承</li>
+    </ul>
+
+    <h3>裝備培養建議</h3>
+    <ul>
+        <li>優先讓所有裝備格子平均升級，觸發共鳴加成</li>
+        <li>共鳴達成之後，攻擊類裝備優先升級，再考慮防禦裝備</li>
+        <li>強化時盡量平均分配</li>
+    </ul>
+
+    <h2>🐾 六、靈獸推薦</h2>
+
+    <h3>四種靈獸特性</h3>
+    <table>
+        <tr>
+            <th>靈獸名稱</th>
+            <th>主要效果</th>
+            <th>適用情況</th>
+        </tr>
+        <tr>
+            <td>青木鸞鳥</td>
+            <td>讓敵方攻擊無法命中</td>
+            <td>提升生存能力</td>
+        </tr>
+        <tr>
+            <td>土靈駒</td>
+            <td>提高控制能力</td>
+            <td>PVP、控制流</td>
+        </tr>
+        <tr>
+            <td>玄水鯨</td>
+            <td>提高傷害</td>
+            <td>輸出向</td>
+        </tr>
+        <tr>
+            <td>烈雲犬</td>
+            <td>提升暴擊</td>
+            <td>暴擊流</td>
+        </tr>
+    </table>
+
+    <h3>各職業靈獸搭配推薦</h3>
+    <table>
+        <tr>
+            <th>職業/流派</th>
+            <th>主靈獸</th>
+            <th>次選靈獸</th>
+        </tr>
+        <tr>
+            <td class="element-thunder">雷修</td>
+            <td>青木鸞鳥</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td class="element-fire">火修</td>
+            <td>玄水鯨</td>
+            <td>鸞鳥、土駒</td>
+        </tr>
+        <tr>
+            <td class="element-sword">劍修｜重光</td>
+            <td>玄水鯨</td>
+            <td>鸞鳥、土駒</td>
+        </tr>
+        <tr>
+            <td class="element-sword">劍修｜伏龍</td>
+            <td>鸞鳥</td>
+            <td>烈雲犬、土駒</td>
+        </tr>
+    </table>
+
+    <h2>🧘 七、丹藥運用與修煉細節</h2>
+
+    <h3>丹藥與丹毒機制</h3>
+    <ul>
+        <li>每吃一顆丹藥：+4 丹毒</li>
+        <li>丹毒達到 80：無法再服用丹藥</li>
+        <li>每 18 分鐘自然消除 1 點丹毒</li>
+    </ul>
+
+    <div class="tip">
+        <strong>💡 建議：</strong> 只服用藍色品質以上丹藥，避免浪費丹毒上限。
+    </div>
+
+    <h3>不增加丹毒的特殊丹藥</h3>
+    <ul>
+        <li>神危露</li>
+        <li>金甲露</li>
+        <li>妖源相關丹藥</li>
+    </ul>
+    <p>這類丹藥不會增加丹毒，可以放心服用。</p>
+
+    <h3>丹藥提純與煉製</h3>
+    <ul>
+        <li>每日可透過神秘羅盤為丹藥提純</li>
+        <li>因為提純次數有限，優先提純橙色丹藥，拉高收益</li>
+        <li>丹方可在大世界推圖中取得，建議穩定刷取</li>
+    </ul>
+
+    <h2>🧘 八、閉關修煉最佳流程</h2>
+
+    <h3>閉關核心道具</h3>
+    <ul>
+        <li><strong>聚靈石</strong> + <strong>凝神露</strong> 搭配使用，可以有效提高閉關獲得的修為</li>
+    </ul>
+
+    <h3>閉關成本與每日建議</h3>
+    <ul>
+        <li>首次閉關消耗：9 顆聚靈石</li>
+        <li>每閉關三次，所需聚靈石數量會額外增加 3 顆</li>
+    </ul>
+
+    <div class="tip">
+        <strong>💡 建議：</strong> 每天閉關到需要消耗 12 顆聚靈石的那一輪就先停，留到隔日重置再繼續。
+    </div>
+
+    <h3>凝神露提純與品質</h3>
+    <ul>
+        <li>凝神露可在仙坊購買、歷練獲得低品質再合成</li>
+        <li>每週可在宗門丹爐投入材料煉製，有機率獲得高品質凝神露</li>
+        <li>可透過「輔藥提純」系統，3 瓶低品質合成 1 瓶高品質</li>
+        <li>建議實戰上盡量只使用藍色以上凝神露</li>
+    </ul>
+
+    <h3>小技巧：境界與閉關順序</h3>
+    <p>當你處於某境界的中後期，如「筑基中 → 即將突破後期」，可採用以下順序：</p>
+    <ol>
+        <li>先透過修煉突破到下一階段或境界</li>
+        <li>突破後再使用閉關 + 凝神露 + 聚靈石</li>
+    </ol>
+    <p><strong>原因：</strong> 高一階境界的閉關，獲得靈氣與修為更多，效益更高。</p>
+
+    <h2>🏛️ 九、宗門選擇與宗門系統玩法</h2>
+
+    <h3>宗門選擇建議</h3>
+    <ul>
+        <li>盡量選擇排名靠前、實力強的宗門</li>
+        <li>可以獲得更多宗門底蘊獎勵和採礦資源分配</li>
+        <li>前排宗門收益直接翻數倍</li>
+    </ul>
+
+    <h3>宗門日常與建設</h3>
+    <ul>
+        <li><strong>宗門任務：</strong> 只接藍色以上任務，若沒有就刷新</li>
+        <li><strong>宗門建設：</strong> 建議捐到 50 或 100 檔位即可，CP 值適中</li>
+        <li><strong>宗門丹爐：</strong> 每週投入材料，可產出凝神露，有機率出高品質</li>
+    </ul>
+
+    <h3>宗門寶庫購買優先度</h3>
+    <ul>
+        <li>右上角 1 折物品</li>
+        <li>九曲木</li>
+        <li>法寶圖紙</li>
+        <li>主修流派的橙色神通</li>
+    </ul>
+    <p><strong>注意：</strong> 低品階神通不建議購買，資源留給中後期高品質技能。</p>
+
+    <h3>遺跡寶庫優先度</h3>
+    <ul>
+        <li>右上角 1 折物品</li>
+        <li>金丹自選殘片</li>
+        <li>5 折凝神露、靈木等關鍵資源</li>
+    </ul>
+
+    <h2>🗺️ 十、世界探索、背包管理與飛行法器</h2>
+
+    <h3>世界探索與新地圖推進</h3>
+    <ul>
+        <li>盡快推進新地圖，優先拿資源與解鎖更高等掛機地點</li>
+        <li>解鎖高等地圖後，要記得切換到較高地圖掛機，獎勵效率差距顯著</li>
+    </ul>
+
+    <h3>敲鐘解謎小技巧</h3>
+    <p>大世界中有一個敲鐘解謎機制，只需長按到第 3 或第 4 處標記時放開，即可獲得獎勵。</p>
+
+    <h3>背包滿了怎麼辦？</h3>
+    <ul>
+        <li>可將低於當前境界的裝備或道具分解</li>
+        <li>透過宗門寶庫兌換儲物袋，提升背包容量</li>
+    </ul>
+
+    <h3>飛行法器與靈壓機制</h3>
+    <ul>
+        <li>飛行法器培養會增加靈壓值，靈壓 = 所有飛行法器數量 + 培養等級總和</li>
+        <li>與其他玩家進入戰鬥時，靈壓較高的一方可使對手：
+            <ul>
+                <li>暫時眩暈數秒</li>
+                <li>削減防禦法寶護盾</li>
+            </ul>
+        </li>
+        <li><strong>注意：</strong> 飛行法器帶來的實際戰力提升有限，不建議前期投入過多資源</li>
+    </ul>
+
+    <h2>📋 十一、重點統整表格</h2>
+
+    <table>
+        <tr>
+            <th>系統</th>
+            <th>新手建議</th>
+            <th>重點</th>
+        </tr>
+        <tr>
+            <td>職業選擇</td>
+            <td>火修 / 劍修優先</td>
+            <td>雷修需高練度</td>
+        </tr>
+        <tr>
+            <td>神通</td>
+            <td>4+2 同系搭配</td>
+            <td>不建議前期混搭</td>
+        </tr>
+        <tr>
+            <td>心法</td>
+            <td>先養資源系</td>
+            <td>每週可重置 3 次</td>
+        </tr>
+        <tr>
+            <td>裝備</td>
+            <td>養格子不怕浪費</td>
+            <td>3 攻 3 防法寶</td>
+        </tr>
+        <tr>
+            <td>靈獸</td>
+            <td>各職業專用搭配</td>
+            <td>提升非常明顯</td>
+        </tr>
+        <tr>
+            <td>仙玉</td>
+            <td>不抽卡</td>
+            <td>主買修練資源</td>
+        </tr>
+        <tr>
+            <td>丹藥</td>
+            <td>藍色以上優先</td>
+            <td>搭配閉關最省時</td>
+        </tr>
+        <tr>
+            <td>推圖</td>
+            <td>越快越好</td>
+            <td>提升掛機收益</td>
+        </tr>
+    </table>
+
+    <div class="highlight">
+        <h2>🎯 結語：新手開局總結建議</h2>
+        <ul>
+            <li><strong>流派：</strong> 平民優先火修或劍修，雷修留給中後期與高氪玩家</li>
+            <li><strong>神通與心法：</strong> 先堆同流派高品質，再優先心法中增加資源與神威的部分</li>
+            <li><strong>仙玉：</strong> 不要抽觀星崖，集中投在紫薇寶庫禮包與仙坊 1500 仙玉內場</li>
+            <li><strong>養成：</strong> 法寶與裝備都是養格子，平均升級先湊共鳴，再優先攻擊位置</li>
+            <li><strong>丹藥與閉關：</strong> 只吃藍色以上丹藥，搭配凝神露與聚靈石閉關，善用境界突破順序</li>
+            <li><strong>宗門與道業：</strong> 早入強宗門，多用宗門丹爐與寶庫，道業先解鎖加神威、長生或融靈的項目</li>
+            <li><strong>探索：</strong> 優先推進高等地圖，善用敲鐘解謎與背包分解減負擔</li>
+        </ul>
+    </div>
+
+    <div class="update-time" style="margin-top: 50px; border-top: 1px solid #34495e; padding-top: 20px;">
+        <p>© 2026 問劍長生遊戲攻略 | 作者：大肥瞄</p>
+        <p>最後更新：2026 年 2 月 17 日</p>
+    </div>
 </body>
 </html>
