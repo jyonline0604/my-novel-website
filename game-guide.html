@@ -4,131 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>問劍長生遊戲攻略 - 大肥瞄</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="《問劍長生》遊戲攻略，包含流派推薦、資源攻略、宗門系統等完整資訊。">
+    <meta name="keywords" content="問劍長生, 手遊攻略, 修仙遊戲, 遊戲攻略">
+    <meta name="author" content="大肥瞄">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        body {
-            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e0e0e0;
-        }
-        .main-header {
-            background: rgba(0,0,0,0.3);
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-        .main-nav {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .nav-link {
-            color: #3498db;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-        .nav-link:hover, .nav-link.active {
-            background: rgba(52, 152, 219, 0.2);
-            color: #f39c12;
-        }
-        h1 {
-            color: #f39c12;
-            text-align: center;
-            border-bottom: 3px solid #f39c12;
-            padding-bottom: 15px;
-            font-size: 2.2em;
-        }
-        h2 {
-            color: #3498db;
-            border-left: 5px solid #3498db;
-            padding-left: 15px;
-            margin-top: 30px;
-            font-size: 1.6em;
-        }
-        h3 {
-            color: #2ecc71;
-            margin-top: 25px;
-            font-size: 1.3em;
-        }
-        .update-time {
-            text-align: center;
-            color: #95a5a6;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-        .author {
-            text-align: center;
-            color: #f39c12;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: rgba(255,255,255,0.05);
-        }
-        th, td {
-            border: 1px solid #34495e;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background: rgba(52, 152, 219, 0.3);
-            color: #3498db;
-        }
-        tr:nth-child(even) {
-            background: rgba(255,255,255,0.03);
-        }
-        .highlight {
-            background: rgba(243, 156, 18, 0.2);
-            padding: 15px;
-            border-left: 4px solid #f39c12;
-            margin: 15px 0;
-        }
-        .warning {
-            background: rgba(231, 76, 60, 0.2);
-            padding: 15px;
-            border-left: 4px solid #e74c3c;
-            margin: 15px 0;
-        }
-        .tip {
-            background: rgba(46, 204, 113, 0.2);
-            padding: 15px;
-            border-left: 4px solid #2ecc71;
-            margin: 15px 0;
-        }
-        ul, ol {
-            padding-left: 25px;
-        }
-        li {
-            margin: 8px 0;
-        }
-        .element-fire { color: #e74c3c; }
-        .element-sword { color: #3498db; }
-        .element-thunder { color: #9b59b6; }
-        .main-footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            border-top: 1px solid #34495e;
-            color: #95a5a6;
-        }
-        .main-footer a {
-            color: #3498db;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="light-mode">
     <header class="main-header">
         <nav class="main-nav">
             <a href="index.html" class="nav-link">🏠 首頁</a>

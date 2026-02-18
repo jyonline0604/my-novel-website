@@ -753,3 +753,106 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
     max-width: 42rem;
     margin: 4rem auto;
 }
+
+/* ===== 遊戲攻略頁面樣式 ===== */
+.guide-page-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.guide-page-content h1 {
+    color: var(--light-primary);
+    text-align: center;
+    border-bottom: 3px solid var(--light-primary);
+    padding-bottom: 15px;
+    font-size: 2.2em;
+    font-family: var(--font-serif);
+}
+
+.guide-page-content h2 {
+    color: var(--light-secondary);
+    border-left: 5px solid var(--light-secondary);
+    padding-left: 15px;
+    margin-top: 30px;
+    font-size: 1.6em;
+    font-family: var(--font-serif);
+}
+
+.guide-page-content h3 {
+    color: #2ecc71;
+    margin-top: 25px;
+    font-size: 1.3em;
+}
+
+.guide-page-content .author {
+    text-align: center;
+    color: var(--light-primary);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.guide-page-content .update-time {
+    text-align: center;
+    color: var(--light-muted);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.guide-page-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--light-card-bg);
+}
+
+.guide-page-content th, .guide-page-content td {
+    border: 1px solid var(--light-border);
+    padding: 12px;
+    text-align: left;
+}
+
+.guide-page-content th {
+    background: var(--light-header-bg);
+    color: var(--light-secondary);
+}
+
+.guide-page-content tr:nth-child(even) {
+    background: var(--light-bg);
+}
+
+.guide-page-content .highlight {
+    background: rgba(243, 156, 18, 0.15);
+    padding: 15px;
+    border-left: 4px solid #f39c12;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.guide-page-content .warning {
+    background: rgba(231, 76, 60, 0.15);
+    padding: 15px;
+    border-left: 4px solid #e74c3c;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.guide-page-content .tip {
+    background: rgba(46, 204, 113, 0.15);
+    padding: 15px;
+    border-left: 4px solid #2ecc71;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.guide-page-content ul, .guide-page-content ol {
+    padding-left: 25px;
+}
+
+.guide-page-content li {
+    margin: 8px 0;
+}
+
+.guide-page-content .element-fire { color: #e74c3c; }
+.guide-page-content .element-sword { color: #3498db; }
+.guide-page-content .element-thunder { color: #9b59b6; }
