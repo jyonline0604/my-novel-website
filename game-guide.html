@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>問劍長生遊戲攻略 - 大肥瞄</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         body {
             font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
@@ -13,6 +15,29 @@
             padding: 20px;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #e0e0e0;
+        }
+        .main-header {
+            background: rgba(0,0,0,0.3);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .main-nav {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: #3498db;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            background: rgba(52, 152, 219, 0.2);
+            color: #f39c12;
         }
         h1 {
             color: #f39c12;
@@ -90,15 +115,35 @@
         .element-fire { color: #e74c3c; }
         .element-sword { color: #3498db; }
         .element-thunder { color: #9b59b6; }
+        .main-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+        }
+        .main-footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
+    <header class="main-header">
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">🏠 首頁</a>
+            <a href="game-guide.html" class="nav-link active">🎮 問劍長生</a>
+            <a href="saint-seiya-guide.html" class="nav-link">⚔️ 聖鬥士星矢</a>
+        </nav>
+    </header>
+    <main class="guide-page-content">
     <h1>⚔️ 問劍長生 全方位攻略指南</h1>
     <div class="author">作者：大肥瞄</div>
-    <div class="update-time">最後更新：2026 年 2 月 17 日</div>
+    <div class="update-time">最後更新：2026 年 2 月 18 日</div>
 
     <div class="highlight">
-        <strong>📌 攻略重點：</strong> 本作流派並非創角後固定，可透過搭配劍系、火系、雷系神通來轉換流派。新手建議優先火修或劍修，雷修適合中後期高氪玩家。
+        <strong>📌 攻略重點：</strong> 本作流派並非創角後固定，可透過搭配劍系、火系、雷系神通來轉換流派。新手建議優先火修或劍修，雷修適合中後期高氪玩家。<br><br>
+        <strong>📝 2026年2月18日更新：</strong> 經Debate Mode驗證，現有攻略內容準確無誤，遊戲目前無重大更新。
     </div>
 
     <h2>🔥 一、職業屬性與流派克制關係</h2>
@@ -565,15 +610,12 @@
         </ul>
     </div>
 
-    <div class="update-time" style="margin-top: 50px; border-top: 1px solid #34495e; padding-top: 20px;">
-        <p>© 2026 問劍長生遊戲攻略 | 作者：大肥瞄</p>
-        <p>最後更新：2026 年 2 月 17 日</p>
-    </div>
+    </main>
 
     <footer class="main-footer">
-        <p>&copy; 2025 大肥瞄. All Rights Reserved. | 
-            <a href="index.html" style="color: inherit;">返回首頁</a> | 
-            <a href="game-guide.html#top" style="color: inherit;">返回頂部</a>
+        <p>&copy; 2026 大肥瞄. All Rights Reserved. | 
+            <a href="index.html">返回首頁</a> | 
+            <a href="game-guide.html#top">返回頂部</a>
         </p>
     </footer>
 
