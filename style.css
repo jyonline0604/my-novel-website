@@ -860,3 +860,37 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
 .guide-page-content .element-fire { color: #e74c3c; }
 .guide-page-content .element-sword { color: #3498db; }
 .guide-page-content .element-thunder { color: #9b59b6; }
+
+/* --- AI News 專屬樣式 --- */
+.news-item {
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid;
+}
+.light-mode .news-item { background-color: var(--light-card-bg); border-color: var(--light-primary); }
+.dark-mode .news-item { background-color: var(--dark-card-bg); border-color: var(--dark-primary); }
+.sepia-mode .news-item { background-color: var(--sepia-bg); border-color: var(--sepia-primary); }
+.sky-blue-mode .news-item { background-color: var(--sky-blue-card-bg); border-color: var(--sky-blue-primary); }
+.light-green-mode .news-item { background-color: var(--light-green-card-bg); border-color: var(--light-green-primary); }
+
+.news-item h3 { margin-top: 0; font-family: var(--font-serif); }
+.news-date { font-size: 0.85rem; opacity: 0.7; margin-bottom: 1rem; }
+
+.debate-section { margin-top: 2rem; padding: 1.5rem; border-radius: 12px; }
+.light-mode .debate-section { background-color: var(--light-card-bg); box-shadow: var(--shadow); }
+.dark-mode .debate-section { background-color: var(--dark-card-bg); box-shadow: var(--dark-shadow); }
+
+.expert-opinion { padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+.light-mode .expert-opinion { background-color: var(--light-bg); }
+.dark-mode .expert-opinion { background-color: var(--dark-bg); }
+.sepia-mode .expert-opinion { background-color: var(--sepia-bg); }
+.sky-blue-mode .expert-opinion { background-color: var(--sky-blue-bg); }
+.light-green-mode .expert-opinion { background-color: var(--light-green-bg); }
+
+.expert-opinion h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.expert-opinion p { margin: 0.3rem 0; line-height: 1.6; }
+
+.conclusion { padding: 1.2rem; border-radius: 8px; margin-top: 1.5rem; font-weight: 600; }
+.light-mode .conclusion { background-color: #e3f2fd; border: 2px solid #2196f3; }
+.dark-mode .conclusion { background-color: #1e3a5f; border: 2px solid #64b5f6; }
