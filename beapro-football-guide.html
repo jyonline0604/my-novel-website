@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be A Pro Football 足球攻略 - 大肥瞄</title>
+    <meta name="description" content="《Be A Pro Football》足球模擬遊戲攻略，包含球員培養、戰術配置、轉會市場等完整資訊。">
+    <meta name="keywords" content="Be A Pro Football, 足球遊戲, 足球攻略, 球員培養">
+    <meta name="author" content="大肥瞄">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <header class="main-header">
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">🏠 首頁</a>
+            <a href="game-guide.html" class="nav-link">🎮 問劍長生</a>
+            <a href="saint-seiya-guide.html" class="nav-link">⚔️ 聖鬥士星矢</a>
+            <a href="beapro-football-guide.html" class="nav-link active">⚽ Be A Pro</a>
+            <a href="ai-news.html" class="nav-link">🤖 AI 資訊</a>
+        </nav>
+        <div class="header-controls"><button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button></div>
+    </header>
+    <div id="settings-panel" class="settings-panel">
+        <div class="setting-group"><h4>字體大小</h4><div id="font-size-options" class="setting-options"><button data-size="small">小</button><button data-size="medium">中</button><button data-size="large">大</button></div></div>
+        <div class="setting-group"><h4>背景主題</h4><div id="theme-options" class="setting-options"><button data-theme="light-mode">明亮</button><button data-theme="sepia-mode">米黃</button><button data-theme="dark-mode">夜間</button><button data-theme="sky-blue-mode">天空藍</button><button data-theme="light-green-mode">淺綠色</button></div></div>
+    </div>
+    <main class="guide-page-content">
+    <h1>⚽ Be A Pro Football 足球模擬遊戲攻略</h1>
+    <div class="author">作者：大肥瞄</div>
+    <div class="update-time">最後更新：2026年02月23日</div>
+
+    <div class="highlight">
+        <strong>📌 遊戲介紹：</strong> Be A Pro Football (BAP) 是由 YUNCHANG TECHNOLOGY(HONG KONG)LIMITED / NebulaJoy 開發，FIFPro 官方授權的手機足球模擬遊戲。收錄全球 54 國聯盟、超過 60,000 名真實球員數據。<br><br>
+        <strong>🎯 遊戲特色：</strong> Real-time 11V11 對戰、3D 畫質升級、FIFPro 官方授權、60,000+ 真實球員、200+ 新面孔髮型、球員紋身系統、2025/26 轉會更新<br>
+        <strong>📅 發布日期：</strong> 2025 年 12 月 18 日 (iOS/Android) | 最新版本：v1.227.26<br>
+        <strong>📱 設備需求：</strong> iOS: A9+ 晶片 + 3GB RAM + iOS 13+ | Android: 旗艦級別建議
+    </div>
+
+    <h2>🎮 遊戲模式 (2026 更新版)</h2>
+    
+    <h3>球員生涯模式 (Career Mode) 🌟</h3>
+    <p>扮演球員，從青年軍開始一步步成長為世界級球星。透過比賽提升經驗值，解鎖新技能。2026 版本新增更多技能樹和成長路線，球員外觀選項大幅增加（200+ 新面孔、髮型、紋身）。</p>
+
+    <h3>教練/經理人模式 (Manager Mode)</h3>
+    <p>執教球會，制定戰術，帶領球隊贏取冠軍。2024-2025 版本大幅更新此模式，2026 版本更增加球會升級系統和財務管理功能。全新的混合中场和倒置邊後衛戰術讓排兵佈陣更有深度。</p>
+    
+    <h3>PVP 對戰模式</h3>
+    <p>即時與全球玩家進行 11V11 對戰，考驗操作技巧同戰術素養。2026 版本優化了匹配系統，減少等待時間。120fps 高幀率模式支援（特定設備）。</p>
+    
+    <h3>🏆 冠軍聯賽模式</h3>
+    <p>挑戰世界各頂級聯賽，與 AI 或真實玩家競爭冠軍榮耀。2026 版本新增更多聯賽和虛擬球隊。</p>
+
+    <h3>🏟️ 球場與環境更新 (2026)</h3>
+    <ul>
+        <li>新球場和改進的人群動畫</li>
+        <li>廣告牌更真實（動態品牌效果）</li>
+        <li>直草皮紋理、新照明、陰影改進</li>
+        <li>Full HD 選單背景</li>
+    </ul>
+
+    <h2>🕹️ 操作指南</h2>
+    
+    <h3>基本操作</h3>
+    <ul>
+        <li><strong>傳球：</strong> 輕觸目標球員進行傳球</li>
+        <li><strong>射門：</strong> 輕觸射門鍵進行射門</li>
+        <li><strong>帶球：</strong> 使用虛擬搖桿控制球員移動</li>
+        <li><strong>搶球：</strong> 防守時點擊對手進行鏟球</li>
+    </ul>
+
+    <h3>進階技巧</h3>
+    <ul>
+        <li><strong>吊射 (Chip Shot)：</strong> 按住射門鍵 + 向上滑動</li>
+        <li><strong>遠射：</strong> 在禁區外遠距離射門</li>
+        <li><strong>假動作：</strong> 快速方向切換晃過防守球員</li>
+    </ul>
+
+    
+                <div class="guide-section" style="margin-top: 25px; background-color: #f5f5f5; padding: 15px; border-radius: 8px;">
+                    <h3 style="color: #2c3e50; margin-top: 0;">🎯 今日戰術小貼士 (2026年02月23日)</h3>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>陣型選擇：</strong> 對抗4-3-3陣型時，建議使用4-2-3-1加強中場控制</li>
+                        <li><strong>球員狀態：</strong> 注意國際比賽日後的體能恢復，適當輪換陣容</li>
+                        <li><strong>轉會策略：</strong> 夏季轉會窗口即將關閉，抓緊最後補強機會</li>
+                        <li><strong>訓練重點：</strong> 本週建議加強定位球防守訓練</li>
+                    </ul>
+                    <p style="font-size: 0.9em; color: #666; margin-top: 10px; margin-bottom: 0;">
+                        <i class="fas fa-info-circle"></i> 以上建議基於當前遊戲版本分析
+                    </p>
+                </div>
+                <h2>📈 專家攻略 (Debate Mode 分析 - 2026年02月24日)</h2>
+    
+    <div class="expert-analysis">
+
+        <h3>🤔 三位 AI 專家辯論分析</h3>
+
+            <div class="guide-tip" style="margin-bottom: 20px; background-color: #fff8e1; border-left: 4px solid #ffb300; padding: 12px;">
+                <i class="fas fa-calendar-alt"></i>
+                <span><strong>📅 今日足球攻略重點 (2026年02月23日)：</strong> 遊戲版本穩定。轉會市場動態：關注夏季轉會窗口關閉前的最後機會。戰術建議：根據對手陣型靈活調整中場配置。球員狀態：注意國際比賽日後的球員疲勞度。</span>
+            </div>
+            
+        <p>經過三位 AI 專家（戰術分析師、攻略專家、電競選手）深入辯論分析，綜合最新 2026 版本資訊，得出以下建議：</p>
+        
+        <div class="expert-opinion">
+            <h4>🎯 戰術分析師觀點</h4>
+            <p><strong>陣型與戰術進化：</strong> 2026 版本帶來全新戰術系統。推薦非對稱中场陣型（如 4-2-3-1 配備一個 CAM 和兩個翼鋒）來拉伸對手防線。對付快速翼鋒對手時，建議切換到 5-3-2 增加防守厚度。別讓邊後衛過度壓上，採用平衡或保守的邊路寬度設定。2026 版本戰術響應更靈活，AI 能更好地識別你的進攻模式，所以需要更多變化。</p>
+        
+        </div>
+        
+        <div class="expert-opinion">
+            <h4>💰 攻略專家觀點</h4>
+            <p><strong>轉會市場與球員管理：</strong> 2026 版本更新了完整 2025/26 轉會窗口！最新轉會包括：Marcus Rashford → Barcelona、Kylian Mbappé → Real Madrid、Riccardo Calafiori → Arsenal、Leny Yoro → Manchester United 等。使用轉會名單時要善用價值被低估的球員（隱藏版低價寶物）。別過度購買，要保持球隊平衡（防守、中場、進攻）。輪換陣容避免疲勞，讓隊長提升士氣。60,000+ 真實球員數據讓組建夢幻球隊更有趣！</p>
+        </div>
+        
+        <div class="expert-opinion">
+            <h4>⚡ 電競選手觀點</h4>
+            <p><strong>操作技巧與對戰策略：</strong> 2026 版本畫質大幅升級！新增 200+ 新面孔和髮型，球員紋身系統上線。iOS 設備需要 A9 晶片或更新版本、至少 3GB RAM、iOS 13 或更高版本才能流暢運行（高階手機可穩定 60fps）。基本操作：輕觸傳球/射門、虛擬搖桿帶球、點擊對手鏟球。進階技巧：吊射（按住射門+向上滑動）、遠射、假動作。對戰時要善用直塞球創造機會，邊路傳中找禁區隊友。防守保持陣型別盲目出擊，門將出擊時機要把握好。</p>
+        </div>
+        
+        <h4>📋 辯論共識</h4>
+        <ol>
+            <li><strong>陣型選擇：</strong> 4-2-3-1 非對稱陣型最適合進攻，5-3-2 適合防守反擊</li>
+            <li><strong>2026 轉會熱點：</strong> 關注 Mbappé、Rashford、Calafiori 等最新轉會球員</li>
+            <li><strong>球員培養：</strong> 善用 60,000+ 球員數據，優先培養年輕潛力球員 (21-25歲，潛力值85+)</li>
+            <li><strong>操作優化：</strong> 2026 版本觸控回饋更強，多練習吊射和假動作</li>
+            <li><strong>視覺升級：</strong> 200+ 新面孔、紋身系統、Full HD 選單背景</li>
+            <li><strong>設備需求：</strong> iOS 需 A9+ 晶片 + 3GB RAM；Android 建議旗艦級別</li>
+            <li><strong>資源管理：</strong> 合理使用遊戲貨幣，轉會市場價格波動大，關注球員狀態</li>
+        </ol>
+    </div>
+
+    <h2>💡 獲勝技巧</h2>
+    
+    <h3>進攻技巧</h3>
+    <ul>
+        <li>善用直塞球創造機會</li>
+        <li>邊路傳中找禁區內既隊友</li>
+        <li>把握罰球同自由球機會</li>
+        <li>遠射有時可以收到奇效</li>
+    </ul>
+
+    <h3>防守技巧</h>
+    <ul>
+        <li>保持防守陣型，唔好盲目出擊</li>
+        <li>逼搶時注意唔好失位</li>
+        <li>門將出擊時機要把握好</li>
+        <li>犯規要適度，避免紅牌</li>
+    </ul>
+
+    <h2>🏆 陣容建議 (2026 版)</h2>
+    <p>建議採用 4-3-3 或 4-4-2 經典陣型，注重攻守平衡。2026 版本推薦 4-2-3-1 非對稱陣型以拉伸對手防線。</p>
+    
+    <h3>📊 2025/26 轉會市場熱點</h3>
+    <ul>
+        <li><strong>Marcus Rashford → Barcelona</strong></li>
+        <li><strong>Kylian Mbappé → Real Madrid</strong></li>
+        <li><strong>Riccardo Calafiori → Arsenal</strong></li>
+        <li><strong>Leny Yoro → Manchester United</strong></li>
+        <li><strong>João Cancelo → Al Hilal</strong></li>
+        <li><strong>Alvaro Morata → AC Milan</strong></li>
+        <li><strong>Niclas Fullkrug → West Ham</strong></li>
+    </ul>
+    
+    <h3>陣容配置建議</h3>
+    <ul>
+        <li><strong>前鋒：</strong> 選擇速度快、射門準的球員 (如頂級前鋒)</li>
+        <li><strong>中場：</strong> 需要良好組織能力的球員 (推薦創造型中場)</li>
+        <li><strong>後防：</strong> 高空球爭頂能力強的球員 (需要速度型中堅)</li>
+        <li><strong>門將：</strong> 反應快、出擊果斷的門將</li>
+    </ul>
+    
+    <h3>🌟 推薦球員類型</h3>
+    <ul>
+        <li>年輕潛力球員 (年齡 21-25 歲，潛力值 85+)</li>
+        <li>經驗老將 (年齡 28-32 歲，能力值 80+)</li>
+        <li>明星球員 (根據 FIFPro 數據，如姆巴佩、哈蘭德等)</li>
+    </ul>
+    </main>
+
+    <section class="share-section">
+        <h4 class="share-title">分享這個頁面</h4>
+        <div class="share-buttons">
+            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
+            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
+        </div>
+    </section>
+
+    <footer class="reader-footer-nav">
+        <a href="index.html" id="prev-chapter-btn" class="nav-button">« 返回首頁</a>
+        <a href="#top" id="next-chapter-btn" class="nav-button">返回頂部</a>
+    </footer>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
+    </footer>
+    
+    <section class="comment-section">
+        <h3 class="comment-section-title">讀者留言</h3>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>
