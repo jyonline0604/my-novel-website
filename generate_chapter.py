@@ -323,7 +323,7 @@ def update_index_html(chapter_num, title):
 def git_commit_and_push(chapter_num):
     """提交並推送到 GitHub"""
     try:
-        # 添加文件
+        # 添加所有相關文件
         subprocess.run(
             ["git", "add", f"chapter-{chapter_num}.html", "index.html"],
             cwd=REPO_PATH,
@@ -337,7 +337,8 @@ def git_commit_and_push(chapter_num):
             ["git", "commit", "-m", commit_msg],
             cwd=REPO_PATH,
             check=True,
-            capture_output=True
+            capture_output=True,
+            env={**os.environ, "GIT_AUTHOR_NAME": "小肥喵", "GIT_AUTHOR_EMAIL": "jyonline0604@example.com", "GIT_COMMITTER_NAME": "小肥喵", "GIT_COMMITTER_EMAIL": "jyonline0604@example.com"}
         )
         
         # 推送
