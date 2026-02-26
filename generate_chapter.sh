@@ -20,21 +20,41 @@ NEXT_CHAPTER=$((LAST_CHAPTER + 1))
 PREV_CHAPTER=$((NEXT_CHAPTER - 1))
 echo "最新章節: 第${LAST_CHAPTER}章 -> 將生成第${NEXT_CHAPTER}章"
 
-# 調用 DeepSeek API
+# 調用 DeepSeek API（使用 jq 構建 JSON 以確保正確轉義）
+PROMPT="延續《科技修真傳》上一章的劇情，撰寫第${NEXT_CHAPTER}章（至少3小節，每小節3-4段，繁體中文，主角是林塵，修真科幻風格）"
+JSON_DATA=$(jq -n \
+  --arg model "$MODEL" \
+  --arg system "你是專業中文小說作家" \
+  --arg prompt "$PROMPT" \
+  '{
+    model: $model,
+    messages: [
+      {role: "system", content: $system},
+      {role: "user", content: $prompt}
+    ],
+    stream: false
+  }')
+
+echo "發送請求到 DeepSeek API..."
 RESPONSE=$(curl -s https://api.deepseek.com/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${DEEPSEEK_API_KEY}" \
-  -d "{
-    \"model\": \"${MODEL}\",
-    \"messages\": [
-      {\"role\": \"system\", \"content\": \"你是專業中文小說作家\"},
-      {\"role\": \"user\", \"content\": \"延續《科技修真傳》上一章的劇情，撰寫第${NEXT_CHAPTER}章（至少3小節，每小節3-4段，繁體中文，主角是林塵，修真科幻風格）\"}
-    ],
-    \"stream\": false
-  }")
+  -d "$JSON_DATA")
 
-# 提取內容
-NEW_CONTENT=$(echo "$RESPONSE" | grep -oP '"content":\s*"\K[^"]+' | head -1 | sed 's/\\n/\n/g' | sed 's/\\"/"/g')
+# 檢查回應是否有效
+if echo "$RESPONSE" | grep -q '"error"'; then
+    ERROR_MSG=$(echo "$RESPONSE" | jq -r '.error.message // "Unknown error"' 2>/dev/null || echo "$RESPONSE")
+    echo "API 錯誤: $ERROR_MSG"
+    exit 1
+fi
+
+# 使用 jq 提取內容（更可靠）
+NEW_CONTENT=$(echo "$RESPONSE" | jq -r '.choices[0].message.content // empty' 2>/dev/null)
+if [ -z "$NEW_CONTENT" ]; then
+    echo "錯誤：無法從回應中提取內容"
+    echo "回應：$RESPONSE"
+    exit 1
+fi
 
 if [ -z "$NEW_CONTENT" ]; then
     echo "Error: Failed to generate content"
