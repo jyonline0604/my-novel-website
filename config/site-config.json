@@ -1,0 +1,13 @@
+{
+  "site": {
+    "name": "科技修真傳",
+    "url": "https://kofhk.com",
+    "github": "https://github.com/jyonline0604/my-novel-website"
+  },
+  "autoUpdate": {
+    "dailyBriefing": "08:15,12:55,17:55",
+    "aiNews": "01:30",
+    "guidePages": "06:00",
+    "chapter生成": "07:00"
+  }
+}

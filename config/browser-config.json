@@ -1,0 +1,13 @@
+{
+  "browser": {
+    "enabled": true,
+    "defaultProfile": "chrome",
+    "attachOnly": true,
+    "profiles": {
+      "openclaw": {
+        "cdpPort": 18800,
+        "color": "#FF4500"
+      }
+    }
+  }
+}
