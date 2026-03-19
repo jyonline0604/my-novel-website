@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+    <style>
+        /* Chapter List Styling */
+        .chapter-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        .chapter-list li {
+            margin: 0;
+        }
+        .chapter-list a {
+            display: block;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+        .chapter-list a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+        .chapter-list a::before {
+            content: "📖 ";
+        }
+
+    </style>
     <meta property="og:title" content="科技修真傳 - 賽博龐克修仙小說">
     <meta property="og:description" content="在科技末世中，少年林塵意外獲得上古靈芯，踏上數據修仙之路">
     <meta property="og:image" content="https://jyonline0604.github.io/my-novel-website/author.jpg">
@@ -61,59 +94,59 @@
         <section id="chapters" class="content-card">
             <h2 class="section-title">章節列表</h2>
             <ul class="chapter-list">
-<li><a href="chapter-53.html">第53章：新的紀元</a></li>
-<li><a href="chapter-52.html">第52章：最終決戰</a></li>
-<li><a href="chapter-51.html">第51章：多元宇宙的守望者</a></li>
-<li><a href="chapter-50.html">第50章：最終覺醒</a></li>
-<li><a href="chapter-49.html">第49章：永恆之道</a></li>
-<li><a href="chapter-48.html">第48章：命運抉擇</a></li>
-<li><a href="chapter-47.html">第47章：創世之謎</a></li>
-<li><a href="chapter-46.html">第46章：終極真相</a></li>
-<li><a href="chapter-45.html">第45章：維度戰爭</a></li>
-<li><a href="chapter-44.html">第44章：多元宇宙的守望者</a></li>
-<li><a href="chapter-43.html">第43章：時空主宰</a></li>
-<li><a href="chapter-42.html">第42章：法則掌控</a></li>
-<li><a href="chapter-41.html">第41章：創世之力</a></li>
-<li><a href="chapter-40.html">第40章：終極進化</a></li>
-<li><a href="chapter-39.html">第39章：現實融合</a></li>
-<li><a href="chapter-38.html">第38章：虛擬神國</a></li>
-<li><a href="chapter-37.html">第37章：數據神格</a></li>
-<li><a href="chapter-36.html">第36章：量子修真</a></li>
-<li><a href="chapter-35.html">第35章：維度跳躍</a></li>
-<li><a href="chapter-34.html">第34章：時空守護者</a></li>
-<li><a href="chapter-33.html">第33章：傳承使命</a></li>
-<li><a href="chapter-32.html">第32章：新的開始</a></li>
-<li><a href="chapter-31.html">第31章：宇宙和平</a></li>
-<li><a href="chapter-30.html">第30章：終極對決</a></li>
-<li><a href="chapter-29.html">第29章：星際戰爭</a></li>
-<li><a href="chapter-28.html">第28章：修真聯盟</a></li>
-<li><a href="chapter-27.html">第27章：科技文明</a></li>
-<li><a href="chapter-26.html">第26章：平行世界</a></li>
-<li><a href="chapter-25.html">第25章：多元宇宙</a></li>
-<li><a href="chapter-24.html">第24章：時空穿梭</a></li>
-<li><a href="chapter-23.html">第23章：異界之門</a></li>
-<li><a href="chapter-22.html">第22章：新的征程</a></li>
-<li><a href="chapter-21.html">第21章：真相大白</a></li>
-<li><a href="chapter-20.html">第20章：生死之戰</a></li>
-<li><a href="chapter-19.html">第19章：陰謀初現</a></li>
-<li><a href="chapter-18.html">第18章：暗流湧動</a></li>
-<li><a href="chapter-17.html">第17章：天才對決</a></li>
-<li><a href="chapter-16.html">第16章：宗門大比</a></li>
-<li><a href="chapter-15.html">第15章：突破瓶頸</a></li>
-<li><a href="chapter-14.html">第14章：功法傳承</a></li>
-<li><a href="chapter-13.html">第13章：秘境試煉</a></li>
-<li><a href="chapter-12.html">第12章：天賦覺醒</a></li>
-<li><a href="chapter-11.html">第11章：宗門測試</a></li>
-<li><a href="chapter-10.html">第10章：靈氣復甦</a></li>
-<li><a href="chapter-9.html">第9章：神秘遺跡</a></li>
-<li><a href="chapter-8.html">第8章：廢墟探索</a></li>
-<li><a href="chapter-7.html">第7章：修煉初體驗</a></li>
-<li><a href="chapter-6.html">第6章：第一個任務</a></li>
-<li><a href="chapter-5.html">第5章：系統啟動</a></li>
-<li><a href="chapter-4.html">第4章：上古靈芯</a></li>
-<li><a href="chapter-3.html">第3章：末法廢土</a></li>
-<li><a href="chapter-2.html">第2章：數據修仙之路</a></li>
-<li><a href="chapter-1.html">第1章：靈芯覺醒</a></li>
+<li><a href="chapter-53.html" style="background: linear-gradient(135deg, #f5576c 0%, #f5576cdd 100%)">第53章：新的紀元</a></li>
+<li><a href="chapter-52.html" style="background: linear-gradient(135deg, #f093fb 0%, #f093fbdd 100%)">第52章：最終決戰</a></li>
+<li><a href="chapter-51.html" style="background: linear-gradient(135deg, #764ba2 0%, #764ba2dd 100%)">第51章：多元宇宙的守望者</a></li>
+<li><a href="chapter-50.html" style="background: linear-gradient(135deg, #667eea 0%, #667eeadd 100%)">第50章：最終覺醒</a></li>
+<li><a href="chapter-49.html" style="background: linear-gradient(135deg, #fee140 0%, #fee140dd 100%)">第49章：永恆之道</a></li>
+<li><a href="chapter-48.html" style="background: linear-gradient(135deg, #fa709a 0%, #fa709add 100%)">第48章：命運抉擇</a></li>
+<li><a href="chapter-47.html" style="background: linear-gradient(135deg, #38f9d7 0%, #38f9d7dd 100%)">第47章：創世之謎</a></li>
+<li><a href="chapter-46.html" style="background: linear-gradient(135deg, #43e97b 0%, #43e97bdd 100%)">第46章：終極真相</a></li>
+<li><a href="chapter-45.html" style="background: linear-gradient(135deg, #00f2fe 0%, #00f2fedd 100%)">第45章：維度戰爭</a></li>
+<li><a href="chapter-44.html" style="background: linear-gradient(135deg, #4facfe 0%, #4facfedd 100%)">第44章：多元宇宙的守望者</a></li>
+<li><a href="chapter-43.html" style="background: linear-gradient(135deg, #f5576c 0%, #f5576cdd 100%)">第43章：時空主宰</a></li>
+<li><a href="chapter-42.html" style="background: linear-gradient(135deg, #f093fb 0%, #f093fbdd 100%)">第42章：法則掌控</a></li>
+<li><a href="chapter-41.html" style="background: linear-gradient(135deg, #764ba2 0%, #764ba2dd 100%)">第41章：創世之力</a></li>
+<li><a href="chapter-40.html" style="background: linear-gradient(135deg, #667eea 0%, #667eeadd 100%)">第40章：終極進化</a></li>
+<li><a href="chapter-39.html" style="background: linear-gradient(135deg, #fee140 0%, #fee140dd 100%)">第39章：現實融合</a></li>
+<li><a href="chapter-38.html" style="background: linear-gradient(135deg, #fa709a 0%, #fa709add 100%)">第38章：虛擬神國</a></li>
+<li><a href="chapter-37.html" style="background: linear-gradient(135deg, #38f9d7 0%, #38f9d7dd 100%)">第37章：數據神格</a></li>
+<li><a href="chapter-36.html" style="background: linear-gradient(135deg, #43e97b 0%, #43e97bdd 100%)">第36章：量子修真</a></li>
+<li><a href="chapter-35.html" style="background: linear-gradient(135deg, #00f2fe 0%, #00f2fedd 100%)">第35章：維度跳躍</a></li>
+<li><a href="chapter-34.html" style="background: linear-gradient(135deg, #4facfe 0%, #4facfedd 100%)">第34章：時空守護者</a></li>
+<li><a href="chapter-33.html" style="background: linear-gradient(135deg, #f5576c 0%, #f5576cdd 100%)">第33章：傳承使命</a></li>
+<li><a href="chapter-32.html" style="background: linear-gradient(135deg, #f093fb 0%, #f093fbdd 100%)">第32章：新的開始</a></li>
+<li><a href="chapter-31.html" style="background: linear-gradient(135deg, #764ba2 0%, #764ba2dd 100%)">第31章：宇宙和平</a></li>
+<li><a href="chapter-30.html" style="background: linear-gradient(135deg, #667eea 0%, #667eeadd 100%)">第30章：終極對決</a></li>
+<li><a href="chapter-29.html" style="background: linear-gradient(135deg, #fee140 0%, #fee140dd 100%)">第29章：星際戰爭</a></li>
+<li><a href="chapter-28.html" style="background: linear-gradient(135deg, #fa709a 0%, #fa709add 100%)">第28章：修真聯盟</a></li>
+<li><a href="chapter-27.html" style="background: linear-gradient(135deg, #38f9d7 0%, #38f9d7dd 100%)">第27章：科技文明</a></li>
+<li><a href="chapter-26.html" style="background: linear-gradient(135deg, #43e97b 0%, #43e97bdd 100%)">第26章：平行世界</a></li>
+<li><a href="chapter-25.html" style="background: linear-gradient(135deg, #00f2fe 0%, #00f2fedd 100%)">第25章：多元宇宙</a></li>
+<li><a href="chapter-24.html" style="background: linear-gradient(135deg, #4facfe 0%, #4facfedd 100%)">第24章：時空穿梭</a></li>
+<li><a href="chapter-23.html" style="background: linear-gradient(135deg, #f5576c 0%, #f5576cdd 100%)">第23章：異界之門</a></li>
+<li><a href="chapter-22.html" style="background: linear-gradient(135deg, #f093fb 0%, #f093fbdd 100%)">第22章：新的征程</a></li>
+<li><a href="chapter-21.html" style="background: linear-gradient(135deg, #764ba2 0%, #764ba2dd 100%)">第21章：真相大白</a></li>
+<li><a href="chapter-20.html" style="background: linear-gradient(135deg, #667eea 0%, #667eeadd 100%)">第20章：生死之戰</a></li>
+<li><a href="chapter-19.html" style="background: linear-gradient(135deg, #fee140 0%, #fee140dd 100%)">第19章：陰謀初現</a></li>
+<li><a href="chapter-18.html" style="background: linear-gradient(135deg, #fa709a 0%, #fa709add 100%)">第18章：暗流湧動</a></li>
+<li><a href="chapter-17.html" style="background: linear-gradient(135deg, #38f9d7 0%, #38f9d7dd 100%)">第17章：天才對決</a></li>
+<li><a href="chapter-16.html" style="background: linear-gradient(135deg, #43e97b 0%, #43e97bdd 100%)">第16章：宗門大比</a></li>
+<li><a href="chapter-15.html" style="background: linear-gradient(135deg, #00f2fe 0%, #00f2fedd 100%)">第15章：突破瓶頸</a></li>
+<li><a href="chapter-14.html" style="background: linear-gradient(135deg, #4facfe 0%, #4facfedd 100%)">第14章：功法傳承</a></li>
+<li><a href="chapter-13.html" style="background: linear-gradient(135deg, #f5576c 0%, #f5576cdd 100%)">第13章：秘境試煉</a></li>
+<li><a href="chapter-12.html" style="background: linear-gradient(135deg, #f093fb 0%, #f093fbdd 100%)">第12章：天賦覺醒</a></li>
+<li><a href="chapter-11.html" style="background: linear-gradient(135deg, #764ba2 0%, #764ba2dd 100%)">第11章：宗門測試</a></li>
+<li><a href="chapter-10.html" style="background: linear-gradient(135deg, #667eea 0%, #667eeadd 100%)">第10章：靈氣復甦</a></li>
+<li><a href="chapter-9.html" style="background: linear-gradient(135deg, #fee140 0%, #fee140dd 100%)">第9章：神秘遺跡</a></li>
+<li><a href="chapter-8.html" style="background: linear-gradient(135deg, #fa709a 0%, #fa709add 100%)">第8章：廢墟探索</a></li>
+<li><a href="chapter-7.html" style="background: linear-gradient(135deg, #38f9d7 0%, #38f9d7dd 100%)">第7章：修煉初體驗</a></li>
+<li><a href="chapter-6.html" style="background: linear-gradient(135deg, #43e97b 0%, #43e97bdd 100%)">第6章：第一個任務</a></li>
+<li><a href="chapter-5.html" style="background: linear-gradient(135deg, #00f2fe 0%, #00f2fedd 100%)">第5章：系統啟動</a></li>
+<li><a href="chapter-4.html" style="background: linear-gradient(135deg, #4facfe 0%, #4facfedd 100%)">第4章：上古靈芯</a></li>
+<li><a href="chapter-3.html" style="background: linear-gradient(135deg, #f5576c 0%, #f5576cdd 100%)">第3章：末法廢土</a></li>
+<li><a href="chapter-2.html" style="background: linear-gradient(135deg, #f093fb 0%, #f093fbdd 100%)">第2章：數據修仙之路</a></li>
+<li><a href="chapter-1.html" style="background: linear-gradient(135deg, #764ba2 0%, #764ba2dd 100%)">第1章：靈芯覺醒</a></li>
 </ul>
         </section>
     </main>
