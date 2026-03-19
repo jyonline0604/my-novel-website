@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+    <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第45章：量子靈根 - 科技修真傳</title>
@@ -12,10 +13,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="light-mode">
+    <div class="reading-progress-bar" id="progress-bar"></div>
     <header class="reader-header">
         <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
         <h2 class="reader-chapter-title">第45章：量子靈根</h2>
     </header>
+    <div id="settings-panel" class="settings-panel">
+        <div class="setting-group">
+            <h4>字體大小</h4>
+            <div id="font-size-options" class="setting-options">
+                <button data-size="small">小</button>
+                <button data-size="medium">中</button>
+                <button data-size="large">大</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <h4>背景主題</h4>
+            <div id="theme-options" class="setting-options">
+                <button data-theme="light-mode">明亮</button>
+                <button data-theme="sepia-mode">米黃</button>
+                <button data-theme="dark-mode">夜間</button>
+                <button data-theme="sky-blue-mode">天空藍</button>
+                <button data-theme="light-green-mode">淺綠色</button>
+            </div>
+        </div>
+    </div>
     <main class="reader-content-area">
         <article class="reader-article">
             <div class="content">
