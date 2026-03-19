@@ -7,7 +7,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root { --primary: #00d4ff; --bg: #0a0a1a; --text: #fff; --card-bg: rgba(255,255,255,0.05); }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 80px 2rem 2rem; max-width: 1200px; margin: 0 auto; line-height: 1.8; }
+        body { 
+            font-family: system-ui, sans-serif; 
+            background: var(--bg) url('background.jpg') no-repeat center top fixed; 
+            background-size: cover;
+            color: var(--text); 
+            padding: 80px 2rem 2rem; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            line-height: 1.8;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.70);
+            z-index: -1;
+        }
         .hero { background: linear-gradient(135deg, #003366, #001a33); padding: 4rem 2rem; border-radius: 16px; margin-bottom: 3rem; text-align: center; }
         .hero h1 { font-size: 3.5rem; color: #00d4ff; margin-bottom: 0.5rem; }
         .hero p { font-size: 1.3rem; color: #88ccff; }
