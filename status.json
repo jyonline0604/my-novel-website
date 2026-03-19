@@ -12,7 +12,7 @@
     "status": "OK"
   },
   "session": {
-    "tokens": "381,009 / 1,643",
+    "tokens": "135,273 / 886",
     "cache": "R:0 W:0"
   },
   "heartbeat": "30m",
@@ -23,5 +23,5 @@
     "novel": "✅ 第52章已生成",
     "latest_chapter": 52
   },
-  "updated": "2026-03-19 12:35:02"
+  "updated": "2026-03-19 12:45:02"
 }
