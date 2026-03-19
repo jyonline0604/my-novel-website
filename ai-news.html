@@ -27,16 +27,45 @@
         .hero { background: linear-gradient(135deg, #003366, #001a33); padding: 4rem 2rem; border-radius: 16px; margin-bottom: 3rem; text-align: center; }
         .hero h1 { font-size: 3.5rem; color: #00d4ff; margin-bottom: 0.5rem; }
         .hero p { font-size: 1.3rem; color: #88ccff; }
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .news-card { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid #00d4ff22; }
-        .news-card h3 { color: var(--primary); margin: 0 0 0.5rem 0; font-size: 1.3rem; }
-        .news-card .meta { color: #888; font-size: 0.9rem; margin-bottom: 1rem; }
-        .news-card p { color: #ccc; margin-bottom: 1rem; }
+        
+        .category-section { margin-bottom: 3rem; }
+        .category-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #1a1a3a, #0d0d24);
+            border-radius: 12px 12px 0 0;
+            border-bottom: 2px solid #00d4ff;
+        }
+        .category-icon { font-size: 2.5rem; }
+        .category-title { font-size: 1.8rem; color: #fff; margin: 0; }
+        
+        .news-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1rem; 
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-radius: 0 0 12px 12px;
+        }
+        .news-card { 
+            background: var(--card-bg); 
+            padding: 1.2rem; 
+            border-radius: 8px; 
+            border: 1px solid #00d4ff22;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(0,212,255,0.2);
+        }
+        .news-card h3 { color: var(--primary); margin: 0 0 0.5rem 0; font-size: 1.1rem; line-height: 1.4; }
+        .news-card .meta { color: #888; font-size: 0.85rem; margin-bottom: 0.8rem; }
         .news-card a { color: var(--primary); text-decoration: none; font-weight: bold; }
-        .trend-analysis { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid #6f42c133; margin-top: 1rem; color: #333; }
-        .trend-analysis h3 { color: #6f42c1; margin-top: 0; }
-        .trend-analysis ul { padding-left: 1.2rem; }
-        .trend-analysis li { margin-bottom: 0.5rem; }
+        .news-card a:hover { text-decoration: underline; }
+        
+        .footer { text-align: center; padding: 2rem; color: #666; }
     </style>
 </head>
 <body>
@@ -44,196 +73,145 @@
         <h1>🤖 AI 資訊聚合</h1>
         <p>最新人工智能動態 | 科技前沿 | 行業趨勢</p>
     </div>
-    <section class="section"><h2>📰 最新資訊</h2>
-    <div class="news-grid">
-        <article class="news-card">
-            <h3>Converge Bio raises $25M, backed by Bessemer and execs from Meta, OpenAI, Wiz</h3>
-            <p class="meta">2026-03-20 | 產品發布 | RSS Feed</p>
-            <p>暫無摘要</p>
-            <a href="https://techcrunch.com/2026/01/13/ai-drug-discovery-startup-converge-bio-pulls-in-25m-from-bessemer-and-execs-from-meta-openai-and-wiz/" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>Meta bought 1 GW of solar this week</h3>
-            <p class="meta">2026-03-20 | 產品發布 | RSS Feed</p>
-            <p>暫無摘要</p>
-            <a href="https://techcrunch.com/2025/10/31/meta-bought-1-gw-of-solar-this-week/" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>How one AI startup is helping rice farmers battle climate change</h3>
-            <p class="meta">2026-03-20 | 產品發布 | RSS Feed</p>
-            <p>暫無摘要</p>
-            <a href="https://techcrunch.com/2025/08/26/how-one-ai-startup-is-helping-rice-farmers-battle-climate-change/" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>Harvard dropouts to launch ‘always on’ AI smart glasses that listen and record every conversation</h3>
-            <p class="meta">2026-03-20 | 產品發布 | RSS Feed</p>
-            <p>暫無摘要</p>
-            <a href="https://techcrunch.com/2025/08/20/harvard-dropouts-to-launch-always-on-ai-smart-glasses-that-listen-and-record-every-conversation/" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>生成式 AI 發展需平衡創新與競爭，公平會將不過早介入 - TechNews 科技新報</h3>
-            <p class="meta">2026-03-20 | 綜合新聞 | RSS Feed</p>
-            <p>暫無摘要</p>
-            <a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOZER1VDRXNm1SRF9KUzUweXBvMDVPV3JsbEZaWHAzZzd4U0hXWUc0ZUIyWDYzVlhmWFEtaUxNVGx1WHhtRUpPc2VSTDVOMkxIWlFpZWctTkpycGJSWmV5VWNHNy03ZTV6WjdsaDhnLVlBQ25lZjI4Wm5nYmQ5cmg3Zjk0M1Rka2N5UkxqTFRwSFJma2Y3WDBZZzVqTHJySjQxR0NiTE1NV09kWXFUQzIw?oc=5" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>Nuobikan Artificial Intelligence Technology (Chengdu) Co. Ltd. Class H的每股盈餘– HKEX:2635 - TradingView</h3>
-            <p class="meta">2026-03-20 | 綜合新聞 | RSS Feed</p>
-            <p>暫無摘要</p>
-            <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxNd1dNbFVVTUw1QjhlV2s2VzF0UWVxd3ZRU2tTOWNXVU5IeGt1eUkyTUhTY0dpMUhMREFYYUh6MS1iV3NmM3lZTFlTYkxubENhaWZaeHFjZjQ0OG5Bam5peGVEM05RRTBYVDNyOG1nTkR5VjJZcDdkMFJ2Tlk5Y0lsckpCWTNjUGZaYmctWEhaNWZWTDJ5eUhaNDM5c1Y?oc=5" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>PwC：抗拒AI者將無容身處 服務業掀自動化轉型潮 - Yahoo股市</h3>
-            <p class="meta">2026-03-20 | 綜合新聞 | RSS Feed</p>
-            <p>暫無摘要</p>
-            <a href="https://news.google.com/rss/articles/CBMivAJBVV95cUxQNDVFa2x5VFFTQUdoay1UeFhGTG9yRkZDSllfaTh1c0xzVU1YdW1RUG9EYXQ3aXNlMl9rRmNheVR3cTJqNXZHOGlaTEt2R3FsZGd2bldyQm5LZmItRTlCX3lyWTVpenVlZkNzOG5ST0hkWkUtd1RYMG9hYzk2YUkzMmdwMkx5THY4UWRWZlNtNlNkN3V1ZXhGSWRLNXgtNVNieFFoWlNtdmlxVVRic3N5Q29RMjNQanZLZlIyRDFqemNOWlF3dTU3SmJTR3NXaV9MUHR4RlRYZVhNUjJkNzBCT3pBdG9lVjdCeVJINDNKU1ZuQ3NmVkpfX054TWZmQjRsWEtFZWJxXzB4WTh3WG5nMVMyWHdOUkRGTkIzMk5PT2xiMXlKVENNbDU2Um9nQXhHX29jZUpCNjJJUVI3?oc=5" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>AI資料中心建設大爆發 「新領」人才稀有、年薪上看六位數 - news.cnyes.com</h3>
-            <p class="meta">2026-03-20 | 綜合新聞 | RSS Feed</p>
-            <p>暫無摘要</p>
-            <a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTFA3N3ZBX05MZ3lUNTZiSUdqZ216ZXNSaWxkeTBscXMyR0UxUUZHbUJMM1Ezd29tWmtfV3RnVG9DbjF1MElteUlHN0RMQ1Fsenc?oc=5" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>Wave of Dust Rolls Through Texas</h3>
-            <p class="meta">2026-03-20 | 前沿科技 | RSS Feed</p>
-            <p>
 
-Earth Observatory
+    <section class="category-section">
+        <div class="category-header">
+            <span class="category-icon">🧠</span>
+            <h2 class="category-title">大語言模型</h2>
+        </div>
+        <div class="news-grid">
 
+            <article class="news-card">
+                <h3>印度成全球最大 LLM 市場，ChatGPT 每月 1.45 億用戶稱霸 - TechNews 科技新報</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxQcnRSSWZvcmdZOUxJRDNIMzVxdm1CZnFHU3dqZGRtaFk3OVJNRHVCQVVQLVVib09DdkcwZXIwYnk2V2ZmdVZ4QXotVmtGVllNcTBsWkZ3cGxReVY1T1JmOGpzM1hpbFJwbHFfc2dJMlcxMEdNbWR0UzhJc0JaWS1UbQ?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+            <article class="news-card">
+                <h3>Google 研究揭只要把提示詞「說兩次」，LLM 效能就升級！記住這個公式，Gemini、ChatGPT 都適用 - 未來商務</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE1vX2ktOGlodzhaYXpIM1VZZlYtcC1WU3RqUWJzcm4tcmNKVUVfTXNqMjh1R1ZjQ1dPY0ZvY0dPR2hPa0lycGlpaGdEN0xPVGROREU2Ug?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+            <article class="news-card">
+                <h3>不只會用ChatGPT！學會API串接與LangChain，打造專屬AI應用 - iThome</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiS0FVX3lxTFBPUGRsSGIyTi1HSllIdTNGV1ZRTGs2aWdpN244ZzdKUUhVeDJFcWxTQzd5YTlsMlZKTGdHakY1R0IxWmRsOWV5Q2hqUQ?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
-Science
-Earth Observatory
-Wave of Dust Rolls Through Texas
+            <article class="news-card">
+                <h3>Converge Bio raises $25M, backed by Bessemer and execs from Meta, OpenAI, Wiz</h3>
+                <p class="meta"></p>
+                <a href="https://techcrunch.com/2026/01/13/ai-drug-discovery-startup-converge-bio-pulls-in-25m-from-bessemer-and-execs-from-meta-openai-and-wiz/" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+        </div>
+    </section>
 
+    <section class="category-section">
+        <div class="category-header">
+            <span class="category-icon">🎨</span>
+            <h2 class="category-title">圖像與視頻生成</h2>
+        </div>
+        <div class="news-grid">
 
+            <article class="news-card">
+                <h3>Stable Diffusion實作外掛AnimateDiff生成影片| 網管人 - 網管人</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPSzFHcG9FYnBPMWhLMm1fbUVqRVlPLTdKOFAtUWZ2VkVSZkRwdlBUaHNoNFRIdVNCN2NSbFJscE1hZXFxNWpnajhJUEZvTnQ4SExhb1FtX1hyTXFZd05mcDhydWl3azU0TnI2RFF2QlNEdU9LcmJZd2plNFBEbWxGX2o4RTBwZXJrblhZcVg0OA?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+            <article class="news-card">
+                <h3>專利情報： 英國首宗生成式AI圖像侵權案實體判決 - 科技產業資訊室</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiakFVX3lxTFB0UGdneEk3ZWZka2RjRHU5OTEwT1RiZUR5WldMSkZJN0xocnRYTjdJN2Q3N3VXd29GTnRKdk9BQXd5NS1CUGkyS3BVdFJSMnRMdE5GcnZrQ0ZxTVBjN1hucFJvckFwVEF6SHc?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+            <article class="news-card">
+                <h3>AI 生成圖片免責？英國法院對 Getty 提告做出關鍵裁決，Stability AI 部分勝訴 - TechNews 科技新報</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBWRXNhTG80VGhMS18xMEJTWXJlenk5aWtCQVp5QUNzYUR5NXFiWTY5ZVh1THo1aTBMNERRUXNTVmRHbVRMOGxaYWRvYXFtQ1dyT1NKb1U5UTJTdUhndkxZ?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
-Earth
-Earth Observatory
-Image of the Day
-EO Explorer
-Topics
+            <article class="news-card">
+                <h3>砍掉Sora等副業！OpenAI終於醒悟：告別「全能帝國」夢 ALL IN算力保衛戰 - news.cnyes.com</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wcHd6MWxyOXhkOVVqNjg3SnY5OEprUVRFUC11VlpsOGdaM3NZTlFTUjM5d0x4MXNhLVdOVl9hclpGdjFiendIWElIbE5iOHM?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
-All Topics
-Atmosphere
-Land
-Heat &#038; Radiation
-L...</p>
-            <a href="https://science.nasa.gov/earth/earth-observatory/wave-of-dust-rolls-through-texas/" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>Artifacts From NASA’s Webb, Parker Solar Probe on View at Smithsonian</h3>
-            <p class="meta">2026-03-20 | 前沿科技 | RSS Feed</p>
-            <p>
+        </div>
+    </section>
 
+    <section class="category-section">
+        <div class="category-header">
+            <span class="category-icon">💻</span>
+            <h2 class="category-title">編程與開發工具</h2>
+        </div>
+        <div class="news-grid">
 
-5 min read
-Artifacts From NASA’s Webb, Parker Solar Probe on View at Smithsonian
+            <article class="news-card">
+                <h3>GitHub Copilot爆RoguePilot提示詞注入弱點，可濫用GITHUB_TOKEN影響CI/CD流程安全 - iThome</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1hVHlHTnhoWUtLZjFueU90a3VoSnJaMUJxLS10Y2swLVlHTFRnRDZJb1NDVmdsVWpfS2lmOF9rZ3NRRjliQ1hHWjBKaEdUdw?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+            <article class="news-card">
+                <h3>RoguePilot漏洞曝光：GitHub Codespaces可能洩露敏感憑證 - informationsecurity.com.tw</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPdHJubFVOeHMwaE5lbTlHMVJ3YVFXc01tY2hqOGZaaDd2N0MxR2xQOEVyLV96d0IxUHRQUURiWmNTWF8tcU5UVWNpTDRzdlRqd21RTm1wREstRDJxQWlEdDBXYzJNa0xrLUR3YjBCcTRmRTYwS19ZRFRBUDBuVURfcGtR?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+            <article class="news-card">
+                <h3>中華電信運用GitHub Copilot 驅動開發創新升級– 微軟新聞中心 - Microsoft Source</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE8tcmZXbTExSG9VY3NKZW5hb29hNFNYMGR6LURTMTQwQjB0Q21kbDBNRUFDTE1jV2QyUlZOVDUwLUFjRmRJZTF3b2RaOWlwUUVNQ3pVaU54Wk9hR1M3b1lIbWlHZmJtVVg4czNwUFVpaE5WMkwyNF9rQ01XNU8?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+            <article class="news-card">
+                <h3>Substack launches a built-in recording studio</h3>
+                <p class="meta"></p>
+                <a href="https://techcrunch.com/2026/03/12/substack-launches-a-built-in-recording-studio/" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+        </div>
+    </section>
 
+    <section class="category-section">
+        <div class="category-header">
+            <span class="category-icon">🏢</span>
+            <h2 class="category-title">行業應用</h2>
+        </div>
+        <div class="news-grid">
 
+            <article class="news-card">
+                <h3>戴立忠代表：加快推進“AI+醫療”賦能全民健康數智化建設 - 人民网</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBkeHEzeHBzQ2FQQzZmOExMcGVMMDRKRW5ucVVOQzdOdzNhM1ZtQUhnZnVUUDN3ZDNvbUJta1hvZU9nNXVLT0l1RXhaNGZsS25NNmkxRnNFME1WOGE4bFFvM3NlT0l4T1Jqam9MeWt5LWQ?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
-NASA’s James Webb Space Telescope Optical Telescope Element Pathfinder testing hardware, and a full-scale mod...</p>
-            <a href="https://science.nasa.gov/missions/webb/artifacts-from-nasas-webb-parker-solar-probe-on-view-at-smithsonian/" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>Ice to Fuel: NASA Tests Technology for Refueling Landers </h3>
-            <p class="meta">2026-03-20 | 前沿科技 | RSS Feed</p>
-            <p>3 min readPreparations for Next Moonwalk Simulations Underway (and Underwater)
+            <article class="news-card">
+                <h3>2026高雄智慧城市展亮點多 聚焦城市主權AI、醫療、淨零與氫能| 科技 - Newtalk新聞</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5hczllaTl4MndudFVwZGp0czhhUUEyMkRPb0RiU3JySUJVOXRrMmZmQzgtemJzSllSeGY5SGJRd3RhNFZUVnJ3dTdmRmJUS2FNNUhXTXp2SXpJelE?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
-NASA engineers Jonathan Davis, left, and Markus Perkins inspect a flight-like cryocooler developed by Creare LLC prior t...</p>
-            <a href="https://www.nasa.gov/general/nasa-tests-lander-refueling-tech/" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
-        <article class="news-card">
-            <h3>Shades of a Lunar Eclipse</h3>
-            <p class="meta">2026-03-20 | 前沿科技 | RSS Feed</p>
-            <p>
+            <article class="news-card">
+                <h3>北京觀察》中國AI醫療大爆發！從「螞蟻阿福」到智慧醫院：是救命神器還是數位牢籠？ | 田暢 | 新聞 - 風傳媒</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1tdVFxVXc0Z0NpX2R5cEFnVGMxczFzNGhoZGZlWWdMZklsTXZmeGtpVlN0a0JlM1VwRVBRRm5MNHI5ZG5Kbk8yTGx1YjhnZw?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
-Earth Observatory
+            <article class="news-card">
+                <h3>2019第二屆FinTech Taipei台北金融科技展華南金融集團打造未來金融無限可能性首推AI無限創新中心展現豐碩金融科技成績 - 放言Fount Media</h3>
+                <p class="meta"></p>
+                <a href="https://news.google.com/rss/articles/CBMiUEFVX3lxTFBlN3NpcU9xNEpTYUpoV2pNaFZEd2JLbUcxR2ZCYmR3T1VTU1ZRVTRNYVI0UFp6SWRwZnUyWm1Hd05jUVo3NDNzbEMxVGtJcm9O?oc=5" target="_blank" rel="noopener">閱讀原文 →</a>
+            </article>
 
+        </div>
+    </section>
 
-
-
-Science
-Earth Observatory
-Shades of a Lunar Eclipse
-
-
-
-
-
-
-Earth
-Earth Observatory
-Image of the Day
-EO Explorer
-Topics
-
-All Topics
-Atmosphere
-Land
-Heat &#038; Radiation
-Life on ...</p>
-            <a href="https://science.nasa.gov/earth/earth-observatory/shades-of-a-lunar-eclipse/" target="_blank" rel="noopener noreferrer">閱讀原文 →</a>
-        </article>
+    <div class="footer">
+        <p>最後更新：2026-03-20 00:24</p>
     </div>
-    
-    
-    
-    
-    
-    </article>
-</div>
-
-<div class="guide-section" style="margin-top: 30px; background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 5px solid #6f42c1;">
-    <h2 style="color: #6f42c1; margin-top: 0;">🚀 今日AI趨勢分析 (2026年03月19日)</h2>
-    
-    <div class="trend-analysis">
-<div class="trend-analysis">
-        <h3>📊 當前AI發展趨勢</h3>
-        <ul>
-            <li><strong>今日新聞數：</strong> 共抓取 12 條 AI 相關新聞</li>
-            <li><strong>來源媒體：</strong> 來自 1 個權威媒體</li>
-            <li><strong>新聞分類：</strong> 產品發布(4), 綜合新聞(4), 前沿科技(4)</li>
-            <li><strong>更新時間：</strong> 2026-03-20</li>
-        </ul>
-        
-        <h3>🔥 熱門焦點（前5條）</h3>
-        <ul>
-            <li>Converge Bio raises $25M, backed by Bessemer and execs from Meta, OpenAI, Wiz</li>
-            <li>Meta bought 1 GW of solar this week</li>
-            <li>How one AI startup is helping rice farmers battle climate change</li>
-            <li>Harvard dropouts to launch ‘always on’ AI smart glasses that listen and record e...</li>
-            <li>生成式 AI 發展需平衡創新與競爭，公平會將不過早介入 - TechNews 科技新報</li>
-        </ul>
-        
-        <p style="font-size: 0.9em; color: #666; margin-top: 15px;">
-            <i class="fas fa-robot"></i> 以上新聞由 RSS 自動抓取，每日更新
-        </p>
-    </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-</div>
-</section>
-    <section class="section"><h2>🧠 大语言模型</h2></section>
-    <section class="section"><h2>🎨 图像与视频生成</h2></section>
-    <section class="section"><h2>💻 编程与开发工具</h2></section>
-    <section class="section"><h2>🏢 行業应用</h2></section>
-    
-    <footer style="text-align: center; padding: 2rem; color: #666; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.1);">
-        返回 <a href="index.html">首页</a>
-    <p style="font-size: 0.9em; color: #888; margin-top: 0.5rem;">P26-03-19 10:13 HKT</p>
-    </footer>
-</body></html>
+</body>
+</html>
