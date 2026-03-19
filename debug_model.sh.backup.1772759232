@@ -1,0 +1,28 @@
+#!/bin/bash
+source ~/.openclaw/.env 2>/dev/null
+
+echo "🔍 調試模型配置"
+echo "================"
+
+MODEL_CONFIGS=(
+    "deepseek:deepseek-reasoner:https://api.deepseek.com/chat/completions:DEEPSEEK_API_KEY"
+    "zai:glm-5:https://open.bigmodel.cn/api/paas/v4/chat/completions:ZAI_API_KEY"
+)
+
+for model_config in "${MODEL_CONFIGS[@]}"; do
+    echo "處理: $model_config"
+    IFS=':' read -r provider model_name endpoint api_key_env <<< "$model_config"
+    echo "  provider: $provider"
+    echo "  model_name: $model_name"
+    echo "  endpoint: $endpoint"
+    echo "  api_key_env: $api_key_env"
+    
+    # 獲取API密鑰
+    api_key="${!api_key_env}"
+    if [ -z "$api_key" ]; then
+        echo "  ❌ API密鑰未設置"
+    else
+        echo "  ✅ API密鑰已設置 (長度: ${#api_key})"
+    fi
+    echo ""
+done

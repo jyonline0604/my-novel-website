@@ -1,0 +1,31 @@
+#!/bin/bash
+echo "🔧 修復腳本語法並測試"
+echo "=========================="
+
+# 修復語法錯誤 - 移除有問題的行並替換
+cd /home/openclaw/.openclaw/workspace/my-novel-website
+
+# 備份原文件
+cp generate_chapter_checkpoint.sh generate_chapter_checkpoint.sh.backup.$(date +%s)
+
+# 使用 sed 修復語法錯誤
+# 問題：${#!key} 語法錯誤，應該使用間接引用
+cat generate_chapter_checkpoint.sh | sed 's/echo "✅ \$key: 已設置 (長度: \${#!key} 字符)"/echo "✅ \$key: 已設置"/g' > generate_chapter_checkpoint_fixed.sh
+
+# 檢查修復後的語法
+if bash -n generate_chapter_checkpoint_fixed.sh; then
+    echo "✅ 語法修復成功"
+    mv generate_chapter_checkpoint_fixed.sh generate_chapter_checkpoint.sh
+    chmod +x generate_chapter_checkpoint.sh
+else
+    echo "❌ 語法修復失敗，恢復原文件"
+    rm generate_chapter_checkpoint_fixed.sh
+    exit 1
+fi
+
+# 測試腳本
+echo ""
+echo "🧪 測試腳本執行:"
+echo "----------------"
+source ~/.openclaw/.env 2>/dev/null
+bash generate_chapter_checkpoint.sh 2>&1 | head -30

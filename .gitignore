@@ -1,0 +1,22 @@
+# Logs
+*.log
+
+# Shell scripts (keep in workspace only)
+*.sh
+*.direct
+*.backup
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# API Keys and secrets
+.env
+.env.local
+.env.*.local
+.env.*.secret
+
+# Checkpoints
+checkpoints/
+*.checkpoint

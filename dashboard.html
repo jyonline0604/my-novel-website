@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 控制面板 - 科技修真傳</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .dashboard-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white; padding: 40px; border-radius: 16px; text-align: center; margin-bottom: 30px;
+        }
+        .dashboard-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .status-card { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .status-card h3 { color: #666; margin-bottom: 10px; font-size: 0.9rem; }
+        .status-value { font-size: 1.5rem; font-weight: bold; color: #2d6a4f; }
+        .status-value.error { color: #e63946; }
+        .status-value.success { color: #2d6a4f; }
+        .status-value.warning { color: #f4a261; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .info-card { background: #f8f9fa; padding: 15px; border-radius: 12px; }
+        .info-card .label { font-size: 0.8rem; color: #666; }
+        .info-card .value { font-size: 1rem; font-weight: bold; color: #333; }
+        .section { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-top: 20px; }
+        .section h2 { color: #333; margin-bottom: 20px; font-size: 1.3rem; }
+        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #eee; }
+        .task-time { font-weight: bold; color: #2d6a4f; min-width: 70px; }
+        .task-status { padding: 3px 10px; border-radius: 15px; font-size: 0.8rem; }
+        .task-status.ok { background: #d4edda; color: #155724; }
+        .nav-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-top: 15px; }
+        .nav-link-card { display: block; padding: 15px; background: #f8f9fa; border-radius: 10px; text-align: center; text-decoration: none; color: #333; font-size: 0.9rem; font-weight: bold; }
+        .nav-link-card:hover { background: #2d6a4f; color: white; }
+        .refresh-indicator { font-size: 0.75rem; color: #999; text-align: center; margin-top: 15px; }
+    </style>
+</head>
+<body class="light-mode">
+    <header class="main-header">
+        <div class="novel-title">科技修真傳</div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">🏠 首頁</a>
+            <a href="game-guide.html" class="nav-link">🎮 問劍長生</a>
+            <a href="saint-seiya-guide.html" class="nav-link">⚔️ 聖鬥士星矢</a>
+            <a href="beapro-football-guide.html" class="nav-link">⚽ Be A Pro</a>
+            <a href="kai-tian-guide.html" class="nav-link">🗡️ 開天</a>
+            <a href="ai-news.html" class="nav-link">🤖 AI 資訊</a>
+            <a href="dashboard.html" class="nav-link active">📊 控制面板</a>
+        </nav>
+        <button id="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+    </header>
+
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h1>📊 OpenClaw 控制面板</h1>
+            <p>系統即時狀態監控</p>
+        </div>
+        
+        <div class="status-grid">
+            <div class="status-card">
+                <h3>🔧 版本</h3>
+                <div class="status-value" id="version">--</div>
+            </div>
+            <div class="status-card">
+                <h3>⚡ Gateway</h3>
+                <div class="status-value" id="gateway">--</div>
+            </div>
+            <div class="status-card">
+                <h3>👥 Agents</h3>
+                <div class="status-value" id="agents">--</div>
+            </div>
+            <div class="status-card">
+                <h3>💬 Channel</h3>
+                <div class="status-value" id="channel">--</div>
+            </div>
+            <div class="status-card">
+                <h3>🧮 Tokens</h3>
+                <div class="status-value" id="tokens">--</div>
+            </div>
+            <div class="status-card">
+                <h3>🗄️ Cache</h3>
+                <div class="status-value" id="cache">--</div>
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">📡 連線延遲</div>
+                <div class="value" id="latency">--</div>
+            </div>
+            <div class="info-card">
+                <div class="label">🔄 可用更新</div>
+                <div class="value" id="update">--</div>
+            </div>
+            <div class="info-card">
+                <div class="label">💓 Heartbeat</div>
+                <div class="value" id="heartbeat">--</div>
+            </div>
+            <div class="info-card">
+                <div class="label">🖥️ 作業系統</div>
+                <div class="value" id="os">Linux</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📋 自動化任務排程</h2>
+            <div class="task-item"><span class="task-time">02:00</span><span>日備份任務</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">03:00</span><span>加密監控</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">07:00</span><span>小說章節生成</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">09:00</span><span>系統安全檢查</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">10:00</span><span>網站內容自動更新</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">11:00</span><span>網站內容自動更新</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">12:00</span><span>網站內容自動更新</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">14:00</span><span>網站內容自動更新</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">15分钟</span><span>控制面板數據刷新</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">08:15</span><span>晨間簡報</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">12:55</span><span>午間簡報</span><span class="task-status ok">✅</span></div>
+            <div class="task-item"><span class="task-time">17:55</span><span>傍晚簡報</span><span class="task-status ok">✅</span></div>
+        </div>
+        
+        <div class="section">
+            <h2>🔗 快速連結</h2>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link-card">🏠 首頁</a>
+                <a href="chapter-1.html" class="nav-link-card">📖 小說</a>
+                <a href="game-guide.html" class="nav-link-card">🎮 問劍</a>
+                <a href="saint-seiya-guide.html" class="nav-link-card">⚔️ 聖鬥士</a>
+                <a href="beapro-football-guide.html" class="nav-link-card">⚽ Be A Pro</a>
+                <a href="kai-tian-guide.html" class="nav-link-card">🗡️ 開天</a>
+                <a href="ai-news.html" class="nav-link-card">🤖 AI 資訊</a>
+            </div>
+        </div>
+        
+        <div class="refresh-indicator">
+            最後更新：<span id="lastUpdate">--</span> · 每5分鐘自動刷新
+        </div>
+    </div>
+    
+    <footer class="main-footer">
+        <div class="footer-content"><p>© 2026 大肥瞄．科技修真傳</p></div>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+        async function updateStatus() {
+            try {
+                const r = await fetch('api/status.json?t=' + Date.now());
+                const d = await r.json();
+                
+                document.getElementById('version').textContent = d.version || '--';
+                document.getElementById('update').textContent = d.update || '--';
+                
+                const gw = document.getElementById('gateway');
+                gw.textContent = d.gateway?.status || '--';
+                gw.className = d.gateway?.status === '運行中' ? 'status-value success' : 'status-value error';
+                
+                const ag = document.getElementById('agents');
+                ag.textContent = (d.agents?.total || 0) + ' / ' + (d.agents?.active || 0);
+                
+                const ch = document.getElementById('channel');
+                ch.textContent = d.channel?.status || '--';
+                ch.className = d.channel?.status === 'OK' ? 'status-value success' : 'status-value error';
+                
+                document.getElementById('tokens').textContent = d.session?.tokens || '--';
+                document.getElementById('cache').textContent = d.session?.cache || '--';
+                document.getElementById('heartbeat').textContent = d.heartbeat || '--';
+                document.getElementById('latency').textContent = d.gateway?.latency || '--';
+                document.getElementById('lastUpdate').textContent = d.updated || '--';
+            } catch(e) { console.error(e); }
+        }
+        updateStatus();
+        setInterval(updateStatus, 300000);
+    </script>
+</body>
+</html>

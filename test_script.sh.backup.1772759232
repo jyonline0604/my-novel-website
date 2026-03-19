@@ -1,0 +1,31 @@
+#!/bin/bash
+echo "測試小說生成腳本..."
+echo "========================"
+
+# 檢查腳本是否可執行
+if [ -f generate_chapter_checkpoint.sh ]; then
+    echo "✅ 腳本文件存在"
+    
+    # 檢查語法
+    bash -n generate_chapter_checkpoint.sh && echo "✅ 語法檢查通過"
+    
+    # 嘗試運行API密鑰檢查部分
+    echo ""
+    echo "🔍 測試API密鑰檢查:"
+    source ~/.openclaw/.env 2>/dev/null
+    
+    # 手動運行API密鑰檢查
+    echo "檢查DeepSeek API密鑰..."
+    if [ -n "$DEEPSEEK_API_KEY" ]; then
+        echo "✅ DeepSeek API密鑰已設置"
+    else
+        echo "❌ DeepSeek API密鑰未設置"
+    fi
+    
+    echo ""
+    echo "🧪 嘗試運行腳本:"
+    echo "輸出:"
+    bash generate_chapter_checkpoint.sh 2>&1 | head -20
+else
+    echo "❌ 腳本文件不存在"
+fi

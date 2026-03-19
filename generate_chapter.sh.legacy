@@ -1,0 +1,31 @@
+#!/bin/bash
+# 小說章節生成器 - 直接執行版本
+# 繞過智能體直接執行章節生成
+
+set -e
+
+echo "📖 開始生成新章節..."
+echo "時間: $(date '+%Y-%m-%d %H:%M:%S')"
+
+# 直接執行 .direct 腳本
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DIRECT_SCRIPT="$SCRIPT_DIR/generate_chapter.sh.direct"
+
+if [ -f "$DIRECT_SCRIPT" ]; then
+    echo "執行直接腳本: $DIRECT_SCRIPT"
+    bash "$DIRECT_SCRIPT"
+    EXIT_CODE=$?
+    
+    if [ $EXIT_CODE -eq 0 ]; then
+        echo "✅ 章節生成完成"
+        echo "$(date '+%Y-%m-%d %H:%M:%S') - 章節生成成功" >> cron.log
+    else
+        echo "❌ 章節生成失敗，退出碼: $EXIT_CODE"
+        echo "$(date '+%Y-%m-%d %H:%M:%S') - 章節生成失敗 (退出碼: $EXIT_CODE)" >> cron.log
+        exit $EXIT_CODE
+    fi
+else
+    echo "❌ 找不到直接腳本: $DIRECT_SCRIPT"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - 章節生成失敗 (找不到腳本)" >> cron.log
+    exit 1
+fi

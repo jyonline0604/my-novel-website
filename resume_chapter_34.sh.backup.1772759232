@@ -1,0 +1,31 @@
+#!/bin/bash
+echo "🔧 恢復並繼續生成第34章"
+echo "=========================="
+
+# 檢查檢查點系統
+if [ -f checkpoints/active_novel-generation.json ]; then
+    echo "✅ 檢查點系統已啟動"
+    echo "嘗試恢復執行..."
+    
+    # 手動恢復檢查點
+    source ~/.openclaw/.env 2>/dev/null
+    
+    # 嘗試直接調用生成腳本
+    echo ""
+echo "🚀 開始恢復執行:"
+echo ""
+    timeout 300 bash generate_chapter_checkpoint.sh
+    
+    if [ $? -eq 0 ]; then
+        echo "✅ 恢復執行成功！"
+    else
+        echo "❌ 恢復執行失敗，嘗試重新開始..."
+        # 嘗試重新開始
+        rm -f checkpoints/active_novel-generation.json
+        bash generate_chapter_checkpoint.sh
+    fi
+else
+    echo "❌ 檢查點系統未啟動"
+    echo "嘗試直接生成第34章..."
+    bash generate_chapter_checkpoint.sh
+fi

@@ -1,0 +1,637 @@
+#!/bin/bash
+# 小說章節生成器 - 帶檢查點版本
+# 支持任務恢復和模型切換後繼續執行
+
+set -e
+
+REPO_DIR="/home/openclaw/.openclaw/workspace/my-novel-website"
+CHECKPOINTS_DIR="$REPO_DIR/checkpoints"
+TASK_NAME="novel-generation"
+ACTIVE_CHECKPOINT="$CHECKPOINTS_DIR/active_${TASK_NAME}.json"
+
+cd "$REPO_DIR"
+
+# 檢查必要的API密鑰環境變量
+ # 注意：API密鑰應該通過環境變量設置，或者通過OpenClaw配置系統管理
+check_api_keys() {
+    echo "🔍 檢查API密鑰配置..."
+    
+    # 檢查是否有任何可用的API密鑰
+    local has_api_key=0
+    
+    # 檢查 OpenRouter (推薦)
+    if [ -n "${OPENROUTER_API_KEY}" ]; then
+        echo "✅ OPENROUTER_API_KEY: 已設置 (長度: ${#OPENROUTER_API_KEY} 字符)"
+        has_api_key=1
+    fi
+    
+    # 檢查 DeepSeek
+    if [ -n "${DEEPSEEK_API_KEY}" ]; then
+        echo "✅ DEEPSEEK_API_KEY: 已設置 (長度: ${#DEEPSEEK_API_KEY} 字符)"
+        has_api_key=1
+    fi
+    
+    # 檢查其他可選API密鑰
+    local optional_keys=("ZAI_API_KEY" "MOONSHOT_API_KEY" "MINIMAX_API_KEY" "KIMI_API_KEY" "GLM_API_KEY")
+    
+    for key in "${optional_keys[@]}"; do
+        if [ -n "${!key}" ]; then
+            echo "✅ $key: 已設置"
+            has_api_key=1
+        fi
+    done
+    
+    # 如果沒有任何API密鑰，顯示錯誤
+    if [ $has_api_key -eq 0 ]; then
+        echo ""
+        echo "❌ 錯誤：沒有設置任何API密鑰"
+        echo ""
+        echo "請至少設置以下其中一個環境變量："
+        echo ""
+        echo "【推薦】OpenRouter (支持多個模型):"
+        echo "  export OPENROUTER_API_KEY=\"your_openrouter_api_key\""
+        echo ""
+        echo "【其他選項】"
+        echo "  export DEEPSEEK_API_KEY=\"your_deepseek_api_key\""
+        echo "  export ZAI_API_KEY=\"your_zai_api_key\"        # GLM-5"
+        echo "  export MOONSHOT_API_KEY=\"your_moonshot_key\"  # Kimi K2.5"
+        echo "  export MINIMAX_API_KEY=\"your_minimax_key\"    # Minimax M2.5"
+        echo ""
+        exit 1
+    fi
+    
+    # 統計可用的備選模型
+    local optional_found=0
+    for key in "${optional_keys[@]}"; do
+        if [ -n "${!key}" ]; then
+            optional_found=$((optional_found+1))
+        fi
+    done
+    
+    if [ $optional_found -eq 0 ] && [ -z "${OPENROUTER_API_KEY}" ]; then
+        echo ""
+        echo "💡 提示：所有可選API密鑰都未設置，模型自動切換功能將僅使用DeepSeek"
+        echo "   如果您希望啟用多模型自動切換，請設置對應的環境變量"
+    fi
+    
+    echo ""
+}
+
+# 運行API密鑰檢查
+check_api_keys
+
+# 檢查 OpenRouter 密鑰（如果設置了）
+if [ -n "${OPENROUTER_API_KEY}" ]; then
+    echo "✅ OPENROUTER_API_KEY: 已設置 (長度: ${#OPENROUTER_API_KEY} 字符)"
+    echo "   將優先使用 OpenRouter 進行 API 調用"
+else
+    echo "⚠️  OPENROUTER_API_KEY: 未設置 (可選，但推薦使用)"
+    echo "   OpenRouter 提供統一的 API 接口訪問多個模型"
+fi
+echo ""
+
+# 模型配置 - 支持多模型自動切換
+# 格式: "提供者|模型名稱|API端點|API密鑰環境變量" (使用 | 分隔避免 URL 中的 : 造成問題)
+MODEL_CONFIGS=(
+    # OpenRouter (推薦) - 支持多個模型
+    "openrouter|deepseek/deepseek-chat|https://openrouter.ai/api/v1/chat/completions|OPENROUTER_API_KEY"
+    "openrouter|deepseek/deepseek-reasoner|https://openrouter.ai/api/v1/chat/completions|OPENROUTER_API_KEY"
+    "openrouter|anthropic/claude-3.5-sonnet|https://openrouter.ai/api/v1/chat/completions|OPENROUTER_API_KEY"
+    # DeepSeek 官方
+    "deepseek|deepseek-reasoner|https://api.deepseek.com/chat/completions|DEEPSEEK_API_KEY"
+    "deepseek|deepseek-chat|https://api.deepseek.com/chat/completions|DEEPSEEK_API_KEY"
+    # GLM-5 (智譜AI)
+    "zai|glm-5|https://open.bigmodel.cn/api/paas/v4/chat/completions|ZAI_API_KEY"
+    "zai|glm-5|https://open.bigmodel.cn/api/paas/v4/chat/completions|GLM_API_KEY"
+    # Kimi K2.5 (月之暗面)
+    "moonshot|kimi-k2.5|https://api.moonshot.cn/v1/chat/completions|MOONSHOT_API_KEY"
+    "moonshot|kimi-k2.5|https://api.moonshot.cn/v1/chat/completions|KIMI_API_KEY"
+    # Minimax M2.5
+    "minimax|MiniMax-M2.5|https://api.minimax.chat/v1/chat/completions|MINIMAX_API_KEY"
+)
+
+# 當前使用的模型信息
+CURRENT_MODEL_PROVIDER=""
+CURRENT_MODEL_NAME=""
+
+# 模型調用函數
+call_ai_model() {
+    local prompt="$1"
+    local model_configs=("${MODEL_CONFIGS[@]}")
+    
+    for model_config in "${model_configs[@]}"; do
+        # 使用 | 作為分隔符，避免 URL 中的 : 造成問題
+        IFS='|' read -r provider model_name endpoint api_key_env <<< "$model_config"
+        
+        # 跳過註釋行
+        if [[ "$provider" == \#* ]]; then
+            continue
+        fi
+        
+        # 獲取API密鑰
+        local api_key="${!api_key_env}"
+        if [ -z "$api_key" ] || [ "$api_key" = "" ]; then
+            echo "⚠️ 跳過 $provider ($model_name): API密鑰未設置 ($api_key_env)"
+            continue
+        fi
+        
+        echo "🤖 嘗試使用 $provider ($model_name)..."
+        
+        # 構建JSON請求（使用OpenAI兼容格式）
+        local json_data
+        json_data=$(jq -n \
+          --arg model "$model_name" \
+          --arg system "你是專業中文小說作家" \
+          --arg prompt "$prompt" \
+          '{
+            model: $model,
+            messages: [
+              {role: "system", content: $system},
+              {role: "user", content: $prompt}
+            ],
+            stream: false
+          }' 2>/dev/null || echo '{}')
+        
+        # 發送API請求
+        local response
+        response=$(curl -s --max-time 60 --connect-timeout 10 "$endpoint" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer ${api_key}" \
+          -d "$json_data" 2>/dev/null || echo "{\"error\": \"$provider API請求失敗\"}")
+        
+        # 檢查響應
+        if echo "$response" | grep -q '"error"'; then
+            local error_msg
+            error_msg=$(echo "$response" | jq -r '.error.message // .error // "Unknown error"' 2>/dev/null || echo "$response")
+            echo "❌ $provider 失敗: $error_msg"
+            continue
+        fi
+        
+        # 檢查是否有有效內容
+        local content
+        content=$(echo "$response" | jq -r '.choices[0].message.content // empty' 2>/dev/null)
+        if [ -n "$content" ] && [ "$content" != "null" ]; then
+            echo "✅ $provider 成功生成內容"
+            CURRENT_MODEL_PROVIDER="$provider"
+            CURRENT_MODEL_NAME="$model_name"
+            
+            # 返回成功響應和內容
+            echo "$response"
+            return 0
+        else
+            echo "❌ $provider 響應無效內容"
+            continue
+        fi
+    done
+    
+    # 所有模型都失敗
+    echo "❌ 所有AI模型都失敗，無法生成內容"
+    return 1
+}
+
+# 確保檢查點目錄存在
+mkdir -p "$CHECKPOINTS_DIR"
+
+# 工具函數：保存檢查點
+save_checkpoint() {
+    local step="$1"
+    local progress="$2"
+    local data_file="$3"
+    local extra="$4"
+    
+    bash save_checkpoint.sh "$TASK_NAME" "$step" "$progress" "$data_file" "$extra"
+}
+
+# 工具函數：恢復檢查點
+restore_checkpoint() {
+    if [ -f "$ACTIVE_CHECKPOINT" ]; then
+        echo "🔍 發現活動檢查點: $ACTIVE_CHECKPOINT"
+        
+        # 讀取檢查點信息
+        local step=$(jq -r '.step' "$ACTIVE_CHECKPOINT")
+        local progress=$(jq -r '.progress' "$ACTIVE_CHECKPOINT")
+        local data=$(jq -c '.data' "$ACTIVE_CHECKPOINT")
+        
+        echo "📋 檢查點狀態: 步驟=$step, 進度=$progress%"
+        
+        # 詢問是否恢復
+        read -p "是否從檢查點恢復？ (Y/n): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Nn]$ ]]; then
+            echo "ℹ️ 忽略檢查點，從頭開始執行"
+            rm -f "$ACTIVE_CHECKPOINT"
+            return 1
+        fi
+        
+        # 設置恢復變量
+        export RESTORE_MODE=true
+        export RESTORE_STEP="$step"
+        export RESTORE_DATA="$data"
+        
+        # 根據步驟恢復數據
+        case "$step" in
+            "determine-chapter")
+                NEXT_CHAPTER=$(echo "$data" | jq -r '.next_chapter // empty')
+                LAST_CHAPTER=$(echo "$data" | jq -r '.last_chapter // empty')
+                echo "✅ 恢復章節信息: 第${LAST_CHAPTER}章 -> 第${NEXT_CHAPTER}章"
+                ;;
+            "api-call")
+                NEXT_CHAPTER=$(echo "$data" | jq -r '.next_chapter // empty')
+                API_RESPONSE=$(echo "$data" | jq -r '.api_response // empty')
+                echo "✅ 恢復API響應: 第${NEXT_CHAPTER}章內容已生成"
+                ;;
+            "extract-title")
+                NEXT_CHAPTER=$(echo "$data" | jq -r '.next_chapter // empty')
+                CHAPTER_TITLE=$(echo "$data" | jq -r '.chapter_title // empty')
+                NEW_CONTENT=$(echo "$data" | jq -r '.new_content // empty')
+                echo "✅ 恢復標題: 第${NEXT_CHAPTER}章 - ${CHAPTER_TITLE}"
+                ;;
+            "generate-html")
+                NEXT_CHAPTER=$(echo "$data" | jq -r '.next_chapter // empty')
+                CHAPTER_TITLE=$(echo "$data" | jq -r '.chapter_title // empty')
+                HTML_FILE="chapter-${NEXT_CHAPTER}.html"
+                if [ -f "$HTML_FILE" ]; then
+                    echo "✅ 恢復HTML文件: $HTML_FILE 已存在"
+                fi
+                ;;
+            "update-nav")
+                NEXT_CHAPTER=$(echo "$data" | jq -r '.next_chapter // empty')
+                echo "✅ 恢復導航更新: 第${NEXT_CHAPTER}章導航已更新"
+                ;;
+            "git-commit")
+                NEXT_CHAPTER=$(echo "$data" | jq -r '.next_chapter // empty')
+                echo "✅ 恢復Git提交: 第${NEXT_CHAPTER}章已提交"
+                ;;
+        esac
+        
+        return 0
+    fi
+    
+    return 1
+}
+
+# 主執行函數
+main() {
+    echo "📖 小說章節生成器 - 帶檢查點版本"
+    echo "時間: $(date '+%Y-%m-%d %H:%M:%S')"
+    
+    # 嘗試恢復檢查點
+    if restore_checkpoint; then
+        echo "🔄 從檢查點恢復執行"
+        STEP_TO_RESUME="$RESTORE_STEP"
+    else
+        echo "🚀 開始新任務"
+        STEP_TO_RESUME="start"
+    fi
+    
+    # 步驟1: 確定章節編號
+    if [[ "$STEP_TO_RESUME" =~ ^(start|determine-chapter)$ ]]; then
+        echo ""
+        echo "🔢 步驟1: 確定章節編號"
+        
+        # 如果恢復模式且已經有數據，則跳過
+        if [ "$RESTORE_MODE" = "true" ] && [ "$RESTORE_STEP" = "determine-chapter" ]; then
+            echo "⏩ 跳過已完成的步驟: determine-chapter"
+        else
+            # 更新網站更新日期
+            DATE=$(date "+%Y年%m月%d日")
+            sed -i "s/最後更新：.*/最後更新：${DATE}/g" index.html
+            
+            # 獲取最新章節編號
+            LAST_CHAPTER=$(ls -1 chapter-*.html 2>/dev/null | grep -oP 'chapter-\K[0-9]+' | sort -n | tail -1)
+            [ -z "$LAST_CHAPTER" ] && LAST_CHAPTER=0
+            NEXT_CHAPTER=$((LAST_CHAPTER + 1))
+            PREV_CHAPTER=$((NEXT_CHAPTER - 1))
+            
+            echo "最新章節: 第${LAST_CHAPTER}章 -> 將生成第${NEXT_CHAPTER}章"
+            
+            # 保存檢查點
+            jq -n \
+              --arg last_chapter "$LAST_CHAPTER" \
+              --arg next_chapter "$NEXT_CHAPTER" \
+              --arg prev_chapter "$PREV_CHAPTER" \
+              '{last_chapter: $last_chapter, next_chapter: $next_chapter, prev_chapter: $prev_chapter}' \
+              > /tmp/chapter_info.json
+            
+            save_checkpoint "determine-chapter" "20" "/tmp/chapter_info.json" "章節信息已確定"
+        fi
+    fi
+    
+    # 步驟2: 調用DeepSeek API生成內容
+    if [[ "$STEP_TO_RESUME" =~ ^(start|determine-chapter|api-call|api-error)$ ]]; then
+        echo ""
+        echo "🤖 步驟2: 調用DeepSeek API生成內容"
+        
+        if [ "$RESTORE_MODE" = "true" ] && [ "$RESTORE_STEP" = "api-call" ]; then
+            echo "⏩ 跳過已完成的步驟: api-call"
+            # 從恢復數據讀取API響應和模型信息
+            NEW_CONTENT=$(echo "$RESTORE_DATA" | jq -r '.new_content // empty')
+            API_RESPONSE=$(echo "$RESTORE_DATA" | jq -r '.api_response // empty')
+            CURRENT_MODEL_PROVIDER=$(echo "$RESTORE_DATA" | jq -r '.model_provider // "deepseek"')
+            CURRENT_MODEL_NAME=$(echo "$RESTORE_DATA" | jq -r '.model_name // "deepseek-reasoner"')
+            
+            echo "📊 恢復使用模型: $CURRENT_MODEL_PROVIDER ($CURRENT_MODEL_NAME)"
+        else
+            # 構建提示詞
+            PROMPT="延續《科技修真傳》上一章的劇情，撰寫第${NEXT_CHAPTER}章（至少3小節，每小節3-4段，繁體中文，主角是林塵，修真科幻風格）"
+            
+            echo "🤖 調用AI模型生成內容..."
+            
+            # 調用AI模型（支持多模型自動切換）
+            RESPONSE=$(call_ai_model "$PROMPT")
+            
+            # 檢查API錯誤
+            if [ $? -ne 0 ] || [ -z "$RESPONSE" ]; then
+                echo "❌ 所有AI模型都失敗，無法生成內容"
+                
+                # 保存錯誤檢查點
+                jq -n \
+                  --arg next_chapter "$NEXT_CHAPTER" \
+                  --arg error "所有AI模型都失敗" \
+                  '{next_chapter: $next_chapter, error: $error}' \
+                  > /tmp/api_error.json
+                
+                save_checkpoint "api-error" "40" "/tmp/api_error.json" "所有AI模型都失敗"
+                exit 1
+            fi
+            
+            # 提取內容
+            NEW_CONTENT=$(echo "$RESPONSE" | jq -r '.choices[0].message.content // empty' 2>/dev/null)
+            if [ -z "$NEW_CONTENT" ] || [ "$NEW_CONTENT" = "null" ]; then
+                echo "❌ 錯誤：無法從回應中提取內容"
+                echo "回應：$RESPONSE"
+                exit 1
+            fi
+            
+            echo "✅ 內容生成成功，使用模型: $CURRENT_MODEL_PROVIDER ($CURRENT_MODEL_NAME)"
+            
+            # 保存API響應檢查點（包含模型信息）
+            jq -n \
+              --arg next_chapter "$NEXT_CHAPTER" \
+              --arg new_content "$NEW_CONTENT" \
+              --arg response "$(echo "$RESPONSE" | jq -c .)" \
+              --arg model_provider "$CURRENT_MODEL_PROVIDER" \
+              --arg model_name "$CURRENT_MODEL_NAME" \
+              '{next_chapter: $next_chapter, new_content: $new_content, api_response: $response, model_provider: $model_provider, model_name: $model_name}' \
+              > /tmp/api_response.json
+            
+            save_checkpoint "api-call" "40" "/tmp/api_response.json" "AI內容生成完成"
+        fi
+    fi
+    
+    # 步驟3: 提取章節標題
+    if [[ "$STEP_TO_RESUME" =~ ^(start|determine-chapter|api-call|extract-title)$ ]]; then
+        echo ""
+        echo "🏷️ 步驟3: 提取章節標題"
+        
+        if [ "$RESTORE_MODE" = "true" ] && [ "$RESTORE_STEP" = "extract-title" ]; then
+            echo "⏩ 跳過已完成的步驟: extract-title"
+            # 從恢復數據讀取標題
+            CHAPTER_TITLE=$(echo "$RESTORE_DATA" | jq -r '.chapter_title // empty')
+        else
+            # 從內容中提取標題
+            CHAPTER_TITLE=$(echo "$NEW_CONTENT" | head -3 | grep -oP '第[0-9]+章：\K[^　\n]+' | head -1)
+            [ -z "$CHAPTER_TITLE" ] && CHAPTER_TITLE="修煉之路"
+            
+            echo "章節標題: 第${NEXT_CHAPTER}章：${CHAPTER_TITLE}"
+            
+            # 保存標題檢查點
+            jq -n \
+              --arg next_chapter "$NEXT_CHAPTER" \
+              --arg chapter_title "$CHAPTER_TITLE" \
+              --arg new_content "$NEW_CONTENT" \
+              '{next_chapter: $next_chapter, chapter_title: $chapter_title, new_content: $new_content}' \
+              > /tmp/chapter_title.json
+            
+            save_checkpoint "extract-title" "60" "/tmp/chapter_title.json" "章節標題已提取"
+        fi
+    fi
+    
+    # 步驟4: 生成HTML文件
+    if [[ "$STEP_TO_RESUME" =~ ^(start|determine-chapter|api-call|extract-title|generate-html)$ ]]; then
+        echo ""
+        echo "📄 步驟4: 生成HTML文件"
+        
+        HTML_FILE="chapter-${NEXT_CHAPTER}.html"
+        
+        if [ "$RESTORE_MODE" = "true" ] && [ "$RESTORE_STEP" = "generate-html" ]; then
+            echo "⏩ 跳過已完成的步驟: generate-html"
+            if [ -f "$HTML_FILE" ]; then
+                echo "✅ HTML文件已存在: $HTML_FILE"
+            else
+                echo "⚠️ 警告: HTML文件不存在，重新生成"
+                RESTORE_STEP="extract-title"  # 退回上一步
+            fi
+        fi
+        
+        if [ ! -f "$HTML_FILE" ] || [ "$RESTORE_STEP" != "generate-html" ]; then
+            # 使用Python生成HTML
+            python3 << PYEOF
+import json
+
+content = """$NEW_CONTENT""".strip()
+title = "$CHAPTER_TITLE"
+num = int("$NEXT_CHAPTER")
+prev = num - 1
+next_num = num + 1
+
+# 轉換內容為HTML
+html_lines = []
+in_section = False
+for line in content.split('\n'):
+    line = line.strip()
+    if not line:
+        continue
+    if '章：' in line and ('第' in line[:5]):
+        if in_section:
+            html_lines.append('</div>')
+        html_lines.append(f'<div class="section">')
+        html_lines.append(f'<h3 class="section-title">{line}</h3>')
+        in_section = True
+    else:
+        html_lines.append(f'<p>{line}</p>')
+
+if in_section:
+    html_lines.append('</div>')
+
+html_content = '\n'.join(html_lines)
+
+html_template = f'''<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>第{num}章：{title} - 科技修真傳</title>
+    <meta name="description" content="《科技修真傳》第{num}章：{title}。">
+    <meta name="keywords" content="第{num}章, {title}, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
+    <meta name="author" content="大肥瞄">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+
+    <header class="reader-header">
+        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
+        <h2 class="reader-chapter-title">第{num}章：{title}</h2>
+        <div class="header-controls">
+            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
+        </div>
+    </header>
+
+    <div id="settings-panel" class="settings-panel">
+        <div class="setting-group">
+            <h4>字體大小</h4>
+            <div id="font-size-options" class="setting-options">
+                <button data-size="small">小</button>
+                <button data-size="medium">中</button>
+                <button data-size="large">大</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <h4>背景主題</h4>
+            <div id="theme-options" class="setting-options">
+                <button data-theme="light-mode">明亮</button>
+                <button data-theme="sepia-mode">米黃</button>
+                <button data-theme="dark-mode">夜間</button>
+                <button data-theme="sky-blue-mode">天空藍</button>
+                <button data-theme="light-green-mode">淺綠色</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="reader-content-area">
+        <article id="reader-article" class="reader-article font-size-medium">
+
+    <div class="content">
+        <h1>第{num}章：{title}</h1>
+<div class="chapter">
+    <h2 class="chapter-title">第{num}章：{title}</h2>
+
+{html_content}
+</div>
+    </div>
+
+        </article>
+    </main>
+
+    <section class="share-section">
+        <h4 class="share-title">分享這個章節</h4>
+        <div class="share-buttons">
+            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
+            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
+        </div>
+    </section>
+
+    <footer class="reader-footer-nav">
+        <a href="chapter-{prev}.html" id="prev-chapter-btn" class="nav-button">« 上一章</a>
+        <a href="chapter-{next_num}.html" id="next-chapter-btn" class="nav-button">下一章 »</a>
+    </footer>
+
+    <section class="comment-section">
+        <h3 class="comment-section-title">讀者留言</h3>
+    </section>
+
+    <script src="main.js"></script>
+
+</body>
+</html>'''
+
+with open(f'chapter-{num}.html', 'w', encoding='utf-8') as f:
+    f.write(html_template)
+
+print(f"第{num}章已生成")
+PYEOF
+            
+            # 保存HTML生成檢查點
+            jq -n \
+              --arg next_chapter "$NEXT_CHAPTER" \
+              --arg chapter_title "$CHAPTER_TITLE" \
+              --arg html_file "$HTML_FILE" \
+              '{next_chapter: $next_chapter, chapter_title: $chapter_title, html_file: $html_file}' \
+              > /tmp/html_generated.json
+            
+            save_checkpoint "generate-html" "80" "/tmp/html_generated.json" "HTML文件已生成"
+        fi
+    fi
+    
+    # 步驟5: 更新章節導航
+    if [[ "$STEP_TO_RESUME" =~ ^(start|determine-chapter|api-call|extract-title|generate-html|update-nav)$ ]]; then
+        echo ""
+        echo "🔧 步驟5: 更新章節導航"
+        
+        if [ "$RESTORE_MODE" = "true" ] && [ "$RESTORE_STEP" = "update-nav" ]; then
+            echo "⏩ 跳過已完成的步驟: update-nav"
+        else
+            if [ -f "update_chapter_nav.sh" ]; then
+                bash update_chapter_nav.sh "${NEXT_CHAPTER}" "${CHAPTER_TITLE}"
+                echo "✅ 章節導航已更新"
+            else
+                echo "⚠️ 警告: 未找到導航更新腳本"
+            fi
+            
+            # 保存導航更新檢查點
+            jq -n \
+              --arg next_chapter "$NEXT_CHAPTER" \
+              --arg chapter_title "$CHAPTER_TITLE" \
+              '{next_chapter: $next_chapter, chapter_title: $chapter_title}' \
+              > /tmp/nav_updated.json
+            
+            save_checkpoint "update-nav" "90" "/tmp/nav_updated.json" "章節導航已更新"
+        fi
+    fi
+    
+    # 步驟6: Git提交和推送
+    if [[ "$STEP_TO_RESUME" =~ ^(start|determine-chapter|api-call|extract-title|generate-html|update-nav|git-commit)$ ]]; then
+        echo ""
+        echo "📦 步驟6: Git提交和推送"
+        
+        if [ "$RESTORE_MODE" = "true" ] && [ "$RESTORE_STEP" = "git-commit" ]; then
+            echo "⏩ 跳過已完成的步驟: git-commit"
+        else
+            # 添加文件
+            git add "chapter-${NEXT_CHAPTER}.html" index.html
+            if [ $PREV_CHAPTER -ge 1 ] && [ -f "chapter-${PREV_CHAPTER}.html" ]; then
+                git add "chapter-${PREV_CHAPTER}.html"
+            fi
+            
+            # 提交
+            git commit -m "新增第${NEXT_CHAPTER}章：${CHAPTER_TITLE}" || echo "⚠️ Git提交失敗或無變更"
+            
+            # 推送
+            git push || echo "⚠️ Git推送失敗"
+            
+            echo "✅ 已推送到 GitHub"
+            
+            # 保存Git提交檢查點
+            jq -n \
+              --arg next_chapter "$NEXT_CHAPTER" \
+              --arg chapter_title "$CHAPTER_TITLE" \
+              '{next_chapter: $next_chapter, chapter_title: $chapter_title, git_committed: true}' \
+              > /tmp/git_committed.json
+            
+            save_checkpoint "git-commit" "100" "/tmp/git_committed.json" "Git提交完成"
+        fi
+    fi
+    
+    # 清理活動檢查點（任務完成）
+    if [ -f "$ACTIVE_CHECKPOINT" ]; then
+        rm -f "$ACTIVE_CHECKPOINT"
+        echo "🧹 活動檢查點已清理（任務完成）"
+    fi
+    
+    echo ""
+    echo "🎉 任務完成！第${NEXT_CHAPTER}章已成功生成並發布。"
+}
+
+# 執行主函數
+main 2>&1 | tee -a "$REPO_DIR/checkpoints/generate_chapter_$(date '+%Y%m%d').log"
+
+exit 0

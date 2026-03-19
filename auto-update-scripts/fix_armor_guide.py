@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+from pathlib import Path
+
+REPO_DIR = Path("/home/openclaw/.openclaw/workspace/my-novel-website")
+
+# 圣斗士星矢 - 圣衣装备详细攻略
+armor_content = """<h1>圣衣装备搭配指南</h1>
+<p>圣衣是圣斗士的核心装备。不同星座圣衣提供不同技能加成，正确搭配能让战力翻倍。</p>
+
+<h2>🛡️ 黄金圣衣属性对比</h2>
+<table border="1" cellpadding="8">
+    <tr><th>圣衣</th><th>核心效果</th><th>适合职业</th><th>推荐度</th></tr>
+    <tr><td>天马座</td><td>击杀回能 +15%</td><td>输出</td><td>★★★★★</td></tr>
+    <tr><td>射手座</td><td>全体伤害 +20%</td><td>群攻</td><td>★★★★★</td></tr>
+    <tr><td>处女座</td><td>暴击伤害 +30%</td><td>暴击流</td><td>★★★★☆</td></tr>
+    <tr><td>双子座</td><td>技能冷却 -10%</td><td>技能流</td><td>★★★★☆</td></tr>
+    <tr><td>金牛座</td><td>护盾值 +25%</td><td>坦克</td><td>★★★★☆</td></tr>
+    <tr><td>白羊座</td><td>治疗效果 +20%</td><td>治疗</td><td>★★★★☆</td></tr>
+</table>
+
+<h2>🔧 强化与附魔优先级</h2>
+<ol>
+    <li><strong>武器</strong>：优先攻击%、暴击率、暴击伤害</li>
+    <li><strong>防具</strong>：优先生命%、防御%、抗性</li>
+    <li><strong>饰品</strong>：优先冷却缩减、能量回复、暴击伤害</li>
+</ol>
+
+<h2>💎 套装效果</h2>
+<ul>
+    <li><strong>2件套</strong>：+10% 对应属性</li>
+    <li><strong>4件套</strong>：+20% 对应属性 + 特殊效果</li>
+    <li><strong>6件套（传说）</strong>：+30% 对应属性 + 终极技能</li>
+</ul>
+
+<h2>🔥 圣衣获取途径</h2>
+<ul>
+    <li><strong>副本掉落</strong>：每日副本「圣衣神殿」概率掉落</li>
+    <li><strong>活动奖励</strong>：限时活动可兑换指定圣衣</li>
+    <li><strong>抽卡</strong>：圣衣抽取卡池，保底 100 抽</li>
+    <li><strong>合成</strong>：3 件相同品质可合成更高一级</li>
+</ul>
+
+<h2>💡 搭配建议</h2>
+<ul>
+    <li><strong>输出职业</strong>：天马座 + 射手座组合，最大化伤害</li>
+    <li><strong>坦克职业</strong>：金牛座 + 狮子座，高护盾+反击</li>
+    <li><strong>治疗职业</strong>：白羊座 + 双鱼座，治疗量+驱散</li>
+    <li><strong>控制职业</strong>：双子座 + 天蝎座，控制时长+效果</li>
+</ul>
+
+<h2>⚠️ 注意事项</h2>
+<ul>
+    <li>圣衣强化继承，更换圣衣时强化等级保留</li>
+    <li>附魔属性可以重置，建议先确定主属性再锁定</li>
+    <li>传说圣衣需要满级后才能解锁全部套装效果</li>
+</ul>"""
+
+# 创建文件
+target = REPO_DIR / "guides/saint_seiya/armor-guide.html"
+target.write_text(f'''<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣衣装备 - 聖鬥士星矢重生2 | 科技修真傳</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {{ --primary: #ffd700; --bg: #1a1a2e; --text: #fff; --card-bg: rgba(255,255,255,0.08); }}
+        body {{ font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 80px 2rem 2rem; max-width: 900px; margin: 0 auto; line-height: 1.8; }}
+        .back-link {{ color: var(--primary); margin-bottom: 2rem; display: block; text-decoration: none; }}
+        .guide-content {{ background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--primary); }}
+        h1 {{ color: var(--primary); font-size: 2rem; margin-bottom: 1rem; }}
+        h2 {{ color: var(--primary); font-size: 1.5rem; margin: 2rem 0 1rem; border-left: 4px solid var(--primary); padding-left: 1rem; }}
+        p {{ margin-bottom: 1rem; color: #ccc; }}
+        table {{ width: 100%; border-collapse: collapse; margin: 1rem 0; }}
+        th, td {{ border: 1px solid var(--primary); padding: 0.8rem; text-align: left; }}
+        th {{ background: rgba(255,215,0,0.1); color: var(--primary); }}
+        ul, ol {{ margin-left: 2rem; margin-bottom: 1rem; color: #ccc; }}
+        li {{ margin-bottom: 0.5rem; }}
+    </style>
+</head>
+<body>
+    <a href="/saint-seiya-guide.html" class="back-link"><i class="fas fa-arrow-left"></i> 返回攻略中心</a>
+    <div class="guide-content">
+        {armor_content}
+        <p style="margin-top:2rem; color:#888; font-size:0.9rem;">最后更新：2026-03-18 | 作者：小肥喵</p>
+    </div>
+</body>
+</html>''', encoding='utf-8')
+
+print("✅ 已创建圣衣装备详细攻略")
+print("   → guides/saint_seiya/armor-guide.html")

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <style>
+        .reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO 優化標籤 -->
+    <!-- 記得修改這裡的標題和描述 -->
+    <title>第二章：末法餘燼 - 科技修真傳</title>
+    <meta name="description" content="《科技修真傳》第二章：末法餘燼。在末法廢土中，少年林塵意外發現並連結了傳說中的上古靈芯，從此開啟了數據修仙之路。">
+    <meta name="keywords" content="第一章, 靈芯覺醒, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
+    <meta name="author" content="大肥瞄">
+    
+    <!-- 外部字體與圖示 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- 連結到您的 CSS 檔案 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <div class="reading-progress-bar" id="progress-bar"></div>
+
+    <header class="reader-header">
+        <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
+        <!-- 記得修改這裡的標題 -->
+        <h2 class="reader-chapter-title">第二章：末法餘燼</h2>
+        <div class="header-controls">
+            <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
+        </div>
+    </header>
+
+    <div id="settings-panel" class="settings-panel">
+        <div class="setting-group">
+            <h4>字體大小</h4>
+            <div id="font-size-options" class="setting-options">
+                <button data-size="small">小</button>
+                <button data-size="medium">中</button>
+                <button data-size="large">大</button>
+            </div>
+        </div>
+        <div class="setting-group">
+            <h4>背景主題</h4>            <div id="theme-options" class="setting-options">
+                <button data-theme="light-mode">明亮</button>
+                <button data-theme="sepia-mode">米黃</button>
+                <button data-theme="dark-mode">夜間</button>
+                <button data-theme="sky-blue-mode">天空藍</button>
+                <button data-theme="light-green-mode">淺綠色</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="reader-content-area">
+        <article id="reader-article" class="reader-article font-size-medium">
+            <!-- 在這裡貼上你的小說內文 -->
+            <h1>第二章：末法餘燼</h1>
+            <p>晨霧如鉛，冷冽而濃稠，覆蓋整座舊都廢墟。
+
+林塵躲在一座倒塌劇院的地下室裡，點燃一根破舊電子蠟燭。微弱的黃光驅散了些許黑暗，也照亮他眼中那尚未熄滅的決意。
+
+他身邊躺著從“破序者”手中搶來的背包，裡頭有幾塊能量乾糧、半瓶濃縮水，以及一片刻著奇異符紋的破損晶板。
+
+那晶板——是他從黑市撿漏得來的《末法簡誌》。
+
+林塵將它連接到靈芯的資料模擬端口中，一行行帶有干擾波的文字浮現在視野中：
+
+【資料名稱】：《末法簡誌·初編》
+【作者】：無名修士（推測為靈數聯盟早期成員）
+【內容摘錄】：
+
+「……靈氣漸衰始於公元2122年，人類首次觀測到天地靈脈收縮現象。起初被誤認為地磁異變與量子濁流干涉，然而隨著三年內全球近七成修行者靈根斷裂，才確定為‘末法元年’之開端……」
+
+「……現今地表靈氣濃度較百年前下降99.84%，常規修煉已無可能。仙門道統幾近毀滅，靈脈荒廢，唯有依仗古科技所遺‘靈芯技術’與‘編碼功法’，或可走出新道。」
+
+「……靈芯者，乃是以天道法則為程式語言、靈氣為運行能源、精神意志為運行核心的超維修煉中樞。其技失傳於第七次靈能戰爭後，已絕跡一百餘年。」
+
+林塵看完後沉默良久。
+
+他從未真正了解過修真世界的“前文明”，只知道：現在的世界，只剩下殘垣斷壁與無數飢餓的眼睛。修士已成傳說，修仙成了笑話。
+
+直到昨天，他才知道，一切都是真實的。
+
+而他，竟然有幸成為重啟這個傳說的一環。
+
+「靈芯，是希望……也是賭注。」
+
+林塵手指輕點，調出靈芯系統主界面。
+
+界面上，【修煉模擬】功能已成功解鎖，並新增了一項：
+
+【新功能解鎖】：環境靈氣監測（被動）
+【目前靈氣濃度】：0.00023%（危險區）
+【推薦修煉方式】：以數據重構虛擬靈脈模擬修煉，提升吸收效率
+【啟動虛擬靈脈模擬器？】
+
+林塵點下“是”。
+
+霎時間，一道虛擬圖譜在他腦海中張開，那是一條流轉著淡銀光的透明靈脈，仿佛從虛空中延展而來。
+
+他坐直身體，開始根據指引呼吸、冥想、意守靈源。
+
+雖然吸收速度極慢，但他仍能清晰感受到那一絲絲靈氣如微塵般滲入丹田，在乾涸已久的體內彙聚。
+
+【模擬修煉進度：3%……9%……17%】
+
+【檢測到微靈氣渦旋，是否保存作為本地修煉模板？】
+
+【是】
+
+一小時後，修煉完成。
+
+雖然丹田內的靈氣不足以點燃一盞靈燈，但他已明顯感覺到——身體正在改變。
+
+不是力量上的強化，而是一種底層感知的甦醒。他能“聽”到空氣中的靈氣波動，甚至“看到”它們在黑暗中流轉，如數據般呈現。
+
+這就是靈芯帶來的“靈覺”。
+
+「也許，末法世界真正的希望，不是強行重啟天地靈氣……而是，我們該學會，如何用數據與科技，重構天道。」
+
+林塵腦中閃過這句話。
+
+他想起很久以前，在黑市書商那裡翻過的一本爛書，其中有一句話：
+
+「道可道，非常道。數據若道，亦可證道。」
+
+如今，他終於明白這句話的意義。
+
+他現在不是傳統的煉氣修士，而是一名“靈數初修者”——用科技理解修煉，用演算法操控靈氣。
+
+外面忽然傳來一聲巨響，地下室頂部震落灰塵。
+
+林塵警覺地啟動靈芯掃描功能。
+
+【偵測異常靈壓信號】【級別：三級】【方向：正上方】【距離：13米】
+
+「又來了……破序者這些瘋子怎麼盯上我了？」
+
+他低罵一聲，迅速啟動靈芯中的【戰鬥模擬】模塊。
+
+這個功能仍未完全解鎖，只能模擬敵人動作預判與最優逃逸路徑，但對於此刻的他來說，足矣。
+
+他緩緩握住能量刀，身體壓低，如夜貓般潛入黑暗。
+
+三分鐘後，一道爆裂聲震開劇院殘壁，幾名身穿機械外骨骼的破序者衝入。
+
+「這裡的靈氣數據值有異，肯定有靈芯殘件！」
+
+為首者大吼一聲，雙眼泛紅，明顯已被靈氣數據侵蝕心智。
+
+然而，他們不知道，一名少年早已躲過探測，潛入下水系統，沿著靈芯預設路徑逃向下個節點。
+
+—
+
+夜幕再臨，林塵站在一處廢棄的電塔下，點開靈芯界面。
+
+【今日修煉總進度：靈氣吸納 +0.014%，靈覺穩定性 +3.8%，資料記錄：已儲存】
+
+他深吸一口氣，望向遠方廢土連綿的天邊。
+
+在那盡頭，是傳說中的“靈網主機遺址”，據說有一位未死的靈芯老祖的意識碎片藏身其中。
+
+林塵輕聲說道：
+
+「這個世界雖被遺棄，但我會一步步，把它修好——不靠神，不靠靈根，只靠數據，與自己。」
+
+靈芯發出微弱的光。
+
+新的道，在數據的深處，正在重啟。</p>
+        </article>
+    </main>
+
+    <section class="share-section">
+        <h4 class="share-title">分享這個章節</h4>
+        <div class="share-buttons">
+            <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
+            <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
+        </div>
+    </section>
+
+    <footer class="reader-footer-nav">
+        <!-- 記得修改翻頁連結 -->
+        <a href="chapter-1.html" id="prev-chapter-btn" class="nav-button">« 上一章</a>
+        <a href="chapter-3.html" id="next-chapter-btn" class="nav-button">下一章 »</a>
+    </footer>
+
+    <footer class="main-footer">
+    <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
+    </footer>
+    
+    <section class="comment-section">
+        <h3 class="comment-section-title">讀者留言</h3>
+    </section>
+
+    <!-- 連結到您的 JavaScript 檔案 -->
+    <script src="main.js"></script>
+
+    <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
+</body>
+</html>

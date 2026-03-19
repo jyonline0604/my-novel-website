@@ -1,0 +1,16 @@
+{
+  "name": "科技修真傳",
+  "short_name": "科技修真傳",
+  "description": "賽博龐克修仙小說 - 少年林塵的數據修仙之路",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#00ff88",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

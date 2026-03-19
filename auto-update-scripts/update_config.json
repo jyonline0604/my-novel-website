@@ -1,0 +1,79 @@
+{
+  "update_schedule": {
+    "kai_tian": {
+      "enabled": true,
+      "description": "開天攻略",
+      "update_time": "09:00",
+      "file": "kai-tian-guide.html",
+      "script": "update_kai_tian.py",
+      "update_frequency": "daily",
+      "requires_ai": false,
+      "ai_prompt": "生成開天遊戲的最新攻略和更新提示"
+    },
+    "game_guide": {
+      "enabled": true,
+      "description": "問劍長生遊戲攻略",
+      "update_time": "10:00",
+      "file": "game-guide.html",
+      "script": "update_game_guide.py",
+      "update_frequency": "daily",
+      "requires_ai": false,
+      "ai_prompt": "生成問劍長生遊戲的最新攻略和更新提示"
+    },
+    "saint_seiya": {
+      "enabled": true,
+      "description": "聖鬥士星矢：重生2攻略",
+      "update_time": "11:00",
+      "file": "saint-seiya-guide.html",
+      "script": "update_saint_seiya.py",
+      "update_frequency": "daily",
+      "requires_ai": false,
+      "ai_prompt": "生成聖鬥士星矢遊戲的最新攻略和活動資訊"
+    },
+    "beapro_football": {
+      "enabled": true,
+      "description": "Be A Pro Football足球攻略",
+      "update_time": "12:00",
+      "file": "beapro-football-guide.html",
+      "script": "update_beapro_football.py",
+      "update_frequency": "daily",
+      "requires_ai": true,
+      "ai_prompt": "生成Be A Pro Football的最新戰術分析、轉會資訊和專家建議"
+    },
+    "ai_news": {
+      "enabled": true,
+      "description": "AI資訊新聞",
+      "update_time": "14:00",
+      "file": "ai-news.html",
+      "script": "update_ai_news.py",
+      "update_frequency": "daily",
+      "requires_ai": true,
+      "ai_prompt": "生成最新的AI新聞摘要、技術分析和趨勢預測",
+      "news_sources": [
+        "TechCrunch AI",
+        "MIT Technology Review",
+        "AI Research Papers",
+        "Industry News"
+      ]
+    }
+  },
+  "system_settings": {
+    "log_file": "auto-update.log",
+    "backup_enabled": true,
+    "backup_dir": "backups",
+    "max_backups": 7,
+    "git_enabled": true,
+    "auto_commit": true,
+    "auto_push": true,
+    "notification_enabled": false,
+    "notification_type": "telegram",
+    "deepseek_api_key_env": "DEEPSEEK_API_KEY",
+    "test_mode": false
+  },
+  "content_templates": {
+    "update_notice": "📝 {date}更新：{summary}",
+    "today_tip": "🎯 今日小貼士 ({date})：{tip}",
+    "expert_analysis": "🤔 專家分析 ({date})：{analysis}",
+    "news_item": "⚡ {title} | Source: {source} | {date}"
+  }
+}

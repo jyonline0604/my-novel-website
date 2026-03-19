@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jyonline0604.github.io/my-novel-website/sitemap.xml
+
+# Disallow temporary files
+Disallow: /api/
+Disallow: /tmp/
+Disallow: *.log

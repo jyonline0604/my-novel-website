@@ -1,0 +1,27 @@
+{
+  "version": "2026.3.13",
+  "gateway": {
+    "status": "運行中",
+    "latency": "398ms"
+  },
+  "agents": {
+    "total": 8,
+    "active": 1
+  },
+  "channel": {
+    "status": "OK"
+  },
+  "session": {
+    "tokens": "1,211,539 / 9,999",
+    "cache": "R:0 W:0"
+  },
+  "heartbeat": "30m",
+  "update": "已是最新",
+  "os": "Linux 6.17.0-14-generic",
+  "tasks": {
+    "briefing_today": 1684,
+    "novel": "✅ 第52章已生成",
+    "latest_chapter": 52
+  },
+  "updated": "2026-03-19 11:25:02"
+}
