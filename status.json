@@ -6,14 +6,14 @@
   },
   "agents": {
     "total": 8,
-    "active": 1
+    "active": 0
   },
   "channel": {
     "status": "OK"
   },
   "session": {
-    "tokens": "224,328 / 282",
-    "cache": "R:17,171 W:0"
+    "tokens": "--",
+    "cache": "--"
   },
   "heartbeat": "30m",
   "update": "已是最新",
@@ -28,5 +28,5 @@
     },
     "latest_update": "2026-03-20 13:14:38"
   },
-  "updated": "2026-03-20 15:15:02"
+  "updated": "2026-03-20 16:55:02"
 }
