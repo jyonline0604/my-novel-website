@@ -85,7 +85,18 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
 .sky-blue-mode .btn-secondary:hover { background-color: var(--sky-blue-primary); color: white; }
 .light-green-mode .btn-secondary:hover { background-color: var(--light-green-primary); color: white; }
 #continue-reading-btn { display: none; }
-.chapter-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.chapter-list { 
+    list-style: none; 
+    padding: 0; 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0;
+    border-top: 1px solid #ddd;
+} 
+.chapter-list li {
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
 .chapter-item { border-radius: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s; }
 .light-mode .chapter-item { border: 1px solid var(--light-border); }
 .dark-mode .chapter-item { border: 1px solid var(--dark-border); }
