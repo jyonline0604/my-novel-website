@@ -85,7 +85,7 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
 .sky-blue-mode .btn-secondary:hover { background-color: var(--sky-blue-primary); color: white; }
 .light-green-mode .btn-secondary:hover { background-color: var(--light-green-primary); color: white; }
 #continue-reading-btn { display: none; }
-.chapter-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.chapter-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .chapter-item { border-radius: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s; }
 .light-mode .chapter-item { border: 1px solid var(--light-border); }
 .dark-mode .chapter-item { border: 1px solid var(--dark-border); }
@@ -184,7 +184,7 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
     .section-title { font-size: 1.5rem; } 
     .cta-buttons { flex-direction: column; } 
     .btn { width: 100%; text-align: center; justify-content: center;} 
-    .chapter-list { grid-template-columns: 1fr; }
+    .chapter-list { grid-template-columns: repeat(3, 1fr); }
     .reader-header { padding: 0.8rem 1rem; } 
     .reader-chapter-title { font-size: 0.9rem; } 
     .reader-article { font-size: 1.1rem; } 
@@ -412,7 +412,7 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
 /* 系統解析 */
 .system-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
@@ -568,7 +568,7 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
     .character-grid,
     .system-list,
     .tip-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
     }
     
     .guide-steps li {
@@ -597,7 +597,7 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
 /* ===== 資源卡片樣式 ===== */
 .resource-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 1.5rem;
 }
@@ -721,7 +721,7 @@ body.light-green-mode { background-color: var(--light-green-bg); color: var(--li
 
 @media (max-width: 768px) {
     .resource-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
     }
     
