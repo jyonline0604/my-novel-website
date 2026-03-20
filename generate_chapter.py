@@ -48,7 +48,25 @@ def generate_new_chapter(chapter_num):
     
     title = chapter_titles.get(chapter_num, f"第{chapter_num}章：新的旅程")
     
-    # 生成章節內容（模板）
+    # 生成完整章節內容
+    story_intro = f"""
+    <p>「第二部：深淵紀元」</p>
+    
+    <p>林塵站在城牆之上，望向遠方的星空。自從上次大戰結束後，一切都開始恢復平靜。</p>
+    
+    <p>「師兄，」墨玄的全息影像出現在他身旁，「最近修煉進展如何？」</p>
+    
+    <p>「還不錯，」林塵微微一笑，「修為又精進了不少。</p>
+    
+    <p>就在此時，天空突然變色！</p>
+    
+    <p>「這是……？」林塵臉色一變。</p>
+    
+    <p>一股強大的氣息正在接近修真界，這氣息既陌生又熟悉……</p>
+    
+    <p>（本章節內容持續更新中……）</p>
+    """
+    
     content = f"""<!DOCTYPE html>
 <html lang="zh-HK">
 <head>
