@@ -5,15 +5,15 @@
     "latency": "398ms"
   },
   "agents": {
-    "total": 8,
-    "active": 1
+    "total": 25,
+    "active": 0
   },
   "channel": {
     "status": "OK"
   },
   "session": {
-    "tokens": "1,106,635 / 1,480",
-    "cache": "R:17,171 W:0"
+    "tokens": "--",
+    "cache": "--"
   },
   "heartbeat": "30m",
   "update": "已是最新",
@@ -26,7 +26,7 @@
       "Be A Pro Football": "評分: N/A",
       "開天": "帖子: 24"
     },
-    "latest_update": "2026-03-20 13:14:38"
+    "latest_update": "2026-03-21 01:02:07"
   },
-  "updated": "2026-03-20 17:05:02"
+  "updated": "2026-03-21 06:55:02"
 }

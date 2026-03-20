@@ -119,6 +119,28 @@
         </div>
         
         <div class="section">
+            <h2>📊 系統健康度</h2>
+            <div class="status-grid">
+                <div class="status-card">
+                    <h3>📚 章節總數</h3>
+                    <div class="status-value" id="chapter-count">--</div>
+                </div>
+                <div class="status-card">
+                    <h3>⚠️ 質量問題</h3>
+                    <div class="status-value warning" id="quality-issues">--</div>
+                </div>
+                <div class="status-card">
+                    <h3>📝 日誌錯誤</h3>
+                    <div class="status-value" id="log-errors">--</div>
+                </div>
+                <div class="status-card">
+                    <h3>✅ 正常任務</h3>
+                    <div class="status-value success" id="ok-tasks">--</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
             <h2>🔗 快速連結</h2>
             <div class="nav-links">
                 <a href="index.html" class="nav-link-card">🏠 首頁</a>
@@ -147,6 +169,10 @@
                 const d = await r.json();
                 
                 document.getElementById('version').textContent = d.version || '--';
+                document.getElementById('chapter-count').textContent = d.chapter_count || '--';
+                document.getElementById('quality-issues').textContent = d.log_errors || '--';
+                document.getElementById('log-errors').textContent = d.log_errors || '--';
+                document.getElementById('ok-tasks').textContent = d.ok_tasks || '--';
                 document.getElementById('update').textContent = d.update || '--';
                 
                 const gw = document.getElementById('gateway');
