@@ -5,14 +5,14 @@
     "latency": "398ms"
   },
   "agents": {
-    "total": 8,
-    "active": 1
+    "total": 16,
+    "active": 5
   },
   "channel": {
     "status": "OK"
   },
   "session": {
-    "tokens": "447,483 / 618",
+    "tokens": "516,516 / 1,979",
     "cache": "R:17,171 W:0"
   },
   "heartbeat": "30m",
@@ -23,5 +23,5 @@
     "novel": "✅ 第52章已生成",
     "latest_chapter": 52
   },
-  "updated": "2026-03-20 10:05:02"
+  "updated": "2026-03-20 12:25:02"
 }
