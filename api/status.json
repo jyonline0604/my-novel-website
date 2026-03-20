@@ -1,1 +1,27 @@
-{"version":"","gateway":{"status":"已停止","latency":"0ms"},"agents":{"total":null,"active":null},"channel":{"status":"--"},"session":{"tokens":null,"cache":null},"heartbeat":"","update":"已是最新","os":"","tasks":{"briefing_today":1684,"novel":"✅ 第52章已生成","latest_chapter":52},"updated":"2026-03-20 07:00:01"}
+{
+  "version": "2026.3.13",
+  "gateway": {
+    "status": "運行中",
+    "latency": "398ms"
+  },
+  "agents": {
+    "total": 9,
+    "active": 2
+  },
+  "channel": {
+    "status": "OK"
+  },
+  "session": {
+    "tokens": "9,763 / 2,329",
+    "cache": "R:0 W:0"
+  },
+  "heartbeat": "30m",
+  "update": "已是最新",
+  "os": "Linux 6.17.0-14-generic",
+  "tasks": {
+    "briefing_today": 1684,
+    "novel": "✅ 第52章已生成",
+    "latest_chapter": 52
+  },
+  "updated": "2026-03-20 08:15:02"
+}
