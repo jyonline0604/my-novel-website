@@ -6,22 +6,27 @@
   },
   "agents": {
     "total": 8,
-    "active": 3
+    "active": 1
   },
   "channel": {
     "status": "OK"
   },
   "session": {
-    "tokens": "423,042 / 1,738",
+    "tokens": "543,530 / 1,941",
     "cache": "R:17,171 W:0"
   },
   "heartbeat": "30m",
   "update": "已是最新",
   "os": "Linux 6.17.0-14-generic",
   "tasks": {
-    "briefing_today": 1684,
-    "novel": "✅ 第52章已生成",
-    "latest_chapter": 52
+    "novel": "✅ 第56章",
+    "games": {
+      "問劍長生": "評分: N/A",
+      "聖鬥士星矢重生2": "評分: N/A",
+      "Be A Pro Football": "評分: N/A",
+      "開天": "帖子: 24"
+    },
+    "latest_update": "2026-03-20 13:14:38"
   },
-  "updated": "2026-03-20 13:10:02"
+  "updated": "2026-03-20 15:05:02"
 }
