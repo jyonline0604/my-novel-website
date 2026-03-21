@@ -32,7 +32,25 @@
             grid-template-columns: repeat(3, 1fr) !important;
         }
     }
-    </style>
+    
+    .chapter-sort-controls {
+        text-align: right;
+        margin-bottom: 15px;
+    }
+    .sort-btn {
+        background: #0f3460;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .sort-btn:hover {
+        background: #16213e;
+    }
+
+</style>
 </head>
 <body class="light-mode">
 
@@ -70,6 +88,12 @@
 
         <section id="chapters" class="content-card">
             <h2 class="section-title">章節列表</h2>
+        <div class="chapter-sort-controls">
+            <button id="sort-chapters" class="sort-btn" onclick="toggleChapterOrder()">
+                <i class="fas fa-sort"></i> 排序：倒序
+            </button>
+        </div>
+
             <ul class="chapter-list" style="display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 0; border-top: 1px solid #ddd; list-style: none; padding: 0; width: 100%;">
 <li style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd;"><a href="chapter-1.html" style="display: block; padding: 12px 15px; background: white; color: #333; text-decoration: none;">第1章：靈芯覺醒 - 科技修真傳</a></li>
 <li style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd;"><a href="chapter-2.html" style="display: block; padding: 12px 15px; background: white; color: #333; text-decoration: none;">第2章：數據修仙之路 - 科技修真傳</a></li>
@@ -149,5 +173,23 @@ if ("serviceWorker" in navigator) {
 // 簡單計數追蹤
 fetch("/api/counter.sh?homepage").catch(() => {});
 </script>
+
+    <script>
+    let descending = true;
+    function toggleChapterOrder() {
+        const list = document.querySelector('.chapter-list');
+        const items = Array.from(list.children);
+        descending = !descending;
+        items.sort((a, b) => {
+            const numA = parseInt(a.textContent.match(/第(\d+)章/)?.[1] || 0);
+            const numB = parseInt(b.textContent.match(/第(\d+)章/)?.[1] || 0);
+            return descending ? numB - numA : numA - numB;
+        });
+        items.forEach(item => list.appendChild(item));
+        document.getElementById('sort-chapters').innerHTML = 
+            '<i class="fas fa-sort"></i> 排序：' + (descending ? '倒序' : '順序');
+    }
+    </script>
+
 </body>
 </html>
