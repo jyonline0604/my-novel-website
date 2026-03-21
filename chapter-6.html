@@ -1,95 +1,169 @@
 <!DOCTYPE html>
+
 <html lang="zh-Hant">
+
 <head>
+
     <style>.reading-progress-bar {position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #00ff88, #00ccff); z-index: 9999; transition: width 0.1s;}</style>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>第6章：第一個任務 - 科技修真傳</title>
+
     <meta name="description" content="《科技修真傳》第6章：第一個任務">
+
     <meta name="keywords" content="第6章, 第一個任務, 科技修真傳, 科技修仙, 賽博龐克, 數據修仙">
+
     <meta name="author" content="大肥瞄">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body class="light-mode">
+
     <div class="reading-progress-bar" id="progress-bar"></div>
+
     <header class="reader-header">
+
         <a href="index.html" class="header-nav-link"><i class="fas fa-arrow-left"></i> 返回目錄</a>
+
         <h2 class="reader-chapter-title">第6章：第一個任務</h2>
+
         <div class="header-controls">
+
             <button id="settings-btn" class="control-btn" aria-label="閱讀設定"><i class="fas fa-cog"></i></button>
+
         </div>
+
     </header>
+
     <div id="settings-panel" class="settings-panel">
+
         <div class="setting-group">
+
             <h4>字體大小</h4>
+
             <div id="font-size-options" class="setting-options">
+
                 <button data-size="small">小</button>
+
                 <button data-size="medium">中</button>
+
                 <button data-size="large">大</button>
+
             </div>
+
         </div>
+
         <div class="setting-group">
+
             <h4>背景主題</h4>
+
             <div id="theme-options" class="setting-options">
+
                 <button data-theme="light-mode">明亮</button>
+
                 <button data-theme="sepia-mode">米黃</button>
+
                 <button data-theme="dark-mode">夜間</button>
+
                 <button data-theme="sky-blue-mode">天空藍</button>
+
                 <button data-theme="light-green-mode">淺綠色</button>
+
             </div>
+
         </div>
+
     </div>
+
     <main class="reader-content-area">
+
         <article class="reader-article">
+
             <div class="content">
+
                 <h1>第6章：第一個任務</h1>
+
                 <div class="chapter"><p>模擬修煉器的核心空間內，一道金芒劍氣化作數據風暴，橫掃數據宗主殿上空。
 
-顧澄站在主殿前，右手緊握虛構「靈演指環」，那是靈芯內置的數據編譯器，能將代碼實時轉化為虛擬技能。她雙眼泛著藍光，光速編碼、即時反擊。
+顧澄站在主殿前，右手緊握虛構「靈演指環」，那是靈芯內置的數據編譯器，能將代碼實時轉化為虛擬技能。她雙眼泛著藍光，
+
+
+光速編碼、即時反擊。
 
 「對抗靈禁局的執法者……光靠靈氣是不可能的。他們是武裝到位元層的戰鬥AI修士。」
 
 她在空中迅速敲擊指令：
 
 txt
+
 複製
+
 編輯
+
 [生成模擬陣法 · 虛擬反轉域 v2.3]
 
 IF 攻擊模塊來自外部協議 AND 資訊包未加密
-THEN 對其鏡像 → 延遲回放 + 加密干擾 5ms
+
+THEN 對其鏡像 → 延遲回放 + 加密幹擾 5ms
+
 → 陣域擴張 · 形成「時差泡」 → 降低劍氣命中率至 43%
+
 劍氣一瞬間扭曲、彎折，打在主殿邊緣，只留下些許閃爍。
 
-靈禁局執法者冷哼：「區區數據修士，也妄想與‘金樞劍程序’為敵？」
+靈禁局執法者冷哼：「區區數據修士，
+
+
+也妄想與‘金樞劍程序’為敵？」
 
 他舉手一揮，數道金線纏繞虛空，竟組成一套半物理化的「法劍協議」，每一劍都是由高級運算指令構成，號稱能切割任意模擬空間。
 
 「靈禁劍 · 程序劍氣 · 第五式」
 
-顧澄面無懼色，她知道這種劍技並非無敵，只要讀懂它的邏輯結構，就能干擾它的執行流程。</p>
+顧澄麵無懼色，她知道這種劍技並非無敵，只要讀懂它的邏輯結構，就能幹擾它的執行流程。</p>
+
 <p>她用靈芯快速分析對方劍氣序列：
 
 「正在分析：金樞劍程序 · 第五式」
+
 模組組成：行動指令（30%） + 誘導符文（45%） + 崩潰輸出（25%）
+
 脆弱點：符文疊代重複率高 → 可利用「重疊跳碼」技術破解
 
 顧澄雙手併指，打出一道指令法印：
 
 txt
+
 複製
+
 編輯
-[啟動干擾術式 · 跳碼反向撥放器]
+
+[啟動幹擾術式 · 跳碼反向撥放器]
 
 IF 符文重複序列 ≥ 12次
+
 THEN 植入假變數「§_ghostNode」  
+
 → 劍氣追蹤模組判定失效  
+
 → 程序回溯，進入自我鎖死狀態
-一聲巨響，對方一式程序劍氣被瞬間反彈，虛空中爆出一片金色錯碼火花。
+
+一聲巨響，
+
+
+對方一式程序劍氣被瞬間反彈，虛空中爆出一片金色錯碼火花。
 
 顧澄冷靜地後退半步，唇角微微一勾。
 
@@ -105,14 +179,19 @@ THEN 植入假變數「§_ghostNode」
 
 「每個人經絡不同，但靈芯能根據你的身體數據生成「個人修煉軌跡」。只要你找到對的靈氣流動模式，就能啟動第一輪氣感。」
 
-程默是一名中學教師，靈芯等級極低，但數理邏輯極強。他用教學方法理解功法，竟比林塵還快構建出「小靈輪功」中的第一輪氣動圖譜。
+程默是一名中學教師，靈芯等級極低，
+
+
+但數理邏輯極強。他用教學方法理解功法，竟比林塵還快構建出「小靈輪功」中的第一輪氣動圖譜。
 
 沈芷則曾是醫療機械維修師，靈芯在戰爭中損壞部分，但她竟用廢棄模塊重寫功法代碼，創造了一個全新的心肺循環強化模式。</p>
+
 <p>三人互相激發，不出一刻，靈氣在他們身上緩緩轉動。
 
 林塵的靈芯提示：
 
 「氣感生成成功」
+
 「模擬突破 · 第一境 · 入靈」
 
 程默與沈芷也陸續完成了初級感氣，他們的身體在模擬中泛起淡淡靈光，這不只是數據上的躍進，更是精神上的翻越。
@@ -136,28 +215,49 @@ THEN 植入假變數「§_ghostNode」
 顧澄喃喃道：「你要……建立實體據點？」
 
 林塵點頭：「對。下一步，我要打造第一個可攜式實體修煉裝置——行動靈氣模擬機。」</p></div>
+
             </div>
+
         </article>
+
     </main>
+
     <footer class="reader-footer-nav">
+
         <a href="chapter-5.html" class="nav-button">« 上一章</a>
+
         <a href="chapter-7.html" class="nav-button">下一章 »</a>
+
     </footer>
 
     <section class="share-section">
+
         <h4 class="share-title">分享這個章節</h4>
+
         <div class="share-buttons">
+
             <a href="#" id="share-facebook" class="share-btn facebook" title="分享到 Facebook"><i class="fab fa-facebook-f"></i></a>
+
             <a href="#" id="share-twitter" class="share-btn twitter" title="分享到 X (Twitter)"><i class="fab fa-twitter"></i></a>
+
             <a href="#" id="share-line" class="share-btn line" title="分享到 LINE"><i class="fab fa-line"></i></a>
+
             <button id="copy-link-btn" class="share-btn copy-link" title="複製連結"><i class="fas fa-link"></i></button>
+
         </div>
+
     </section>
 
     <footer class="main-footer">
+
         <p>&copy; 2025 大肥瞄. All Rights Reserved. | <a href="author.html" style="color: inherit;">關於作者</a></p>
+
     </footer>
+
     
+
     <button id="back-to-top-btn" title="返回頂部"><i class="fas fa-arrow-up"></i></button>
+
 </body>
+
 </html>
