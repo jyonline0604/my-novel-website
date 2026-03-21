@@ -67,35 +67,28 @@ def generate_new_chapter(chapter_num):
     <p>（本章節內容持續更新中……）</p>
     """
     
-    content = f"""<!DOCTYPE html>
-<html lang="zh-HK">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} - 數據修仙傳</title>
-    <style>
-        body {{ font-family: "Microsoft JhengHei", Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #1a1a2e; color: #eee; line-height: 1.8; }}
-        h1 {{ color: #f39c12; text-align: center; }}
-        .content {{ background: #16213e; padding: 20px; border-radius: 10px; }}
-        .nav {{ display: flex; justify-content: space-between; margin-top: 30px; }}
-        .nav a {{ background: #0f3460; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; }}
-    </style>
-</head>
-<body>
-    <h1>{title}</h1>
-    <div class="content">
-        <p>（本章節內容待生成...）</p>
-    </div>
-    <div class="nav">
-        <a href="chapter-{chapter_num-1}.html">上一章</a>
-        <a href="index.html">返回目錄</a>
-    </div>
-</body>
-</html>"""
+    # 使用標準章節模板 (從 chapter-1.html)
+    template_file = f"{NOVEL_DIR}/chapter-1.html"
+    with open(template_file, 'r', encoding='utf-8') as f:
+        template = f.read()
     
-    # 寫入文件
+    # 替换标题
+    template = template.replace("第1章：靈芯覺醒", title)
+    template = template.replace("第1章", f"第{chapter_num}章")
+    template = template.replace("chapter-1.html", f"chapter-{chapter_num}.html")
+    
+    # 替换导航 - 上一章
+    import re
+    template = re.sub(r'href="chapter-\d+\.html" class="nav-button"[^>]*>« 上一章', 
+                      f'href="chapter-{chapter_num-1}.html" class="nav-button">« 上一章', template)
+    
+    # 替换内容
+    story_placeholder = '<p>在繁華的都市中，一名年輕人偶然發現了一塊神秘的玉石。這塊玉石散發著奇異的光芒，仿佛蘊含著某種強大的力量...</p>'
+    template = re.sub(r'<p>在繁華的都市中.*?</p>', story_placeholder, template, flags=re.DOTALL)
+    
+    # 写入文件
     with open(f"{NOVEL_DIR}/chapter-{chapter_num}.html", 'w', encoding='utf-8') as f:
-        f.write(content)
+        f.write(template)
     
     return title
 
